@@ -24,13 +24,26 @@ app-typed-forms-presentation {
   swiper-slide {
     background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  // Titre au-dessus de la carte
+  h1 {
+    font-size: 3rem;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
   // Conteneur de slide commun
   .slide-container {
-    max-height: calc(100vh - 4rem);
+    max-height: calc(100vh - 10rem);
     max-width: 90vw;
     width: 100%;
     display: flex;
@@ -40,14 +53,6 @@ app-typed-forms-presentation {
     background: #ffffff;
     border-radius: 16px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-
-    h1 {
-      font-size: 3rem;
-      margin: 0 0 1.5rem 0;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      // La couleur est override dans chaque slide
-    }
 
     h2 {
       font-size: 1.3rem;
