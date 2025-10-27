@@ -1,0 +1,32 @@
+<div class="landing-container">
+  <div class="landing-header">
+    <h1 class="landing-title">📊 Hub de Présentations</h1>
+    <p class="landing-subtitle">Présentations de code interactives et tutoriels</p>
+  </div>
+
+  <div class="presentations-grid">
+    @for (presentation of presentations(); track presentation.route) {
+      <p-card class="presentation-card">
+        <ng-template pTemplate="header">
+          <div class="card-header" [style.background]="presentation.color">
+            <span class="card-icon">{{ presentation.icon }}</span>
+          </div>
+        </ng-template>
+
+        <div class="card-content">
+          <h2 class="card-title">{{ presentation.title }}</h2>
+          <p class="card-description">{{ presentation.description }}</p>
+        </div>
+
+        <ng-template pTemplate="footer">
+          <p-button
+            [routerLink]="presentation.route"
+            label="Voir la Présentation"
+            icon="pi pi-arrow-right"
+            iconPos="right"
+            [style]="{ width: '100%' }" />
+        </ng-template>
+      </p-card>
+    }
+  </div>
+</div>

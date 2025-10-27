@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "npm run generate:code && ng serve",
+    "build": "npm run generate:code && ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "generate:code": "node scripts/generate-code-constants.mjs"
   },
   "prettier": {
     "printWidth": 100,
@@ -28,7 +29,13 @@
     "@angular/forms": "^20.3.0",
     "@angular/platform-browser": "^20.3.0",
     "@angular/router": "^20.3.0",
+    "@primeuix/themes": "^1.2.5",
+    "highlight.js": "^11.11.1",
+    "ngx-highlightjs": "^14.0.1",
+    "primeicons": "^7.0.0",
+    "primeng": "^20.2.0",
     "rxjs": "~7.8.0",
+    "swiper": "^12.0.3",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
