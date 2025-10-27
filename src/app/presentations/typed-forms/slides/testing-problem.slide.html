@@ -1,0 +1,26 @@
+<div class="slide-container">
+  <h1>🧪 Tests = Enfer</h1>
+
+  <p class="subtitle">
+    La logique métier du formulaire est testée via les tests du component !
+  </p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Setup de test</h2>
+      <pre><code [highlight]="testSetup()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Tests de la logique adaptative</h2>
+      <pre><code [highlight]="testExample()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ Logique métier testée dans les tests du component</div>
+    <div class="problem-item">❌ Tests lents (création du component à chaque fois)</div>
+    <div class="problem-item">❌ Beaucoup de boilerplate (TestBed, fixture...)</div>
+    <div class="problem-item">❌ Impossible de tester le formulaire isolément</div>
+  </div>
+</div>
