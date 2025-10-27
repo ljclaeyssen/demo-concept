@@ -1,0 +1,31 @@
+<div class="slide-container">
+  <h1>🧪 Tests = Simplicité</h1>
+
+  <p class="subtitle">
+    On teste directement la classe, sans component ni TestBed !
+  </p>
+
+  <div class="three-columns">
+    <div class="code-section">
+      <h2>Test basique</h2>
+      <pre><code [highlight]="basicTest()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Test logique adaptative</h2>
+      <pre><code [highlight]="adaptiveTest()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Test typage</h2>
+      <pre><code [highlight]="typingTest()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Pas de TestBed ni ComponentFixture</div>
+    <div class="benefit-item">✅ Tests ultra-rapides (simple instanciation de classe)</div>
+    <div class="benefit-item">✅ Logique métier testée isolément</div>
+    <div class="benefit-item">✅ Tests propres et maintenables</div>
+  </div>
+</div>
