@@ -490,9 +490,10 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
  * Source: src/app/presentations/typed-forms/demo/registration-demo.component.scss
  */
 export const registrationDemoComponentScss = `.demo-container {
-  padding: 2rem;
-  max-width: 1200px;
+  padding: 3rem;
+  max-width: 1400px;
   margin: 0 auto;
+  min-height: 100%;
 
   .card-header {
     display: flex;
@@ -501,16 +502,18 @@ export const registrationDemoComponentScss = `.demo-container {
     width: 100%;
 
     .validity-icon {
-      font-size: 1.2rem;
-      opacity: 0.3;
+      font-size: 1.3rem;
+      opacity: 0.2;
       transition: all 0.3s ease;
 
       &.valid {
         opacity: 1;
+        filter: drop-shadow(0 0 4px rgba(72, 187, 120, 0.4));
       }
 
       &.invalid {
         opacity: 1;
+        filter: drop-shadow(0 0 4px rgba(229, 62, 62, 0.4));
       }
     }
   }
@@ -518,14 +521,41 @@ export const registrationDemoComponentScss = `.demo-container {
   .form-sections {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+
+    ::ng-deep p-card {
+      .p-card {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s, box-shadow 0.2s;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+      }
+
+      .p-card-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1.25rem 1.5rem;
+        border-radius: 12px 12px 0 0;
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .p-card-body {
+        padding: 2rem 1.5rem;
+      }
+    }
   }
 
   .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 1.5rem 2rem;
 
     > div {
       display: flex;
@@ -534,7 +564,19 @@ export const registrationDemoComponentScss = `.demo-container {
 
       label {
         font-weight: 600;
-        color: #4a5568;
+        color: #2d3748;
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+      }
+
+      input,
+      ::ng-deep p-select,
+      ::ng-deep p-inputnumber {
+        transition: all 0.2s;
+
+        &:focus-within {
+          transform: translateY(-1px);
+        }
       }
     }
 
@@ -547,16 +589,42 @@ export const registrationDemoComponentScss = `.demo-container {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
+    padding: 1rem 0;
+
+    ::ng-deep p-button button {
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.2s;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      &:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(0);
+      }
+    }
   }
 
   .result-card {
     margin-top: 2rem;
 
     pre {
-      background: #f5f5f5;
-      padding: 1rem;
-      border-radius: 4px;
+      margin: 0;
       overflow: auto;
+
+      code {
+        display: block;
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1.5rem;
+        border-radius: 12px;
+        font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+      }
     }
   }
 }

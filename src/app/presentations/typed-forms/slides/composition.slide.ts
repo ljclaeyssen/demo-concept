@@ -13,13 +13,13 @@ export class CompositionSlide {
 export class ContactForm extends FormGroup {
   constructor() {
     super({
-      [ContactFormFields.GENDER]: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
-      [ContactFormFields.FIRST_NAME]: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
-      [ContactFormFields.LAST_NAME]: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
-      [ContactFormFields.MAIDEN_NAME]: new FormControl<string>('', { nonNullable: true }),
-      [ContactFormFields.ADDRESS]: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
-      [ContactFormFields.PHONE]: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
-      [ContactFormFields.EMAIL]: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] })
+      [ContactFormFields.GENDER]: new FormControl<string>(''),
+      [ContactFormFields.FIRST_NAME]: new FormControl<string>(''),
+      [ContactFormFields.LAST_NAME]: new FormControl<string>(''),
+      [ContactFormFields.MAIDEN_NAME]: new FormControl<string>(''),
+      [ContactFormFields.ADDRESS]: new FormControl<string>(''),
+      [ContactFormFields.PHONE]: new FormControl<string>(''),
+      [ContactFormFields.EMAIL]: new FormControl<string>('')
     });
     this.setupAdaptiveLogic(); // Logique nom de jeune fille
   }
@@ -32,10 +32,10 @@ export class ContactForm extends FormGroup {
 export class SituationForm extends FormGroup {
   constructor() {
     super({
-      [SituationFormFields.CONTRACT_TYPE]: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
-      [SituationFormFields.INCOME]: new FormControl<number | null>(null, { validators: [Validators.required] }),
-      [SituationFormFields.HOUSING_STATUS]: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
-      [SituationFormFields.MARITAL_STATUS]: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] })
+      [SituationFormFields.CONTRACT_TYPE]: new FormControl<string>(''),
+      [SituationFormFields.INCOME]: new FormControl<number | null>(null),
+      [SituationFormFields.HOUSING_STATUS]: new FormControl<string>(''),
+      [SituationFormFields.MARITAL_STATUS]: new FormControl<string>('')
     });
   }
 }`);
