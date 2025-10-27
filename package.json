@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "npm run generate:code && ng serve",
     "build": "npm run generate:code && ng build",
+    "build:gh-pages": "npm run generate:code && ng build --base-href=/demo-concept/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "generate:code": "node scripts/generate-code-constants.mjs"
