@@ -1,30 +1,29 @@
 <h1>🎯 Formulaires Typés avec FormGroup</h1>
 
 <div class="slide-container">
+  <p class="subtitle">Pourquoi FormBuilder est un anti-pattern en TypeScript</p>
+
   <div class="two-columns">
     <div class="content-section">
-      <h2>❌ FormBuilder</h2>
+      <h2>❌ Le problème : FormBuilder</h2>
       <ul>
-        <li>❌ Erreurs découvertes à l'exécution</li>
-        <li>❌ Refactoring difficile</li>
-        <li>❌ Code répétitif</li>
-        <li>❌ Difficile à tester</li>
-        <li>❌ Pas de typage fort</li>
-      </ul>
-
-      <h2>✅ Classes FormGroup typées</h2>
-      <ul>
-        <li>✅ Validation compile-time</li>
-        <li>✅ Refactoring sûr</li>
-        <li>✅ Code réutilisable</li>
-        <li>✅ Facile à tester</li>
-        <li>✅ Typage fort</li>
+        <li>Perd tous les bénéfices de TypeScript</li>
+        <li>Erreurs découvertes en production</li>
+        <li>Refactoring = recherche manuelle de strings</li>
+        <li>Code dupliqué partout</li>
+        <li>Tests fragiles et verbeux</li>
       </ul>
     </div>
 
     <div class="content-section">
-      <h2>🚫 Bannissons le définitivement avec ESLint !</h2>
-      <pre><code [highlight]="eslintRule" language="json"></code></pre>
+      <h2>✅ La solution : Classes typées</h2>
+      <ul>
+        <li>TypeScript fait son travail</li>
+        <li>Erreurs détectées à la compilation</li>
+        <li>Refactoring automatique avec l'IDE</li>
+        <li>Réutilisabilité maximale</li>
+        <li>Tests simples et robustes</li>
+      </ul>
     </div>
   </div>
 </div>

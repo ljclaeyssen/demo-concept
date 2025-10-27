@@ -1,0 +1,24 @@
+<h1>♻️ Réutilisabilité : DRY vs Copy/Paste</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Même formulaire à 3 endroits ? Avec FormBuilder, préparez le Ctrl+C...</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ FormBuilder : Copier/Coller sans fin</h2>
+      <pre><code [highlight]="formBuilderProblem()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>✅ Classes typées : Define Once, Use Everywhere</h2>
+      <pre><code [highlight]="typedFormCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Zéro duplication de code</div>
+    <div class="benefit-item">✅ Une modification = tous les usages mis à jour</div>
+    <div class="benefit-item">✅ Logique métier centralisée et testable</div>
+    <div class="benefit-item">✅ Moins de bugs, moins de maintenance</div>
+  </div>
+</div>

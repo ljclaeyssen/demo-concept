@@ -1,0 +1,28 @@
+<h1>🐛 Bugs en Prod : Le Fléau de FormBuilder</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Ces bugs compilent sans problème... et plantent en production</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ FormBuilder : Bugs invisibles</h2>
+      <pre><code [highlight]="formBuilderBugs()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>✅ Classes typées : TypeScript au service</h2>
+      <pre><code [highlight]="solution()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    ⚠️ Avec FormBuilder, ces 3 bugs compilent ✅ mais plantent en prod 💥
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Typos détectées à la compilation</div>
+    <div class="benefit-item">✅ Types vérifiés partout</div>
+    <div class="benefit-item">✅ Code mort impossible</div>
+    <div class="benefit-item">✅ Zéro surprise en production</div>
+  </div>
+</div>
