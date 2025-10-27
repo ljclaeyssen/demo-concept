@@ -1,8 +1,11 @@
 import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
 import { RegistrationDemoComponent } from '../demo/registration-demo.component';
 import {
   registrationFormEnums,
+  registrationFormOptions,
   contactFormTs,
   situationFormTs,
   registrationFormTs,
@@ -15,15 +18,16 @@ import {
   selector: 'app-live-demo-slide',
   templateUrl: './live-demo.slide.html',
   styleUrl: './live-demo.slide.scss',
-  imports: [Highlight, RegistrationDemoComponent],
+  imports: [Highlight, DialogModule, ButtonModule, RegistrationDemoComponent],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LiveDemoSlide {
-  showCode = signal(false);
-  selectedCode = signal<'enums' | 'contact' | 'situation' | 'registration' | 'component' | 'template' | 'styles'>('enums');
+  showCodeDialog = signal(false);
+  selectedCode = signal<'enums' | 'options' | 'contact' | 'situation' | 'registration' | 'component' | 'template' | 'styles'>('enums');
 
   codeMap = {
     enums: { content: registrationFormEnums, label: 'Enums', language: 'typescript' },
+    options: { content: registrationFormOptions, label: 'Options', language: 'typescript' },
     contact: { content: contactFormTs, label: 'ContactForm', language: 'typescript' },
     situation: { content: situationFormTs, label: 'SituationForm', language: 'typescript' },
     registration: { content: registrationFormTs, label: 'RegistrationForm', language: 'typescript' },
@@ -36,11 +40,15 @@ export class LiveDemoSlide {
     return this.codeMap[this.selectedCode()];
   }
 
-  toggleCode() {
-    this.showCode.update(v => !v);
+  openCodeDialog() {
+    this.showCodeDialog.set(true);
   }
 
-  selectCode(code: 'enums' | 'contact' | 'situation' | 'registration' | 'component' | 'template' | 'styles') {
+  closeCodeDialog() {
+    this.showCodeDialog.set(false);
+  }
+
+  selectCode(code: 'enums' | 'options' | 'contact' | 'situation' | 'registration' | 'component' | 'template' | 'styles') {
     this.selectedCode.set(code);
   }
 }

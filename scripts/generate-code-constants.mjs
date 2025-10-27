@@ -91,6 +91,11 @@ generateCodeConstants('typed-forms', [
     description: 'Enums pour le formulaire d\'inscription'
   },
   {
+    name: 'registrationFormOptions',
+    path: 'src/app/presentations/typed-forms/demo/registration-form.options.ts',
+    description: 'Options pour les selects du formulaire'
+  },
+  {
     name: 'contactFormTs',
     path: 'src/app/presentations/typed-forms/demo/contact-form.ts',
     description: 'Classe ContactForm'

@@ -58,6 +58,52 @@ export enum MaritalStatus {
 `;
 
 /**
+ * Options pour les selects du formulaire
+ * Source: src/app/presentations/typed-forms/demo/registration-form.options.ts
+ */
+export const registrationFormOptions = `import {
+  Gender,
+  ContractType,
+  HousingStatus,
+  MaritalStatus
+} from './registration-form.enums';
+
+interface SelectOption {
+  label: string;
+  value: string;
+}
+
+export const genderOptions: SelectOption[] = [
+  { label: 'Homme', value: Gender.MALE },
+  { label: 'Femme', value: Gender.FEMALE },
+  { label: 'Autre', value: Gender.OTHER }
+];
+
+export const contractTypeOptions: SelectOption[] = [
+  { label: 'CDI', value: ContractType.CDI },
+  { label: 'CDD', value: ContractType.CDD },
+  { label: 'Étudiant', value: ContractType.STUDENT },
+  { label: 'Retraité', value: ContractType.RETIRED },
+  { label: 'Pension d\\'invalidité', value: ContractType.DISABILITY }
+];
+
+export const housingStatusOptions: SelectOption[] = [
+  { label: 'Propriétaire avec crédit', value: HousingStatus.OWNER_WITH_LOAN },
+  { label: 'Propriétaire sans crédit', value: HousingStatus.OWNER_WITHOUT_LOAN },
+  { label: 'Locataire', value: HousingStatus.TENANT },
+  { label: 'Logé à titre gratuit', value: HousingStatus.FREE_ACCOMMODATION }
+];
+
+export const maritalStatusOptions: SelectOption[] = [
+  { label: 'Célibataire', value: MaritalStatus.SINGLE },
+  { label: 'Marié(e)', value: MaritalStatus.MARRIED },
+  { label: 'Divorcé(e)', value: MaritalStatus.DIVORCED },
+  { label: 'Veuf(ve)', value: MaritalStatus.WIDOWED },
+  { label: 'Pacsé(e)', value: MaritalStatus.PACS }
+];
+`;
+
+/**
  * Classe ContactForm
  * Source: src/app/presentations/typed-forms/demo/contact-form.ts
  */
@@ -79,7 +125,7 @@ export class ContactForm extends FormGroup {
         nonNullable: true,
         validators: [Validators.required]
       }),
-      [ContactFormFields.MAIDEN_NAME]: new FormControl('', {
+      [ContactFormFields.MAIDEN_NAME]: new FormControl({ value: '', disabled: true }, {
         nonNullable: true
       }),
       [ContactFormFields.ADDRESS]: new FormControl('', {
@@ -222,23 +268,17 @@ export const registrationDemoComponentTs = `import { Component, ChangeDetectionS
 import { ReactiveFormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { CardModule } from 'primeng/card';
-import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ButtonModule } from 'primeng/button';
 import { RegistrationForm } from './registration-form';
 import {
-  Gender,
-  ContractType,
-  HousingStatus,
-  MaritalStatus
-} from './registration-form.enums';
-
-interface SelectOption {
-  label: string;
-  value: string;
-}
+  genderOptions,
+  contractTypeOptions,
+  housingStatusOptions,
+  maritalStatusOptions
+} from './registration-form.options';
 
 @Component({
   selector: 'app-registration-demo',
@@ -248,7 +288,6 @@ interface SelectOption {
     ReactiveFormsModule,
     JsonPipe,
     CardModule,
-    FloatLabelModule,
     InputTextModule,
     SelectModule,
     InputNumberModule,
@@ -260,34 +299,10 @@ export class RegistrationDemoComponent {
   form = new RegistrationForm();
   submittedData = signal<any>(null);
 
-  genderOptions: SelectOption[] = [
-    { label: 'Homme', value: Gender.MALE },
-    { label: 'Femme', value: Gender.FEMALE },
-    { label: 'Autre', value: Gender.OTHER }
-  ];
-
-  contractTypeOptions: SelectOption[] = [
-    { label: 'CDI', value: ContractType.CDI },
-    { label: 'CDD', value: ContractType.CDD },
-    { label: 'Étudiant', value: ContractType.STUDENT },
-    { label: 'Retraité', value: ContractType.RETIRED },
-    { label: 'Pension d\\'invalidité', value: ContractType.DISABILITY }
-  ];
-
-  housingStatusOptions: SelectOption[] = [
-    { label: 'Propriétaire avec crédit', value: HousingStatus.OWNER_WITH_LOAN },
-    { label: 'Propriétaire sans crédit', value: HousingStatus.OWNER_WITHOUT_LOAN },
-    { label: 'Locataire', value: HousingStatus.TENANT },
-    { label: 'Logé à titre gratuit', value: HousingStatus.FREE_ACCOMMODATION }
-  ];
-
-  maritalStatusOptions: SelectOption[] = [
-    { label: 'Célibataire', value: MaritalStatus.SINGLE },
-    { label: 'Marié(e)', value: MaritalStatus.MARRIED },
-    { label: 'Divorcé(e)', value: MaritalStatus.DIVORCED },
-    { label: 'Veuf(ve)', value: MaritalStatus.WIDOWED },
-    { label: 'Pacsé(e)', value: MaritalStatus.PACS }
-  ];
+  genderOptions = genderOptions;
+  contractTypeOptions = contractTypeOptions;
+  housingStatusOptions = housingStatusOptions;
+  maritalStatusOptions = maritalStatusOptions;
 
   onSubmit() {
     if (this.form.valid) {
@@ -312,9 +327,18 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-sections">
       <!-- Contact Section -->
-      <p-card header="Informations de contact" [formGroup]="form.contact">
+      <p-card [formGroup]="form.contact">
+        <ng-template #header>
+          <div class="card-header">
+            <span>Informations de contact</span>
+            <span class="validity-icon" [class.valid]="form.contact.valid" [class.invalid]="form.contact.invalid && form.contact.touched">
+              {{ form.contact.valid ? '✅' : '❌' }}
+            </span>
+          </div>
+        </ng-template>
         <div class="form-grid">
-          <p-floatlabel>
+          <div>
+            <label for="gender">Genre *</label>
             <p-select
               [formControl]="form.contact.gender"
               [options]="genderOptions"
@@ -322,70 +346,78 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
               optionValue="value"
               inputId="gender"
               styleClass="w-full" />
-            <label for="gender">Genre *</label>
-          </p-floatlabel>
+          </div>
 
-          <p-floatlabel>
+          <div>
+            <label for="firstName">Prénom *</label>
             <input
               pInputText
               [formControl]="form.contact.firstName"
               id="firstName"
               class="w-full" />
-            <label for="firstName">Prénom *</label>
-          </p-floatlabel>
+          </div>
 
-          <p-floatlabel>
+          <div>
+            <label for="lastName">Nom *</label>
             <input
               pInputText
               [formControl]="form.contact.lastName"
               id="lastName"
               class="w-full" />
-            <label for="lastName">Nom *</label>
-          </p-floatlabel>
+          </div>
 
-          <p-floatlabel>
+          <div>
+            <label for="maidenName">Nom de jeune fille</label>
             <input
               pInputText
               [formControl]="form.contact.maidenName"
               id="maidenName"
               class="w-full" />
-            <label for="maidenName">Nom de jeune fille</label>
-          </p-floatlabel>
+          </div>
 
-          <p-floatlabel class="full-width">
+          <div class="full-width">
+            <label for="address">Adresse *</label>
             <input
               pInputText
               [formControl]="form.contact.address"
               id="address"
               class="w-full" />
-            <label for="address">Adresse *</label>
-          </p-floatlabel>
+          </div>
 
-          <p-floatlabel>
+          <div>
+            <label for="phone">Téléphone *</label>
             <input
               pInputText
               [formControl]="form.contact.phone"
               id="phone"
               class="w-full" />
-            <label for="phone">Téléphone *</label>
-          </p-floatlabel>
+          </div>
 
-          <p-floatlabel>
+          <div>
+            <label for="email">Email *</label>
             <input
               pInputText
               type="email"
               [formControl]="form.contact.email"
               id="email"
               class="w-full" />
-            <label for="email">Email *</label>
-          </p-floatlabel>
+          </div>
         </div>
       </p-card>
 
       <!-- Situation Section -->
-      <p-card header="Situation" [formGroup]="form.situation">
+      <p-card [formGroup]="form.situation">
+        <ng-template #header>
+          <div class="card-header">
+            <span>Situation</span>
+            <span class="validity-icon" [class.valid]="form.situation.valid" [class.invalid]="form.situation.invalid && form.situation.touched">
+              {{ form.situation.valid ? '✅' : '❌' }}
+            </span>
+          </div>
+        </ng-template>
         <div class="form-grid">
-          <p-floatlabel>
+          <div>
+            <label for="contractType">Type de contrat *</label>
             <p-select
               [formControl]="form.situation.contractType"
               [options]="contractTypeOptions"
@@ -393,10 +425,10 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
               optionValue="value"
               inputId="contractType"
               styleClass="w-full" />
-            <label for="contractType">Type de contrat *</label>
-          </p-floatlabel>
+          </div>
 
-          <p-floatlabel>
+          <div>
+            <label for="income">Revenu mensuel *</label>
             <p-inputnumber
               [formControl]="form.situation.income"
               inputId="income"
@@ -404,10 +436,10 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
               currency="EUR"
               locale="fr-FR"
               styleClass="w-full" />
-            <label for="income">Revenu mensuel *</label>
-          </p-floatlabel>
+          </div>
 
-          <p-floatlabel>
+          <div>
+            <label for="housingStatus">Statut immobilier *</label>
             <p-select
               [formControl]="form.situation.housingStatus"
               [options]="housingStatusOptions"
@@ -415,10 +447,10 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
               optionValue="value"
               inputId="housingStatus"
               styleClass="w-full" />
-            <label for="housingStatus">Statut immobilier *</label>
-          </p-floatlabel>
+          </div>
 
-          <p-floatlabel>
+          <div>
+            <label for="maritalStatus">Situation matrimoniale *</label>
             <p-select
               [formControl]="form.situation.maritalStatus"
               [options]="maritalStatusOptions"
@@ -426,8 +458,7 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
               optionValue="value"
               inputId="maritalStatus"
               styleClass="w-full" />
-            <label for="maritalStatus">Situation matrimoniale *</label>
-          </p-floatlabel>
+          </div>
         </div>
       </p-card>
     </div>
@@ -455,6 +486,27 @@ export const registrationDemoComponentScss = `.demo-container {
   max-width: 1200px;
   margin: 0 auto;
 
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .validity-icon {
+      font-size: 1.2rem;
+      opacity: 0.3;
+      transition: all 0.3s ease;
+
+      &.valid {
+        opacity: 1;
+      }
+
+      &.invalid {
+        opacity: 1;
+      }
+    }
+  }
+
   .form-sections {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -467,8 +519,15 @@ export const registrationDemoComponentScss = `.demo-container {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
 
-    p-floatlabel {
-      display: block;
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      label {
+        font-weight: 600;
+        color: #4a5568;
+      }
     }
 
     .full-width {

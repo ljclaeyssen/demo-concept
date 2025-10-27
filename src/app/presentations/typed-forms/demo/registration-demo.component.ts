@@ -8,16 +8,11 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { ButtonModule } from 'primeng/button';
 import { RegistrationForm } from './registration-form';
 import {
-  Gender,
-  ContractType,
-  HousingStatus,
-  MaritalStatus
-} from './registration-form.enums';
-
-interface SelectOption {
-  label: string;
-  value: string;
-}
+  genderOptions,
+  contractTypeOptions,
+  housingStatusOptions,
+  maritalStatusOptions
+} from './registration-form.options';
 
 @Component({
   selector: 'app-registration-demo',
@@ -38,34 +33,10 @@ export class RegistrationDemoComponent {
   form = new RegistrationForm();
   submittedData = signal<any>(null);
 
-  genderOptions: SelectOption[] = [
-    { label: 'Homme', value: Gender.MALE },
-    { label: 'Femme', value: Gender.FEMALE },
-    { label: 'Autre', value: Gender.OTHER }
-  ];
-
-  contractTypeOptions: SelectOption[] = [
-    { label: 'CDI', value: ContractType.CDI },
-    { label: 'CDD', value: ContractType.CDD },
-    { label: 'Étudiant', value: ContractType.STUDENT },
-    { label: 'Retraité', value: ContractType.RETIRED },
-    { label: 'Pension d\'invalidité', value: ContractType.DISABILITY }
-  ];
-
-  housingStatusOptions: SelectOption[] = [
-    { label: 'Propriétaire avec crédit', value: HousingStatus.OWNER_WITH_LOAN },
-    { label: 'Propriétaire sans crédit', value: HousingStatus.OWNER_WITHOUT_LOAN },
-    { label: 'Locataire', value: HousingStatus.TENANT },
-    { label: 'Logé à titre gratuit', value: HousingStatus.FREE_ACCOMMODATION }
-  ];
-
-  maritalStatusOptions: SelectOption[] = [
-    { label: 'Célibataire', value: MaritalStatus.SINGLE },
-    { label: 'Marié(e)', value: MaritalStatus.MARRIED },
-    { label: 'Divorcé(e)', value: MaritalStatus.DIVORCED },
-    { label: 'Veuf(ve)', value: MaritalStatus.WIDOWED },
-    { label: 'Pacsé(e)', value: MaritalStatus.PACS }
-  ];
+  genderOptions = genderOptions;
+  contractTypeOptions = contractTypeOptions;
+  housingStatusOptions = housingStatusOptions;
+  maritalStatusOptions = maritalStatusOptions;
 
   onSubmit() {
     if (this.form.valid) {

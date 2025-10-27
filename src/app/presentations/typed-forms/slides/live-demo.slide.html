@@ -1,23 +1,40 @@
 <div class="slide-container">
   <div class="header">
     <h1>🚀 Démo Live</h1>
-    <button class="toggle-code-btn" (click)="toggleCode()">
-      {{ showCode() ? '🎨 Voir le formulaire' : '💻 Voir le code' }}
-    </button>
+    <p-button
+      label="💻 Voir le code"
+      (onClick)="openCodeDialog()"
+      styleClass="code-button" />
   </div>
 
-  @if (!showCode()) {
-    <div class="demo-section">
-      <app-registration-demo />
-    </div>
-  } @else {
-    <div class="code-section">
+  <div class="demo-section">
+    <app-registration-demo />
+  </div>
+
+  <p-dialog
+    [(visible)]="showCodeDialog"
+    [modal]="true"
+    [style]="{ width: '90vw', height: '90vh' }"
+    [draggable]="false"
+    [resizable]="false"
+    styleClass="code-dialog">
+    <ng-template #header>
+      <span>Code source</span>
+    </ng-template>
+
+    <div class="code-dialog-content">
       <div class="code-tabs">
         <button
           class="code-tab"
           [class.active]="selectedCode() === 'enums'"
           (click)="selectCode('enums')">
           Enums
+        </button>
+        <button
+          class="code-tab"
+          [class.active]="selectedCode() === 'options'"
+          (click)="selectCode('options')">
+          Options
         </button>
         <button
           class="code-tab"
@@ -61,5 +78,5 @@
         <pre><code [highlight]="currentCode.content" [language]="currentCode.language"></code></pre>
       </div>
     </div>
-  }
+  </p-dialog>
 </div>

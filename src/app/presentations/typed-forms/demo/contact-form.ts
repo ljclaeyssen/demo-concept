@@ -16,7 +16,7 @@ export class ContactForm extends FormGroup {
         nonNullable: true,
         validators: [Validators.required]
       }),
-      [ContactFormFields.MAIDEN_NAME]: new FormControl('', {
+      [ContactFormFields.MAIDEN_NAME]: new FormControl({ value: '', disabled: true }, {
         nonNullable: true
       }),
       [ContactFormFields.ADDRESS]: new FormControl('', {
