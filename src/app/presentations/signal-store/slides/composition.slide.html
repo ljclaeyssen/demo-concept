@@ -1,0 +1,22 @@
+<h1>🧩 Composition : Copier/Coller vs Features</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Réutiliser du comportement : impossible vs features réutilisables</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ NgRx Store : tout recréer à chaque fois</h2>
+      <pre><code [highlight]="ngrxStoreCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>✅ SignalStore : withMethods, withHooks, withComputed</h2>
+      <pre><code [highlight]="signalStoreCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ Aucun moyen de réutiliser du comportement commun</div>
+    <div class="benefit-item">✅ Features composables = DRY au maximum</div>
+  </div>
+</div>

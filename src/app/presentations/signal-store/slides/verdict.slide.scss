@@ -1,0 +1,28 @@
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.comparison-item {
+  h2 {
+    font-size: 1.5rem;
+    margin: 0 0 1rem 0;
+    color: #1e293b;
+  }
+
+  p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .vs-left {
+    color: #64748b;
+  }
+
+  .vs-right {
+    color: #0f172a;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,22 @@
+<h1>🎯 TypeScript Inference : Manuel vs Automatique</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Typage : définir partout vs inférence totale</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ NgRx Store : typer partout manuellement</h2>
+      <pre><code [highlight]="ngrxStoreCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>✅ SignalStore : TypeScript infère tout</h2>
+      <pre><code [highlight]="signalStoreCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ Typage manuel partout = risque d'incohérence</div>
+    <div class="benefit-item">✅ Inférence automatique = toujours cohérent</div>
+  </div>
+</div>

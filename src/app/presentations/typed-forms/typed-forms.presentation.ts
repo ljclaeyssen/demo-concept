@@ -13,6 +13,7 @@ import { ReusabilitySlide } from './slides/reusability.slide';
 import { ErrorDiscoverySlide } from './slides/error-discovery.slide';
 import { MaintenanceSlide } from './slides/maintenance.slide';
 import { VerdictSlide } from './slides/verdict.slide';
+import { EslintSlide } from './slides/eslint.slide';
 import { LiveDemoSlide } from './slides/live-demo.slide';
 
 register();
@@ -21,7 +22,7 @@ register();
   selector: 'app-typed-forms-presentation',
   templateUrl: './typed-forms.presentation.html',
   styleUrl: './typed-forms.presentation.scss',
-  imports: [IntroSlide, FormBuilderProblemSlide, AdaptiveCodeProblemSlide, TestingProblemSlide, TypedSolutionSlide, AdaptiveSolutionSlide, TestingSolutionSlide, CompositionSlide, RefactoringSlide, ReusabilitySlide, ErrorDiscoverySlide, MaintenanceSlide, VerdictSlide, LiveDemoSlide],
+  imports: [IntroSlide, FormBuilderProblemSlide, AdaptiveCodeProblemSlide, TestingProblemSlide, TypedSolutionSlide, AdaptiveSolutionSlide, TestingSolutionSlide, CompositionSlide, RefactoringSlide, ReusabilitySlide, ErrorDiscoverySlide, MaintenanceSlide, VerdictSlide, EslintSlide, LiveDemoSlide],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

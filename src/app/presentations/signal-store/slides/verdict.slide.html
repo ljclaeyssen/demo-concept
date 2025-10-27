@@ -1,0 +1,61 @@
+<h1>🏆 Le Verdict Final</h1>
+
+<div class="slide-container">
+  <p class="subtitle">NgRx Store vs SignalStore : Le match n'a jamais eu lieu</p>
+
+  <div class="comparison-grid">
+    <div class="comparison-item">
+      <h2>💀 Boilerplate</h2>
+      <p class="vs-left">❌ 4 fichiers, ~100 lignes par feature</p>
+      <p class="vs-right">✅ 1 fichier, ~25 lignes</p>
+    </div>
+
+    <div class="comparison-item">
+      <h2>🔄 Updates</h2>
+      <p class="vs-left">❌ Action → Reducer dans 3 fichiers</p>
+      <p class="vs-right">✅ Appeler une méthode</p>
+    </div>
+
+    <div class="comparison-item">
+      <h2>🧮 Computed</h2>
+      <p class="vs-left">❌ createSelector() dans fichier séparé</p>
+      <p class="vs-right">✅ computed() dans le store</p>
+    </div>
+
+    <div class="comparison-item">
+      <h2>⚡ Side Effects</h2>
+      <p class="vs-left">❌ Action → Effect → Action → Reducer 🍝</p>
+      <p class="vs-right">✅ rxMethod() et c'est fini</p>
+    </div>
+
+    <div class="comparison-item">
+      <h2>🧪 Testing</h2>
+      <p class="vs-left">❌ Impossible de tester le store seul</p>
+      <p class="vs-right">✅ Test unitaire pur, zéro mock</p>
+    </div>
+
+    <div class="comparison-item">
+      <h2>⚙️ Setup</h2>
+      <p class="vs-left">❌ Configuration centrale qui grossit</p>
+      <p class="vs-right">✅ providedIn: 'root'</p>
+    </div>
+
+    <div class="comparison-item">
+      <h2>🧩 Composition</h2>
+      <p class="vs-left">❌ Copier/coller partout</p>
+      <p class="vs-right">✅ Features réutilisables</p>
+    </div>
+
+    <div class="comparison-item">
+      <h2>⚡ Performance</h2>
+      <p class="vs-left">❌ Zone.js re-check tout</p>
+      <p class="vs-right">✅ Updates ultra-ciblés</p>
+    </div>
+
+    <div class="comparison-item">
+      <h2>🎯 TypeScript</h2>
+      <p class="vs-left">❌ Typage manuel partout</p>
+      <p class="vs-right">✅ Inférence automatique</p>
+    </div>
+  </div>
+</div>

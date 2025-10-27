@@ -1,0 +1,22 @@
+<h1>⚡ Performance : Zone.js vs Signals</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Change detection : re-check tout vs updates ciblés</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ NgRx Store : Zone.js re-vérifie tout</h2>
+      <pre><code [highlight]="ngrxStoreCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>✅ SignalStore : updates ultra-ciblés</h2>
+      <pre><code [highlight]="signalStoreCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ Observable + async pipe = re-check tout le component</div>
+    <div class="benefit-item">✅ Signals = Angular sait exactement quoi mettre à jour</div>
+  </div>
+</div>

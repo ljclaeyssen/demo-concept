@@ -1,0 +1,22 @@
+<h1>⚙️ Provider Setup : Configuration vs Convention</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Déclarer les stores : configuration centralisée vs auto-suffisant</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ NgRx Store : app.config.ts requis</h2>
+      <pre><code [highlight]="ngrxStoreCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>✅ SignalStore : providedIn: 'root'</h2>
+      <pre><code [highlight]="signalStoreCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ Fichier config central qui grossit à chaque nouveau store</div>
+    <div class="benefit-item">✅ Chaque store est auto-suffisant, zéro config globale</div>
+  </div>
+</div>
