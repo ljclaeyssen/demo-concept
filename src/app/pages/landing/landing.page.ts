@@ -33,6 +33,13 @@ export class LandingPage {
       route: '/typed-forms',
       icon: '📝',
       color: '#764ba2'
+    },
+    {
+      title: 'NgRx SignalStore',
+      description: 'Comprenez pourquoi NgRx SignalStore remplace complètement le vieux NgRx Store : zéro boilerplate, signals natifs, et performance maximale.',
+      route: '/signal-store',
+      icon: '🚀',
+      color: '#f093fb'
     }
   ]);
 }

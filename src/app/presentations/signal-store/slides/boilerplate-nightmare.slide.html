@@ -1,0 +1,22 @@
+<h1>💀 Le Cauchemar du Boilerplate</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Même fonctionnalité simple : 4 fichiers vs 1 fichier</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ NgRx Store : ~100 lignes, 4 fichiers</h2>
+      <pre><code [highlight]="ngrxStoreCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>✅ SignalStore : ~25 lignes, 1 fichier</h2>
+      <pre><code [highlight]="signalStoreCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ Actions + Reducer + Selectors + Effects = bourbier infernal</div>
+    <div class="benefit-item">✅ Tout au même endroit = lisibilité maximale</div>
+  </div>
+</div>

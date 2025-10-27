@@ -1,0 +1,22 @@
+<h1>🔄 Mise à Jour du State : L'Enfer vs Le Paradis</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Modifier le state : 3 étapes par action vs 1 méthode</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ NgRx Store : dispatch → action → reducer</h2>
+      <pre><code [highlight]="ngrxStoreCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>✅ SignalStore : juste appeler une méthode</h2>
+      <pre><code [highlight]="signalStoreCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ 3 fichiers à modifier pour chaque action = navigation infernale</div>
+    <div class="benefit-item">✅ Tout au même endroit = logique facile à suivre</div>
+  </div>
+</div>

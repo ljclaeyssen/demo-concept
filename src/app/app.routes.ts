@@ -12,5 +12,9 @@ export const routes: Routes = [
   {
     path: 'typed-forms',
     loadComponent: () => import('./presentations/typed-forms/typed-forms.presentation').then(m => m.TypedFormsPresentation)
+  },
+  {
+    path: 'signal-store',
+    loadComponent: () => import('./presentations/signal-store/signal-store.presentation').then(m => m.SignalStorePresentation)
   }
 ];
