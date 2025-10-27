@@ -4,6 +4,7 @@ import { IntroSlide } from './slides/intro.slide';
 import { FormBuilderProblemSlide } from './slides/formbuilder-problem.slide';
 import { AdaptiveCodeProblemSlide } from './slides/adaptive-code-problem.slide';
 import { TestingProblemSlide } from './slides/testing-problem.slide';
+import { TypedSolutionSlide } from './slides/typed-solution.slide';
 
 register();
 
@@ -11,7 +12,7 @@ register();
   selector: 'app-typed-forms-presentation',
   templateUrl: './typed-forms.presentation.html',
   styleUrl: './typed-forms.presentation.scss',
-  imports: [IntroSlide, FormBuilderProblemSlide, AdaptiveCodeProblemSlide, TestingProblemSlide],
+  imports: [IntroSlide, FormBuilderProblemSlide, AdaptiveCodeProblemSlide, TestingProblemSlide, TypedSolutionSlide],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
