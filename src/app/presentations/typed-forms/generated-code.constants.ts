@@ -272,6 +272,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
 import { RegistrationForm } from './registration-form';
 import {
   genderOptions,
@@ -291,12 +292,14 @@ import {
     InputTextModule,
     SelectModule,
     InputNumberModule,
-    ButtonModule
+    ButtonModule,
+    DialogModule
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegistrationDemoComponent {
   form = new RegistrationForm();
+  showDialog = signal(false);
   submittedData = signal<any>(null);
 
   genderOptions = genderOptions;
@@ -307,6 +310,7 @@ export class RegistrationDemoComponent {
   onSubmit() {
     if (this.form.valid) {
       this.submittedData.set(this.form.getRawValue());
+      this.showDialog.set(true);
     } else {
       this.form.markAllAsTouched();
     }
@@ -469,11 +473,15 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
     </div>
   </form>
 
-  @if (submittedData()) {
-    <p-card header="Données soumises" styleClass="result-card">
-      <pre>{{ submittedData() | json }}</pre>
-    </p-card>
-  }
+  <p-dialog
+    [(visible)]="showDialog"
+    [modal]="true"
+    [style]="{ width: '50vw' }"
+    [draggable]="false"
+    [resizable]="false"
+    header="✅ Données soumises avec succès">
+    <pre>{{ submittedData() | json }}</pre>
+  </p-dialog>
 </div>
 `;
 

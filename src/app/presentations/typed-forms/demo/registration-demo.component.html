@@ -144,9 +144,13 @@
     </div>
   </form>
 
-  @if (submittedData()) {
-    <p-card header="Données soumises" styleClass="result-card">
-      <pre>{{ submittedData() | json }}</pre>
-    </p-card>
-  }
+  <p-dialog
+    [(visible)]="showDialog"
+    [modal]="true"
+    [style]="{ width: '50vw' }"
+    [draggable]="false"
+    [resizable]="false"
+    header="✅ Données soumises avec succès">
+    <pre>{{ submittedData() | json }}</pre>
+  </p-dialog>
 </div>

@@ -6,6 +6,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
 import { RegistrationForm } from './registration-form';
 import {
   genderOptions,
@@ -25,12 +26,14 @@ import {
     InputTextModule,
     SelectModule,
     InputNumberModule,
-    ButtonModule
+    ButtonModule,
+    DialogModule
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegistrationDemoComponent {
   form = new RegistrationForm();
+  showDialog = signal(false);
   submittedData = signal<any>(null);
 
   genderOptions = genderOptions;
@@ -41,6 +44,7 @@ export class RegistrationDemoComponent {
   onSubmit() {
     if (this.form.valid) {
       this.submittedData.set(this.form.getRawValue());
+      this.showDialog.set(true);
     } else {
       this.form.markAllAsTouched();
     }
