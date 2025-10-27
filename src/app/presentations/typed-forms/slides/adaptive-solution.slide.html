@@ -1,0 +1,31 @@
+<div class="slide-container">
+  <h1>🎯 Code Adaptatif : Élégance Retrouvée</h1>
+
+  <p class="subtitle">
+    Le nom de jeune fille ne peut être renseigné que si le genre n'est pas "homme"
+  </p>
+
+  <div class="three-columns">
+    <div class="code-section">
+      <h2>Enums</h2>
+      <pre><code [highlight]="enumCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Logique dans la classe</h2>
+      <pre><code [highlight]="classCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Component simplifié</h2>
+      <pre><code [highlight]="componentCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Code métier séparé du component</div>
+    <div class="benefit-item">✅ Pas de gestion de subscriptions (garbage collecté avec le form)</div>
+    <div class="benefit-item">✅ Typage fort avec enum</div>
+    <div class="benefit-item">✅ Testable unitairement sans component</div>
+  </div>
+</div>
