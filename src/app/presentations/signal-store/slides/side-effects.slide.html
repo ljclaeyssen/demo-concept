@@ -1,0 +1,127 @@
+<h1>⚡ Side Effects : Le Bourbier Ultime</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Appeler une API : Action → Effect → Action → Reducer vs rxMethod()</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ NgRx Store : Action → Effect → Action → Reducer</h2>
+      <pre><code [highlight]="ngrxStoreCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>✅ SignalStore : rxMethod() et c'est fini</h2>
+      <pre><code [highlight]="signalStoreCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">
+      <p-button
+        icon="pi pi-times"
+        [rounded]="true"
+        severity="danger"
+        size="small"
+        (onClick)="showNgrxFlow.set(true)" />
+      Action déclenchée → Effect écoute → Action émise → Reducer écoute = 🤯
+    </div>
+    <div class="benefit-item">
+      <p-button
+        icon="pi pi-check"
+        [rounded]="true"
+        severity="success"
+        size="small"
+        (onClick)="showSignalStoreFlow.set(true)" />
+      Une méthode, toute la logique au même endroit
+    </div>
+  </div>
+</div>
+
+<p-dialog
+  header="🍝 NgRx Store : Le Flow de la Mort"
+  [(visible)]="showNgrxFlow"
+  [modal]="true"
+  [style]="{ width: '50vw' }">
+  <div class="flow-diagram">
+    <div class="flow-step">
+      <div class="flow-box component">Component</div>
+      <div class="flow-label">dispatch(loadUsers())</div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="flow-step">
+      <div class="flow-box effect">Effect écoute</div>
+      <div class="flow-label">ofType(loadUsers)</div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="flow-step">
+      <div class="flow-box service">Service API</div>
+      <div class="flow-label">usersService.getUsers()</div>
+    </div>
+
+    <div class="flow-split">
+      <div class="flow-branch">
+        <div class="flow-arrow success">↓ Success</div>
+        <div class="flow-step">
+          <div class="flow-box action-success">Action Success</div>
+          <div class="flow-label">loadUsersSuccess(&#123; users &#125;)</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-box reducer">Reducer</div>
+          <div class="flow-label">on(loadUsersSuccess, ...)</div>
+        </div>
+      </div>
+
+      <div class="flow-branch">
+        <div class="flow-arrow error">↓ Error</div>
+        <div class="flow-step">
+          <div class="flow-box action-error">Action Failure</div>
+          <div class="flow-label">loadUsersFailure(&#123; error &#125;)</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-box reducer">Reducer</div>
+          <div class="flow-label">on(loadUsersFailure, ...)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog
+  header="SignalStore : Le Flow Simple"
+  [(visible)]="showSignalStoreFlow"
+  [modal]="true"
+  [style]="{ width: '40vw' }">
+  <div class="flow-diagram">
+    <div class="flow-step">
+      <div class="flow-box component">Component</div>
+      <div class="flow-label">usersStore.loadUsers()</div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="flow-step">
+      <div class="flow-box store">Store (rxMethod)</div>
+      <div class="flow-label">patchState(&#123; loading: true &#125;)</div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="flow-step">
+      <div class="flow-box service">Service API</div>
+      <div class="flow-label">usersService.getUsers()</div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="flow-step">
+      <div class="flow-box store">tapResponse + patchState</div>
+      <div class="flow-label">Mise à jour directe du state</div>
+    </div>
+  </div>
+</p-dialog>

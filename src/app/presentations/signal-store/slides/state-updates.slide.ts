@@ -12,7 +12,7 @@ export class StateUpdatesSlide {
   ngrxStoreCode = signal(`// ========================================
 // 1. Dans le component (users.component.ts)
 // ========================================
-constructor(private store: Store) {}
+private store = inject(Store);
 
 addUser(user: User) {
   this.store.dispatch(addUser({ user }));
@@ -68,7 +68,7 @@ export const usersReducer = createReducer(
   signalStoreCode = signal(`// ========================================
 // Dans le component (users.component.ts)
 // ========================================
-constructor(private usersStore = inject(UsersStore)) {}
+private usersStore = inject(UsersStore);
 
 addUser(user: User) {
   this.usersStore.addUser(user);

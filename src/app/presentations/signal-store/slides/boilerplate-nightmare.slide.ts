@@ -82,6 +82,9 @@ export const selectError = createSelector(
 // ========================================
 @Injectable()
 export class UsersEffects {
+  private actions$ = inject(Actions);
+  private usersService = inject(UsersService);
+
   loadUsers$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadUsers),
@@ -93,11 +96,6 @@ export class UsersEffects {
       )
     )
   );
-
-  constructor(
-    private actions$: Actions,
-    private usersService: UsersService
-  ) {}
 }
 
 // ========================================

@@ -1,0 +1,22 @@
+<h1>🧮 Valeurs Dérivées : Selectors vs Computed</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Calculer des valeurs depuis le state : fichier séparé vs fonction simple</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ NgRx Store : createSelector() dans un fichier dédié</h2>
+      <pre><code [highlight]="ngrxStoreCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>✅ SignalStore : computed() intégré au store</h2>
+      <pre><code [highlight]="signalStoreCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ Selectors dans fichier séparé + imports + observables</div>
+    <div class="benefit-item">✅ Computed dans le store + zero import + signals synchrones</div>
+  </div>
+</div>

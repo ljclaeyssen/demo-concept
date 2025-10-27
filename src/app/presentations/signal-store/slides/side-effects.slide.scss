@@ -1,0 +1,91 @@
+
+.flow-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flow-box {
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  min-width: 200px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &.component {
+    background: #667eea;
+    color: white;
+  }
+
+  &.effect {
+    background: #f093fb;
+    color: white;
+  }
+
+  &.service {
+    background: #4facfe;
+    color: white;
+  }
+
+  &.action-success {
+    background: #43e97b;
+    color: white;
+  }
+
+  &.action-error {
+    background: #fa709a;
+    color: white;
+  }
+
+  &.reducer {
+    background: #30cfd0;
+    color: white;
+  }
+
+  &.store {
+    background: #667eea;
+    color: white;
+  }
+}
+
+.flow-label {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-family: monospace;
+}
+
+.flow-arrow {
+  font-size: 2rem;
+  color: #64748b;
+
+  &.success {
+    color: #43e97b;
+  }
+
+  &.error {
+    color: #fa709a;
+  }
+}
+
+.flow-split {
+  display: flex;
+  gap: 4rem;
+  margin-top: 1rem;
+}
+
+.flow-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
