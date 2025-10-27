@@ -26,7 +26,13 @@ export class LandingPage {
       route: '/hello-world',
       icon: '👋',
       color: '#667eea'
+    },
+    {
+      title: 'Formulaires Typés',
+      description: 'Découvrez comment créer des formulaires fortement typés en étendant FormGroup, pour un code plus maintenable et des erreurs détectées à la compilation.',
+      route: '/typed-forms',
+      icon: '📝',
+      color: '#764ba2'
     }
-    // Ajoutez plus de présentations ici au fur et à mesure que vous les créez
   ]);
 }

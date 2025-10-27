@@ -1,0 +1,71 @@
+.slide-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 3rem;
+  overflow: hidden;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #667eea;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4a5568;
+  }
+
+  .two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .content-section {
+    display: flex;
+    flex-direction: column;
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 0.75rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+    }
+
+    pre {
+      margin: 0;
+      flex: 1;
+      min-height: 0;
+
+      code {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  .benefits {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+}
