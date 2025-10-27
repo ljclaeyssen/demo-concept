@@ -1,0 +1,152 @@
+<div class="demo-container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-sections">
+      <!-- Contact Section -->
+      <p-card [formGroup]="form.contact">
+        <ng-template #header>
+          <div class="card-header">
+            <span>Informations de contact</span>
+            <span class="validity-icon" [class.valid]="form.contact.valid" [class.invalid]="form.contact.invalid && form.contact.touched">
+              {{ form.contact.valid ? '✅' : '❌' }}
+            </span>
+          </div>
+        </ng-template>
+        <div class="form-grid">
+          <div>
+            <label for="gender">Genre *</label>
+            <p-select
+              [formControl]="form.contact.gender"
+              [options]="genderOptions"
+              optionLabel="label"
+              optionValue="value"
+              inputId="gender"
+              styleClass="w-full" />
+          </div>
+
+          <div>
+            <label for="firstName">Prénom *</label>
+            <input
+              pInputText
+              [formControl]="form.contact.firstName"
+              id="firstName"
+              class="w-full" />
+          </div>
+
+          <div>
+            <label for="lastName">Nom *</label>
+            <input
+              pInputText
+              [formControl]="form.contact.lastName"
+              id="lastName"
+              class="w-full" />
+          </div>
+
+          <div>
+            <label for="maidenName">Nom de jeune fille</label>
+            <input
+              pInputText
+              [formControl]="form.contact.maidenName"
+              id="maidenName"
+              class="w-full" />
+          </div>
+
+          <div class="full-width">
+            <label for="address">Adresse *</label>
+            <input
+              pInputText
+              [formControl]="form.contact.address"
+              id="address"
+              class="w-full" />
+          </div>
+
+          <div>
+            <label for="phone">Téléphone *</label>
+            <input
+              pInputText
+              [formControl]="form.contact.phone"
+              id="phone"
+              class="w-full" />
+          </div>
+
+          <div>
+            <label for="email">Email *</label>
+            <input
+              pInputText
+              type="email"
+              [formControl]="form.contact.email"
+              id="email"
+              class="w-full" />
+          </div>
+        </div>
+      </p-card>
+
+      <!-- Situation Section -->
+      <p-card [formGroup]="form.situation">
+        <ng-template #header>
+          <div class="card-header">
+            <span>Situation</span>
+            <span class="validity-icon" [class.valid]="form.situation.valid" [class.invalid]="form.situation.invalid && form.situation.touched">
+              {{ form.situation.valid ? '✅' : '❌' }}
+            </span>
+          </div>
+        </ng-template>
+        <div class="form-grid">
+          <div>
+            <label for="contractType">Type de contrat *</label>
+            <p-select
+              [formControl]="form.situation.contractType"
+              [options]="contractTypeOptions"
+              optionLabel="label"
+              optionValue="value"
+              inputId="contractType"
+              styleClass="w-full" />
+          </div>
+
+          <div>
+            <label for="income">Revenu mensuel *</label>
+            <p-inputnumber
+              [formControl]="form.situation.income"
+              inputId="income"
+              mode="currency"
+              currency="EUR"
+              locale="fr-FR"
+              styleClass="w-full" />
+          </div>
+
+          <div>
+            <label for="housingStatus">Statut immobilier *</label>
+            <p-select
+              [formControl]="form.situation.housingStatus"
+              [options]="housingStatusOptions"
+              optionLabel="label"
+              optionValue="value"
+              inputId="housingStatus"
+              styleClass="w-full" />
+          </div>
+
+          <div>
+            <label for="maritalStatus">Situation matrimoniale *</label>
+            <p-select
+              [formControl]="form.situation.maritalStatus"
+              [options]="maritalStatusOptions"
+              optionLabel="label"
+              optionValue="value"
+              inputId="maritalStatus"
+              styleClass="w-full" />
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+    <div class="actions">
+      <p-button label="Réinitialiser" severity="secondary" type="button" (onClick)="reset()" />
+      <p-button label="Valider" type="submit" [disabled]="form.invalid" />
+    </div>
+  </form>
+
+  @if (submittedData()) {
+    <p-card header="Données soumises" styleClass="result-card">
+      <pre>{{ submittedData() | json }}</pre>
+    </p-card>
+  }
+</div>

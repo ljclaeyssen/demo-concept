@@ -34,27 +34,8 @@ function readComponentFile(filePath) {
 /**
  * Génère un fichier TypeScript avec des constantes contenant le code source
  */
-function generateCodeConstants() {
-  console.log('🔨 Génération des constantes de code...');
-
-  // Définir les fichiers à lire
-  const filesToRead = [
-    {
-      name: 'demoButtonComponentTs',
-      path: 'src/app/presentations/hello-world/demo-button.component.ts',
-      description: 'Code TypeScript du composant DemoButton'
-    },
-    {
-      name: 'demoButtonComponentHtml',
-      path: 'src/app/presentations/hello-world/demo-button.component.html',
-      description: 'Template HTML du composant DemoButton'
-    },
-    {
-      name: 'demoButtonComponentScss',
-      path: 'src/app/presentations/hello-world/demo-button.component.scss',
-      description: 'Styles SCSS du composant DemoButton'
-    }
-  ];
+function generateCodeConstants(presentationName, filesToRead) {
+  console.log(`🔨 Génération des constantes de code pour ${presentationName}...`);
 
   let output = `// Ce fichier est généré automatiquement par scripts/generate-code-constants.mjs
 // Ne pas modifier manuellement !
@@ -77,11 +58,66 @@ export const ${file.name} = \`${content}\`;
   }
 
   // Écrire le fichier de sortie
-  const outputPath = resolve(projectRoot, 'src/app/presentations/hello-world/generated-code.constants.ts');
+  const outputPath = resolve(projectRoot, `src/app/presentations/${presentationName}/generated-code.constants.ts`);
   writeFileSync(outputPath, output, 'utf-8');
 
-  console.log(`\n✨ Constantes générées dans: src/app/presentations/hello-world/generated-code.constants.ts`);
+  console.log(`✨ Constantes générées dans: src/app/presentations/${presentationName}/generated-code.constants.ts\n`);
 }
 
-// Exécuter la génération
-generateCodeConstants();
+// Hello World presentation
+generateCodeConstants('hello-world', [
+  {
+    name: 'demoButtonComponentTs',
+    path: 'src/app/presentations/hello-world/demo-button.component.ts',
+    description: 'Code TypeScript du composant DemoButton'
+  },
+  {
+    name: 'demoButtonComponentHtml',
+    path: 'src/app/presentations/hello-world/demo-button.component.html',
+    description: 'Template HTML du composant DemoButton'
+  },
+  {
+    name: 'demoButtonComponentScss',
+    path: 'src/app/presentations/hello-world/demo-button.component.scss',
+    description: 'Styles SCSS du composant DemoButton'
+  }
+]);
+
+// Typed Forms presentation
+generateCodeConstants('typed-forms', [
+  {
+    name: 'registrationFormEnums',
+    path: 'src/app/presentations/typed-forms/demo/registration-form.enums.ts',
+    description: 'Enums pour le formulaire d\'inscription'
+  },
+  {
+    name: 'contactFormTs',
+    path: 'src/app/presentations/typed-forms/demo/contact-form.ts',
+    description: 'Classe ContactForm'
+  },
+  {
+    name: 'situationFormTs',
+    path: 'src/app/presentations/typed-forms/demo/situation-form.ts',
+    description: 'Classe SituationForm'
+  },
+  {
+    name: 'registrationFormTs',
+    path: 'src/app/presentations/typed-forms/demo/registration-form.ts',
+    description: 'Classe RegistrationForm'
+  },
+  {
+    name: 'registrationDemoComponentTs',
+    path: 'src/app/presentations/typed-forms/demo/registration-demo.component.ts',
+    description: 'Composant de démo RegistrationDemo'
+  },
+  {
+    name: 'registrationDemoComponentHtml',
+    path: 'src/app/presentations/typed-forms/demo/registration-demo.component.html',
+    description: 'Template du composant RegistrationDemo'
+  },
+  {
+    name: 'registrationDemoComponentScss',
+    path: 'src/app/presentations/typed-forms/demo/registration-demo.component.scss',
+    description: 'Styles du composant RegistrationDemo'
+  }
+]);

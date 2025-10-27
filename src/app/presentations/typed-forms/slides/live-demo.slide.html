@@ -1,0 +1,65 @@
+<div class="slide-container">
+  <div class="header">
+    <h1>🚀 Démo Live</h1>
+    <button class="toggle-code-btn" (click)="toggleCode()">
+      {{ showCode() ? '🎨 Voir le formulaire' : '💻 Voir le code' }}
+    </button>
+  </div>
+
+  @if (!showCode()) {
+    <div class="demo-section">
+      <app-registration-demo />
+    </div>
+  } @else {
+    <div class="code-section">
+      <div class="code-tabs">
+        <button
+          class="code-tab"
+          [class.active]="selectedCode() === 'enums'"
+          (click)="selectCode('enums')">
+          Enums
+        </button>
+        <button
+          class="code-tab"
+          [class.active]="selectedCode() === 'contact'"
+          (click)="selectCode('contact')">
+          ContactForm
+        </button>
+        <button
+          class="code-tab"
+          [class.active]="selectedCode() === 'situation'"
+          (click)="selectCode('situation')">
+          SituationForm
+        </button>
+        <button
+          class="code-tab"
+          [class.active]="selectedCode() === 'registration'"
+          (click)="selectCode('registration')">
+          RegistrationForm
+        </button>
+        <button
+          class="code-tab"
+          [class.active]="selectedCode() === 'component'"
+          (click)="selectCode('component')">
+          Component TS
+        </button>
+        <button
+          class="code-tab"
+          [class.active]="selectedCode() === 'template'"
+          (click)="selectCode('template')">
+          Template
+        </button>
+        <button
+          class="code-tab"
+          [class.active]="selectedCode() === 'styles'"
+          (click)="selectCode('styles')">
+          Styles
+        </button>
+      </div>
+
+      <div class="code-viewer">
+        <pre><code [highlight]="currentCode.content" [language]="currentCode.language"></code></pre>
+      </div>
+    </div>
+  }
+</div>
