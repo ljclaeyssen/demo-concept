@@ -46,6 +46,57 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
 
+## PrimeNG Dialogs
+
+- **ALWAYS use DynamicDialog with DialogService**, NEVER use the classic `<p-dialog>` component
+- Create separate components for dialog content in the `demo/` directory
+- Use `DialogService` in the parent component's `providers` array
+- Inject `DialogService` and `DynamicDialogRef` using `inject()`
+- Pass data via the `data` property in `dialogService.open()` config
+- Access data in dialog component via `DynamicDialogConfig.data`
+- Include a close button in dialog component using `DynamicDialogRef.close()`
+
+### DynamicDialog Pattern
+```typescript
+// Parent component
+@Component({
+  providers: [DialogService]
+})
+export class ParentComponent {
+  private dialogService = inject(DialogService);
+  private ref: DynamicDialogRef | null = null;
+
+  openDialog() {
+    this.ref = this.dialogService.open(MyDialogComponent, {
+      data: { /* your data */ },
+      width: '50vw',
+      modal: true
+    });
+  }
+}
+
+// Dialog component
+@Component({
+  template: `
+    <div class="dialog-header">
+      <h3>Title</h3>
+      <p-button icon="pi pi-times" [text]="true" [rounded]="true"
+        severity="secondary" (onClick)="close()" />
+    </div>
+    <!-- content -->
+  `,
+  providers: [DialogService]
+})
+export class MyDialogComponent {
+  config = inject(DynamicDialogConfig);
+  private ref = inject(DynamicDialogRef);
+
+  close() {
+    this.ref.close();
+  }
+}
+```
+
 ## Presentation System
 
 ### Directory Structure

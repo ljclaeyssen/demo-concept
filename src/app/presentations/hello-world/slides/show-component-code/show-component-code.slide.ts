@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
-import { demoButtonComponentTs } from '../generated-code.constants';
+import { demoButtonComponentTs } from '../../generated-code.constants';
 
 @Component({
   selector: 'app-show-component-code-slide',
@@ -37,7 +37,7 @@ writeFileSync('generated-code.constants.ts', output);`);
 }`);
 
   usageExample = signal(`// Dans votre slide component
-import { demoButtonComponentTs } from '../generated-code.constants';
+import { demoButtonComponentTs } from '../../generated-code.constants';
 
 export class MySlide {
   // Le code est automatiquement synchronisé !

@@ -1,0 +1,38 @@
+<h1>⚡ Side Effects : Le Bourbier Ultime</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Appeler une API : Action → Effect → Action → Reducer vs rxMethod()</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ NgRx Store : Action → Effect → Action → Reducer</h2>
+      <pre><code [highlight]="ngrxStoreCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>✅ SignalStore : rxMethod() et c'est fini</h2>
+      <pre><code [highlight]="signalStoreCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">
+      <p-button
+        icon="pi pi-times"
+        [rounded]="true"
+        severity="danger"
+        size="small"
+        (onClick)="openNgrxFlow()" />
+      Action déclenchée → Effect écoute → Action émise → Reducer écoute = 🤯
+    </div>
+    <div class="benefit-item">
+      <p-button
+        icon="pi pi-check"
+        [rounded]="true"
+        severity="success"
+        size="small"
+        (onClick)="openSignalStoreFlow()" />
+      Une méthode, toute la logique au même endroit
+    </div>
+  </div>
+</div>

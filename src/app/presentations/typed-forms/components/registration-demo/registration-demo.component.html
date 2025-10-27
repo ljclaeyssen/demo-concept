@@ -143,13 +143,3 @@
       <p-button label="Valider" type="submit" [disabled]="form.invalid" />
     </div>
 </form>
-
-<p-dialog
-  [(visible)]="showDialog"
-  [modal]="true"
-  [style]="{ width: '50vw' }"
-  [draggable]="false"
-  [resizable]="false"
-  header="✅ Données soumises avec succès">
-  <pre>{{ submittedData() | json }}</pre>
-</p-dialog>

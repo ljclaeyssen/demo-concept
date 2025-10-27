@@ -9,7 +9,15 @@
       "Bash(npm run generate:code:*)",
       "Bash(npm start)",
       "Bash(npm start:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "WebSearch",
+      "Bash(git mv:*)",
+      "Bash(git add:*)",
+      "Bash(find:*)",
+      "Bash(ng build:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(ng serve:*)"
     ],
     "deny": [],
     "ask": []

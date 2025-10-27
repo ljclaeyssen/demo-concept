@@ -1,25 +1,25 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
-import { CardModule } from 'primeng/card';
-import { InputTextModule } from 'primeng/inputtext';
-import { SelectModule } from 'primeng/select';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { ButtonModule } from 'primeng/button';
-import { DialogModule } from 'primeng/dialog';
-import { RegistrationForm } from './registration-form';
+import {Component, ChangeDetectionStrategy, inject} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {CardModule} from 'primeng/card';
+import {InputTextModule} from 'primeng/inputtext';
+import {SelectModule} from 'primeng/select';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {ButtonModule} from 'primeng/button';
+import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
+import {RegistrationForm} from '../../models/registration-form';
 import {
   genderOptions,
   contractTypeOptions,
   housingStatusOptions,
   maritalStatusOptions
-} from './registration-form.options';
+} from '../../models/registration-form.options';
 import {
   Gender,
   ContractType,
   HousingStatus,
   MaritalStatus
-} from './registration-form.enums';
+} from '../../models/registration-form.enums';
+import {SubmissionResultDialogComponent} from '../submission-result-dialog/submission-result-dialog.component';
 
 @Component({
   selector: 'app-registration-demo',
@@ -27,20 +27,20 @@ import {
   styleUrl: './registration-demo.component.scss',
   imports: [
     ReactiveFormsModule,
-    JsonPipe,
     CardModule,
     InputTextModule,
     SelectModule,
     InputNumberModule,
-    ButtonModule,
-    DialogModule
+    ButtonModule
   ],
+  providers: [DialogService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegistrationDemoComponent {
+  private dialogService = inject(DialogService);
+  private ref: DynamicDialogRef | null = null;
+
   form = new RegistrationForm();
-  showDialog = signal(false);
-  submittedData = signal<any>(null);
 
   genderOptions = genderOptions;
   contractTypeOptions = contractTypeOptions;
@@ -49,8 +49,13 @@ export class RegistrationDemoComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      this.submittedData.set(this.form.getRawValue());
-      this.showDialog.set(true);
+      this.ref = this.dialogService.open(SubmissionResultDialogComponent, {
+        data: this.form.getRawValue(),
+        width: '50vw',
+        modal: true,
+        draggable: false,
+        resizable: false
+      });
     } else {
       this.form.markAllAsTouched();
     }
@@ -58,7 +63,6 @@ export class RegistrationDemoComponent {
 
   reset() {
     this.form.reset();
-    this.submittedData.set(null);
   }
 
   prefill() {

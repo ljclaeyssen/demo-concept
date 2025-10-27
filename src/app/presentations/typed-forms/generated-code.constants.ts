@@ -3,7 +3,7 @@
 
 /**
  * Enums pour le formulaire d'inscription
- * Source: src/app/presentations/typed-forms/demo/registration-form.enums.ts
+ * Source: src/app/presentations/typed-forms/models/registration-form.enums.ts
  */
 export const registrationFormEnums = `export enum ContactFormFields {
   GENDER = 'gender',
@@ -59,7 +59,7 @@ export enum MaritalStatus {
 
 /**
  * Options pour les selects du formulaire
- * Source: src/app/presentations/typed-forms/demo/registration-form.options.ts
+ * Source: src/app/presentations/typed-forms/models/registration-form.options.ts
  */
 export const registrationFormOptions = `import {
   Gender,
@@ -105,7 +105,7 @@ export const maritalStatusOptions: SelectOption[] = [
 
 /**
  * Classe ContactForm
- * Source: src/app/presentations/typed-forms/demo/contact-form.ts
+ * Source: src/app/presentations/typed-forms/models/contact-form.ts
  */
 export const contactFormTs = `import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactFormFields, Gender } from './registration-form.enums';
@@ -189,7 +189,7 @@ export class ContactForm extends FormGroup {
 
 /**
  * Classe SituationForm
- * Source: src/app/presentations/typed-forms/demo/situation-form.ts
+ * Source: src/app/presentations/typed-forms/models/situation-form.ts
  */
 export const situationFormTs = `import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SituationFormFields } from './registration-form.enums';
@@ -235,7 +235,7 @@ export class SituationForm extends FormGroup {
 
 /**
  * Classe RegistrationForm
- * Source: src/app/presentations/typed-forms/demo/registration-form.ts
+ * Source: src/app/presentations/typed-forms/models/registration-form.ts
  */
 export const registrationFormTs = `import { FormGroup } from '@angular/forms';
 import { RegistrationFormFields } from './registration-form.enums';
@@ -262,24 +262,30 @@ export class RegistrationForm extends FormGroup {
 
 /**
  * Composant de démo RegistrationDemo
- * Source: src/app/presentations/typed-forms/demo/registration-demo.component.ts
+ * Source: src/app/presentations/typed-forms/components/registration-demo/registration-demo.component.ts
  */
-export const registrationDemoComponentTs = `import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
-import { CardModule } from 'primeng/card';
-import { InputTextModule } from 'primeng/inputtext';
-import { SelectModule } from 'primeng/select';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { ButtonModule } from 'primeng/button';
-import { DialogModule } from 'primeng/dialog';
-import { RegistrationForm } from './registration-form';
+export const registrationDemoComponentTs = `import {Component, ChangeDetectionStrategy, inject} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {CardModule} from 'primeng/card';
+import {InputTextModule} from 'primeng/inputtext';
+import {SelectModule} from 'primeng/select';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {ButtonModule} from 'primeng/button';
+import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
+import {RegistrationForm} from '../../models/registration-form';
 import {
   genderOptions,
   contractTypeOptions,
   housingStatusOptions,
   maritalStatusOptions
-} from './registration-form.options';
+} from '../../models/registration-form.options';
+import {
+  Gender,
+  ContractType,
+  HousingStatus,
+  MaritalStatus
+} from '../../models/registration-form.enums';
+import {SubmissionResultDialogComponent} from '../submission-result-dialog/submission-result-dialog.component';
 
 @Component({
   selector: 'app-registration-demo',
@@ -287,20 +293,20 @@ import {
   styleUrl: './registration-demo.component.scss',
   imports: [
     ReactiveFormsModule,
-    JsonPipe,
     CardModule,
     InputTextModule,
     SelectModule,
     InputNumberModule,
-    ButtonModule,
-    DialogModule
+    ButtonModule
   ],
+  providers: [DialogService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegistrationDemoComponent {
+  private dialogService = inject(DialogService);
+  private ref: DynamicDialogRef | null = null;
+
   form = new RegistrationForm();
-  showDialog = signal(false);
-  submittedData = signal<any>(null);
 
   genderOptions = genderOptions;
   contractTypeOptions = contractTypeOptions;
@@ -309,8 +315,13 @@ export class RegistrationDemoComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      this.submittedData.set(this.form.getRawValue());
-      this.showDialog.set(true);
+      this.ref = this.dialogService.open(SubmissionResultDialogComponent, {
+        data: this.form.getRawValue(),
+        width: '50vw',
+        modal: true,
+        draggable: false,
+        resizable: false
+      });
     } else {
       this.form.markAllAsTouched();
     }
@@ -318,17 +329,34 @@ export class RegistrationDemoComponent {
 
   reset() {
     this.form.reset();
-    this.submittedData.set(null);
+  }
+
+  prefill() {
+    this.form.patchValue({
+      contact: {
+        gender: Gender.MALE,
+        firstName: 'Socket',
+        lastName: 'Le Teckel',
+        address: 'chez moi',
+        phone: '0606060606',
+        email: 'socket@teckel.fr'
+      },
+      situation: {
+        contractType: ContractType.CDI,
+        income: 50,
+        housingStatus: HousingStatus.FREE_ACCOMMODATION,
+        maritalStatus: MaritalStatus.SINGLE
+      }
+    });
   }
 }
 `;
 
 /**
  * Template du composant RegistrationDemo
- * Source: src/app/presentations/typed-forms/demo/registration-demo.component.html
+ * Source: src/app/presentations/typed-forms/components/registration-demo/registration-demo.component.html
  */
-export const registrationDemoComponentHtml = `<div class="demo-container">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+export const registrationDemoComponentHtml = `<form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-sections">
       <!-- Contact Section -->
       <p-card [formGroup]="form.contact">
@@ -468,61 +496,49 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
     </div>
 
     <div class="actions">
+      <p-button label="Préremplir" severity="secondary" type="button" (onClick)="prefill()" />
       <p-button label="Réinitialiser" severity="secondary" type="button" (onClick)="reset()" />
       <p-button label="Valider" type="submit" [disabled]="form.invalid" />
     </div>
-  </form>
-
-  <p-dialog
-    [(visible)]="showDialog"
-    [modal]="true"
-    [style]="{ width: '50vw' }"
-    [draggable]="false"
-    [resizable]="false"
-    header="✅ Données soumises avec succès">
-    <pre>{{ submittedData() | json }}</pre>
-  </p-dialog>
-</div>
+</form>
 `;
 
 /**
  * Styles du composant RegistrationDemo
- * Source: src/app/presentations/typed-forms/demo/registration-demo.component.scss
+ * Source: src/app/presentations/typed-forms/components/registration-demo/registration-demo.component.scss
  */
-export const registrationDemoComponentScss = `.demo-container {
-  padding: 3rem;
-  max-width: 1400px;
-  margin: 0 auto;
-  min-height: 100%;
+export const registrationDemoComponentScss = `.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  .validity-icon {
+    font-size: 1.3rem;
+    opacity: 0.2;
+    transition: all 0.3s ease;
 
-    .validity-icon {
-      font-size: 1.3rem;
-      opacity: 0.2;
-      transition: all 0.3s ease;
+    &.valid {
+      opacity: 1;
+      filter: drop-shadow(0 0 4px rgba(72, 187, 120, 0.4));
+    }
 
-      &.valid {
-        opacity: 1;
-        filter: drop-shadow(0 0 4px rgba(72, 187, 120, 0.4));
-      }
-
-      &.invalid {
-        opacity: 1;
-        filter: drop-shadow(0 0 4px rgba(229, 62, 62, 0.4));
-      }
+    &.invalid {
+      opacity: 1;
+      filter: drop-shadow(0 0 4px rgba(229, 62, 62, 0.4));
     }
   }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
   .form-sections {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
-    margin-bottom: 2.5rem;
 
     ::ng-deep p-card {
       .p-card {

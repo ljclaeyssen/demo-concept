@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
-import { DemoButtonComponent } from '../demo-button.component';
+import { DemoButtonComponent } from '../../components/demo-button/demo-button.component';
 
 @Component({
   selector: 'app-live-demo-slide',
@@ -11,7 +11,7 @@ import { DemoButtonComponent } from '../demo-button.component';
 })
 export class LiveDemoSlide {
   step1Import = signal(`// Step 1: Import the component in your slide
-import { DemoButtonComponent } from '../demo-button.component';`);
+import { DemoButtonComponent } from '../../components/demo-button/demo-button.component';`);
 
   step2AddToImports = signal(`// Step 2: Add it to the slide's imports
 @Component({

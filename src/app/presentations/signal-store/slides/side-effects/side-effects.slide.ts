@@ -1,18 +1,38 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
-import { Highlight } from 'ngx-highlightjs';
-import { Dialog } from 'primeng/dialog';
-import { Button } from 'primeng/button';
+import {Component, ChangeDetectionStrategy, signal, inject} from '@angular/core';
+import {Highlight} from 'ngx-highlightjs';
+import {Button} from 'primeng/button';
+import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
+import {NgrxFlowDialogComponent} from '../../demo/components/ngrx-flow-dialog/ngrx-flow-dialog.component';
+import {SignalstoreFlowDialogComponent} from '../../demo/components/signalstore-flow-dialog/signalstore-flow-dialog.component';
 
 @Component({
   selector: 'app-side-effects-slide',
   templateUrl: './side-effects.slide.html',
   styleUrl: './side-effects.slide.scss',
-  imports: [Highlight, Dialog, Button],
+  imports: [Highlight, Button],
+  providers: [DialogService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SideEffectsSlide {
+  private dialogService = inject(DialogService);
+  private ref: DynamicDialogRef | null = null;
+
   showNgrxFlow = signal(false);
   showSignalStoreFlow = signal(false);
+
+  openNgrxFlow() {
+    this.ref = this.dialogService.open(NgrxFlowDialogComponent, {
+      width: '50vw',
+      modal: true
+    });
+  }
+
+  openSignalStoreFlow() {
+    this.ref = this.dialogService.open(SignalstoreFlowDialogComponent, {
+      width: '40vw',
+      modal: true
+    });
+  }
   ngrxStoreCode = signal(`// ========================================
 // 1. Créer les actions (users.actions.ts)
 // ========================================

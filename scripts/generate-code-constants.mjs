@@ -1,6 +1,8 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { helloWorldCodeGeneration } from '../src/app/presentations/hello-world/code-generation.config.mjs';
+import { typedFormsCodeGeneration } from '../src/app/presentations/typed-forms/code-generation.config.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -65,64 +67,7 @@ export const ${file.name} = \`${content}\`;
 }
 
 // Hello World presentation
-generateCodeConstants('hello-world', [
-  {
-    name: 'demoButtonComponentTs',
-    path: 'src/app/presentations/hello-world/demo-button.component.ts',
-    description: 'Code TypeScript du composant DemoButton'
-  },
-  {
-    name: 'demoButtonComponentHtml',
-    path: 'src/app/presentations/hello-world/demo-button.component.html',
-    description: 'Template HTML du composant DemoButton'
-  },
-  {
-    name: 'demoButtonComponentScss',
-    path: 'src/app/presentations/hello-world/demo-button.component.scss',
-    description: 'Styles SCSS du composant DemoButton'
-  }
-]);
+generateCodeConstants(helloWorldCodeGeneration.presentationName, helloWorldCodeGeneration.files);
 
 // Typed Forms presentation
-generateCodeConstants('typed-forms', [
-  {
-    name: 'registrationFormEnums',
-    path: 'src/app/presentations/typed-forms/demo/registration-form.enums.ts',
-    description: 'Enums pour le formulaire d\'inscription'
-  },
-  {
-    name: 'registrationFormOptions',
-    path: 'src/app/presentations/typed-forms/demo/registration-form.options.ts',
-    description: 'Options pour les selects du formulaire'
-  },
-  {
-    name: 'contactFormTs',
-    path: 'src/app/presentations/typed-forms/demo/contact-form.ts',
-    description: 'Classe ContactForm'
-  },
-  {
-    name: 'situationFormTs',
-    path: 'src/app/presentations/typed-forms/demo/situation-form.ts',
-    description: 'Classe SituationForm'
-  },
-  {
-    name: 'registrationFormTs',
-    path: 'src/app/presentations/typed-forms/demo/registration-form.ts',
-    description: 'Classe RegistrationForm'
-  },
-  {
-    name: 'registrationDemoComponentTs',
-    path: 'src/app/presentations/typed-forms/demo/registration-demo.component.ts',
-    description: 'Composant de démo RegistrationDemo'
-  },
-  {
-    name: 'registrationDemoComponentHtml',
-    path: 'src/app/presentations/typed-forms/demo/registration-demo.component.html',
-    description: 'Template du composant RegistrationDemo'
-  },
-  {
-    name: 'registrationDemoComponentScss',
-    path: 'src/app/presentations/typed-forms/demo/registration-demo.component.scss',
-    description: 'Styles du composant RegistrationDemo'
-  }
-]);
+generateCodeConstants(typedFormsCodeGeneration.presentationName, typedFormsCodeGeneration.files);

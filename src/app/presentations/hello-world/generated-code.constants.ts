@@ -3,7 +3,7 @@
 
 /**
  * Code TypeScript du composant DemoButton
- * Source: src/app/presentations/hello-world/demo-button.component.ts
+ * Source: src/app/presentations/hello-world/components/demo-button/demo-button.component.ts
  */
 export const demoButtonComponentTs = `import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
@@ -26,7 +26,7 @@ export class DemoButtonComponent {
 
 /**
  * Template HTML du composant DemoButton
- * Source: src/app/presentations/hello-world/demo-button.component.html
+ * Source: src/app/presentations/hello-world/components/demo-button/demo-button.component.html
  */
 export const demoButtonComponentHtml = `<div class="demo-container">
   <p-button
@@ -38,7 +38,7 @@ export const demoButtonComponentHtml = `<div class="demo-container">
 
 /**
  * Styles SCSS du composant DemoButton
- * Source: src/app/presentations/hello-world/demo-button.component.scss
+ * Source: src/app/presentations/hello-world/components/demo-button/demo-button.component.scss
  */
 export const demoButtonComponentScss = `.demo-container {
   padding: 2rem;

@@ -1,0 +1,12 @@
+<div class="submission-result">
+  <div class="dialog-header">
+    <h3>✅ Données soumises avec succès</h3>
+    <p-button
+      icon="pi pi-times"
+      [text]="true"
+      [rounded]="true"
+      severity="secondary"
+      (onClick)="close()" />
+  </div>
+  <pre>{{ config.data | json }}</pre>
+</div>
