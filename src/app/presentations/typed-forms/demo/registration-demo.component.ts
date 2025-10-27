@@ -14,6 +14,12 @@ import {
   housingStatusOptions,
   maritalStatusOptions
 } from './registration-form.options';
+import {
+  Gender,
+  ContractType,
+  HousingStatus,
+  MaritalStatus
+} from './registration-form.enums';
 
 @Component({
   selector: 'app-registration-demo',
@@ -53,5 +59,24 @@ export class RegistrationDemoComponent {
   reset() {
     this.form.reset();
     this.submittedData.set(null);
+  }
+
+  prefill() {
+    this.form.patchValue({
+      contact: {
+        gender: Gender.MALE,
+        firstName: 'Socket',
+        lastName: 'Le Teckel',
+        address: 'chez moi',
+        phone: '0606060606',
+        email: 'socket@teckel.fr'
+      },
+      situation: {
+        contractType: ContractType.CDI,
+        income: 50,
+        housingStatus: HousingStatus.FREE_ACCOMMODATION,
+        maritalStatus: MaritalStatus.SINGLE
+      }
+    });
   }
 }

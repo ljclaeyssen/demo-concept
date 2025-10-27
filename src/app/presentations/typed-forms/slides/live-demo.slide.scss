@@ -1,5 +1,9 @@
 .slide-container {
   .header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+
     ::ng-deep p-button button {
       padding: 0.75rem 1.5rem;
       font-weight: 600;
@@ -12,12 +16,6 @@
         box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
       }
     }
-  }
-
-  .demo-section {
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
   }
 }
 
