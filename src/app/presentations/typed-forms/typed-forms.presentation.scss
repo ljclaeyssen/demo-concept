@@ -10,29 +10,3 @@ swiper-container {
     background: #f8f9fa;
   }
 }
-
-.two-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  flex: 1;
-  min-height: 0;
-
-  > * {
-    min-height: 0;
-    overflow: auto;
-  }
-}
-
-.three-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
-  flex: 1;
-  min-height: 0;
-
-  > * {
-    min-height: 0;
-    overflow: auto;
-  }
-}

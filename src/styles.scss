@@ -21,6 +21,81 @@ code {
 
 // Styles communs pour les présentations typed-forms
 app-typed-forms-presentation {
+  // Conteneur de slide commun
+  .slide-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 3rem;
+    overflow: hidden;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      // La couleur est override dans chaque slide
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #4a5568;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #718096;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+  }
+
+  // Grilles de colonnes
+  .two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    flex: 1;
+    min-height: 0;
+
+    > * {
+      min-height: 0;
+      overflow: auto;
+    }
+  }
+
+  .three-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    flex: 1;
+    min-height: 0;
+
+    > * {
+      min-height: 0;
+      overflow: auto;
+    }
+  }
+
+  // Section de code
+  .code-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+
+    pre {
+      margin: 0;
+      flex: 1;
+      min-height: 0;
+      overflow: auto;
+
+      code {
+        font-size: 0.8rem;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  // Listes de bénéfices et problèmes
   .benefits-list,
   .problems-list {
     display: grid;
@@ -46,6 +121,18 @@ app-typed-forms-presentation {
     border-left: 3px solid #e53e3e;
     border-radius: 4px;
     font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  // Box d'avertissement
+  .warning-box {
+    margin-top: 1.5rem;
+    padding: 1rem 1.5rem;
+    background: #fed7d7;
+    color: #c53030;
+    border-left: 4px solid #e53e3e;
+    border-radius: 4px;
+    font-size: 1.1rem;
     font-weight: 500;
   }
 }
