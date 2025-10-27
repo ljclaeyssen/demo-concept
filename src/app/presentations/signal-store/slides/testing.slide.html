@@ -1,0 +1,22 @@
+<h1>🧪 Testing : Impossible vs Trivial</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Tester le store directement : impossible vs test unitaire pur</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ NgRx Store : impossible de tester seul</h2>
+      <pre><code [highlight]="ngrxStoreCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>✅ SignalStore : test unitaire pur</h2>
+      <pre><code [highlight]="signalStoreCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ Impossible de tester le store sans mocker tout l'écosystème</div>
+    <div class="benefit-item">✅ C'est une classe, on la teste comme n'importe quelle classe</div>
+  </div>
+</div>
