@@ -6,6 +6,12 @@ import { StateUpdatesSlide } from './slides/state-updates.slide';
 import { ComputedValuesSlide } from './slides/computed-values.slide';
 import { SideEffectsSlide } from './slides/side-effects.slide';
 import { TestingSlide } from './slides/testing.slide';
+import { ProviderSetupSlide } from './slides/provider-setup.slide';
+import { CompositionSlide } from './slides/composition.slide';
+import { PerformanceSlide } from './slides/performance.slide';
+import { TypeScriptInferenceSlide } from './slides/typescript-inference.slide';
+import { VerdictSlide } from './slides/verdict.slide';
+import { EslintSlide } from './slides/eslint.slide';
 
 register();
 
@@ -13,7 +19,7 @@ register();
   selector: 'app-signal-store-presentation',
   templateUrl: './signal-store.presentation.html',
   styleUrl: './signal-store.presentation.scss',
-  imports: [IntroSlide, BoilerplateNightmareSlide, StateUpdatesSlide, ComputedValuesSlide, SideEffectsSlide, TestingSlide],
+  imports: [IntroSlide, BoilerplateNightmareSlide, StateUpdatesSlide, ComputedValuesSlide, SideEffectsSlide, TestingSlide, ProviderSetupSlide, CompositionSlide, PerformanceSlide, TypeScriptInferenceSlide, VerdictSlide, EslintSlide],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
