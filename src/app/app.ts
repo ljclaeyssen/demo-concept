@@ -26,7 +26,7 @@ export class App implements OnInit {
           this.messageService.add({
             severity: 'info',
             summary: 'Navigation',
-            detail: 'Pour naviguer dans la présentation, utilisez les flèches du clavier, cliquez sur les flèches latérales ou bien swipez !',
+            detail: 'Utilisez les flèches du clavier, cliquez sur les flèches latérales ou bien swipez !',
             life: 5000
           });
         }
