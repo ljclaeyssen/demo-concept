@@ -342,7 +342,7 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
         </ng-template>
         <div class="form-grid">
           <div>
-            <label for="gender">Genre *</label>
+            <label for="gender">Genre</label>
             <p-select
               [formControl]="form.contact.gender"
               [options]="genderOptions"
@@ -353,7 +353,7 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
           </div>
 
           <div>
-            <label for="firstName">Prénom *</label>
+            <label for="firstName">Prénom</label>
             <input
               pInputText
               [formControl]="form.contact.firstName"
@@ -362,7 +362,7 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
           </div>
 
           <div>
-            <label for="lastName">Nom *</label>
+            <label for="lastName">Nom</label>
             <input
               pInputText
               [formControl]="form.contact.lastName"
@@ -380,7 +380,7 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
           </div>
 
           <div class="full-width">
-            <label for="address">Adresse *</label>
+            <label for="address">Adresse</label>
             <input
               pInputText
               [formControl]="form.contact.address"
@@ -389,7 +389,7 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
           </div>
 
           <div>
-            <label for="phone">Téléphone *</label>
+            <label for="phone">Téléphone</label>
             <input
               pInputText
               [formControl]="form.contact.phone"
@@ -398,7 +398,7 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
           </div>
 
           <div>
-            <label for="email">Email *</label>
+            <label for="email">Email</label>
             <input
               pInputText
               type="email"
@@ -421,7 +421,7 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
         </ng-template>
         <div class="form-grid">
           <div>
-            <label for="contractType">Type de contrat *</label>
+            <label for="contractType">Type de contrat</label>
             <p-select
               [formControl]="form.situation.contractType"
               [options]="contractTypeOptions"
@@ -432,7 +432,7 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
           </div>
 
           <div>
-            <label for="income">Revenu mensuel *</label>
+            <label for="income">Revenu mensuel</label>
             <p-inputnumber
               [formControl]="form.situation.income"
               inputId="income"
@@ -443,7 +443,7 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
           </div>
 
           <div>
-            <label for="housingStatus">Statut immobilier *</label>
+            <label for="housingStatus">Statut immobilier</label>
             <p-select
               [formControl]="form.situation.housingStatus"
               [options]="housingStatusOptions"
@@ -454,7 +454,7 @@ export const registrationDemoComponentHtml = `<div class="demo-container">
           </div>
 
           <div>
-            <label for="maritalStatus">Situation matrimoniale *</label>
+            <label for="maritalStatus">Situation matrimoniale</label>
             <p-select
               [formControl]="form.situation.maritalStatus"
               [options]="maritalStatusOptions"

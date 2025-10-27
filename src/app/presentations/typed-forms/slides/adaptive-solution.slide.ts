@@ -24,9 +24,9 @@ enum Gender {
   classCode = signal(`export class UserForm extends FormGroup {
   constructor() {
     super({
-      [UserFormFields.GENDER]: new FormControl<string>('', { nonNullable: true }),
-      [UserFormFields.FIRST_NAME]: new FormControl<string>('', { nonNullable: true }),
-      [UserFormFields.LAST_NAME]: new FormControl<string>('', { nonNullable: true }),
+      [UserFormFields.GENDER]: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+      [UserFormFields.FIRST_NAME]: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+      [UserFormFields.LAST_NAME]: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
       [UserFormFields.MAIDEN_NAME]: new FormControl<string>('', { nonNullable: true })
     });
 

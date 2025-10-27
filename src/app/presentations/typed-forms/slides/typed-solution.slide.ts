@@ -18,8 +18,14 @@ export class TypedSolutionSlide {
   classCode = signal(`export class UserProfileForm extends FormGroup {
   constructor() {
     super({
-      [UserProfileFormFields.NAME]: new FormControl<string>('', { nonNullable: true }),
-      [UserProfileFormFields.EMAIL]: new FormControl<string>('', { nonNullable: true }),
+      [UserProfileFormFields.NAME]: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required]
+      }),
+      [UserProfileFormFields.EMAIL]: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required]
+      }),
       [UserProfileFormFields.AGE]: new FormControl<number | null>(null)
     });
   }
