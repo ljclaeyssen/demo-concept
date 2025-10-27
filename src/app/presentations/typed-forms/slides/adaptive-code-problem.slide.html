@@ -1,0 +1,26 @@
+<div class="slide-container">
+  <h1>😱 Code Adaptatif = Cauchemar</h1>
+
+  <p class="subtitle">
+    Exemple : Le nom de jeune fille ne peut être renseigné que si le genre n'est pas "homme"
+  </p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Setup du formulaire</h2>
+      <pre><code [highlight]="formCreation()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Logique adaptative</h2>
+      <pre><code [highlight]="adaptiveLogic()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ Code métier pollue le component</div>
+    <div class="problem-item">❌ Typos possibles partout ('gender', 'maidenName', 'male')</div>
+    <div class="problem-item">❌ Gestion manuelle des subscriptions</div>
+    <div class="problem-item">❌ Impossible à tester unitairement</div>
+  </div>
+</div>
