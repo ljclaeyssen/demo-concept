@@ -4,30 +4,30 @@ import { ContactFormFields, Gender } from './registration-form.enums';
 export class ContactForm extends FormGroup {
   constructor() {
     super({
-      [ContactFormFields.GENDER]: new FormControl('', {
+      [ContactFormFields.GENDER]: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required]
       }),
-      [ContactFormFields.FIRST_NAME]: new FormControl('', {
+      [ContactFormFields.FIRST_NAME]: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required]
       }),
-      [ContactFormFields.LAST_NAME]: new FormControl('', {
+      [ContactFormFields.LAST_NAME]: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required]
       }),
-      [ContactFormFields.MAIDEN_NAME]: new FormControl({ value: '', disabled: true }, {
+      [ContactFormFields.MAIDEN_NAME]: new FormControl<string>({ value: '', disabled: true }, {
         nonNullable: true
       }),
-      [ContactFormFields.ADDRESS]: new FormControl('', {
+      [ContactFormFields.ADDRESS]: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required]
       }),
-      [ContactFormFields.PHONE]: new FormControl('', {
+      [ContactFormFields.PHONE]: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required]
       }),
-      [ContactFormFields.EMAIL]: new FormControl('', {
+      [ContactFormFields.EMAIL]: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required, Validators.email]
       })

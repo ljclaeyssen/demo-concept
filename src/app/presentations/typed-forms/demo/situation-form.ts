@@ -4,18 +4,18 @@ import { SituationFormFields } from './registration-form.enums';
 export class SituationForm extends FormGroup {
   constructor() {
     super({
-      [SituationFormFields.CONTRACT_TYPE]: new FormControl('', {
+      [SituationFormFields.CONTRACT_TYPE]: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required]
       }),
       [SituationFormFields.INCOME]: new FormControl<number | null>(null, {
         validators: [Validators.required, Validators.min(0)]
       }),
-      [SituationFormFields.HOUSING_STATUS]: new FormControl('', {
+      [SituationFormFields.HOUSING_STATUS]: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required]
       }),
-      [SituationFormFields.MARITAL_STATUS]: new FormControl('', {
+      [SituationFormFields.MARITAL_STATUS]: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required]
       })
