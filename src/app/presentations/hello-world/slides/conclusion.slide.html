@@ -1,25 +1,35 @@
-<div class="slide-content">
-  <h2>🎉 Vous êtes Prêt !</h2>
+<h1>🎉 Vous êtes Prêt !</h1>
+
+<div class="slide-container">
   <p class="subtitle">Vous pouvez maintenant créer vos propres présentations</p>
 
-  <h3>Ce que vous avez appris :</h3>
-  <ul class="tutorial-list">
-    <li>✅ Configurer le routage pour de nouvelles présentations</li>
-    <li>✅ Créer un composant de présentation avec Swiper</li>
-    <li>✅ Organiser les slides en composants séparés</li>
-    <li>✅ Connecter les slides dans la présentation</li>
-    <li>✅ Afficher du code avec coloration syntaxique</li>
-    <li>✅ Montrer le code source de composants dans les slides</li>
-    <li>✅ Intégrer des démos interactives en direct</li>
-  </ul>
+  <div class="two-columns">
+    <div>
+      <h2>Ce que vous avez appris</h2>
+      <ul>
+        <li>Configurer le routage pour de nouvelles présentations</li>
+        <li>Créer un composant de présentation avec Swiper</li>
+        <li>Organiser les slides en composants séparés</li>
+        <li>Afficher du code avec coloration syntaxique</li>
+        <li>Montrer le code source de composants</li>
+        <li>Intégrer des démos interactives</li>
+      </ul>
+    </div>
 
-  <h3>Bonnes Pratiques :</h3>
-  <ul class="tutorial-list">
-    <li>📁 Gardez chaque slide comme son propre composant</li>
-    <li>📄 Séparez toujours les fichiers .ts, .html et .scss</li>
-    <li>🎨 Utilisez une convention de nommage cohérente (.slide.ts)</li>
-    <li>💾 Stockez les exemples de code sous forme de signals</li>
-  </ul>
+    <div>
+      <h2>Bonnes Pratiques</h2>
+      <ul>
+        <li>H1 TOUJOURS en dehors de .slide-container</li>
+        <li>Slides dans .slide.ts/.html/.scss</li>
+        <li>Styles globaux dans styles.scss</li>
+        <li>Pas de SCSS local sauf nécessaire</li>
+        <li>Code stocké en signals</li>
+        <li>Classes utilitaires réutilisées</li>
+      </ul>
+    </div>
+  </div>
 
-  <p class="note">💡 Naviguez entre les slides avec les flèches du clavier, le swipe, ou la navigation cliquable !</p>
+  <div class="warning-box">
+    💡 Naviguez entre les slides avec les flèches du clavier, le swipe, ou la navigation cliquable !
+  </div>
 </div>

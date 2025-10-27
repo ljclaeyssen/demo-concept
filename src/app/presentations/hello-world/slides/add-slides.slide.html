@@ -1,17 +1,21 @@
-<div class="slide-content">
-  <h2>Étape 4 : Connecter les Slides dans la Présentation</h2>
+<h1>🔗 Connecter les Slides</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Ajoutez vos slides dans le composant de présentation</p>
 
   <div class="two-columns">
-    <div class="column">
-      <h3>1. Importer les composants dans TypeScript :</h3>
+    <div class="code-section">
+      <h2>1. Importer les composants</h2>
       <pre><code [highlight]="importsCode()" language="typescript"></code></pre>
     </div>
 
-    <div class="column">
-      <h3>2. Les utiliser dans le template :</h3>
+    <div class="code-section">
+      <h2>2. Les utiliser dans le template</h2>
       <pre><code [highlight]="slideCode()" language="html"></code></pre>
     </div>
   </div>
 
-  <p class="note">Chaque <code>&lt;swiper-slide&gt;</code> contient un composant de slide !</p>
+  <div class="warning-box">
+    🔑 Chaque <code>&lt;swiper-slide&gt;</code> contient un composant de slide !
+  </div>
 </div>

@@ -19,17 +19,15 @@ pre code {
   border-radius: 12px;
 }
 
-// Styles communs pour les présentations typed-forms
-app-typed-forms-presentation {
-  swiper-slide {
-    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 2rem;
-  }
+// Styles communs pour toutes les présentations
+swiper-slide {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
 
   // Titre au-dessus de la carte
   h1 {

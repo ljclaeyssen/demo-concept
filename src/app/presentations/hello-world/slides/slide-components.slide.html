@@ -1,23 +1,26 @@
-<div class="slide-content">
-  <h2>Étape 3 : Créer des Composants de Slide Individuels</h2>
-  <p>Chaque slide doit être son propre composant pour une architecture propre :</p>
+<h1>🎨 Créer des Slides</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Chaque slide doit être son propre composant pour une architecture propre</p>
 
   <div class="three-columns">
-    <div class="column">
-      <h3>Structure des dossiers :</h3>
+    <div class="code-section">
+      <h2>Structure</h2>
       <pre><code [highlight]="folderStructure()" language="plaintext"></code></pre>
     </div>
 
-    <div class="column">
-      <h3>Composant (intro.slide.ts) :</h3>
+    <div class="code-section">
+      <h2>Composant (intro.slide.ts)</h2>
       <pre><code [highlight]="slideComponentCode()" language="typescript"></code></pre>
     </div>
 
-    <div class="column">
-      <h3>Template (intro.slide.html) :</h3>
+    <div class="code-section">
+      <h2>Template (intro.slide.html)</h2>
       <pre><code [highlight]="slideTemplateCode()" language="html"></code></pre>
     </div>
   </div>
 
-  <p class="note">Utilisez la convention de nommage <code>.slide.ts/.html/.scss</code> pour les slides !</p>
+  <div class="warning-box">
+    🔑 Convention : <code>.slide.ts/.html/.scss</code> pour tous les slides. H1 TOUJOURS en dehors de .slide-container !
+  </div>
 </div>

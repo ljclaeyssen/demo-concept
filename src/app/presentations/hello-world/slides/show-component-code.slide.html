@@ -1,24 +1,24 @@
-<div class="slide-content">
-  <h2>Étape 6 : Afficher le Code d'un Composant Angular</h2>
-  <p>Automatisez l'affichage du code avec un script de build :</p>
+<h1>⚙️ Génération de Code Automatique</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Automatisez l'affichage du code avec le script de génération</p>
 
   <div class="two-columns">
-    <div class="column">
-      <h3>1. Script de génération</h3>
+    <div class="code-section">
+      <h2>1. Script & Configuration</h2>
       <pre><code [highlight]="scriptExample()" language="javascript"></code></pre>
-
-      <h3>2. Configuration package.json</h3>
       <pre><code [highlight]="packageJsonScript()" language="json"></code></pre>
     </div>
 
-    <div class="column">
-      <h3>3. Utilisation dans les slides</h3>
+    <div class="code-section">
+      <h2>2. Utilisation dans les slides</h2>
       <pre><code [highlight]="usageExample()" language="typescript"></code></pre>
-
-      <h3>4. Résultat - Code synchronisé !</h3>
+      <h2>3. Résultat - Code synchronisé !</h2>
       <pre><code [highlight]="fullExample()" language="typescript"></code></pre>
     </div>
   </div>
 
-  <p class="note">✨ Le code est automatiquement synchronisé à chaque build !</p>
+  <div class="warning-box">
+    ✨ Le code est automatiquement synchronisé à chaque build !
+  </div>
 </div>
