@@ -1,32 +1,21 @@
 <div class="landing-container">
-  <div class="landing-header">
-    <h1 class="landing-title">📊 Hub de Présentations</h1>
-    <p class="landing-subtitle">Présentations de code interactives et tutoriels</p>
-  </div>
+  <h1>📊 Hub de Présentations</h1>
 
-  <div class="presentations-grid">
-    @for (presentation of presentations(); track presentation.route) {
-      <p-card class="presentation-card">
-        <ng-template pTemplate="header">
-          <div class="card-header" [style.background]="presentation.color">
-            <span class="card-icon">{{ presentation.icon }}</span>
+  <div class="landing-content">
+    <p class="subtitle">Présentations de code interactives et tutoriels</p>
+
+    <div class="presentations-grid">
+      @for (presentation of presentations(); track presentation.route) {
+        <a [routerLink]="presentation.route" class="presentation-card">
+          <div class="card-icon">{{ presentation.icon }}</div>
+          <h2>{{ presentation.title }}</h2>
+          <p class="description">{{ presentation.description }}</p>
+          <div class="card-footer">
+            <span class="view-button">Voir la présentation</span>
+            <i class="pi pi-arrow-right"></i>
           </div>
-        </ng-template>
-
-        <div class="card-content">
-          <h2 class="card-title">{{ presentation.title }}</h2>
-          <p class="card-description">{{ presentation.description }}</p>
-        </div>
-
-        <ng-template pTemplate="footer">
-          <p-button
-            [routerLink]="presentation.route"
-            label="Voir la Présentation"
-            icon="pi pi-arrow-right"
-            iconPos="right"
-            [style]="{ width: '100%' }" />
-        </ng-template>
-      </p-card>
-    }
+        </a>
+      }
+    </div>
   </div>
 </div>
