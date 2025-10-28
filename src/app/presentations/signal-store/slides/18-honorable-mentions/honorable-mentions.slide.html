@@ -1,0 +1,35 @@
+<h1>🎖️ Mentions honorables : Elf & ComponentStore</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Des solutions incroyables... mais qui restent bloquées aux Observables</p>
+
+  <div class="three-columns">
+    <div class="code-section">
+      <h2>Elf (@ngneat/elf)</h2>
+      <pre><code [highlight]="elfCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>ComponentStore (@ngrx)</h2>
+      <pre><code [highlight]="componentStoreCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>SignalStore (@ngrx/signals)</h2>
+      <pre><code [highlight]="signalStoreCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Elf et ComponentStore ont été des solutions exceptionnelles</div>
+    <div class="benefit-item">✅ API élégantes, performantes, et moins de boilerplate que NgRx Store classique</div>
+    <div class="benefit-item">✅ Parfaitement adaptées à l'écosystème Angular pré-Signals</div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ Seul reproche : basées sur RxJS/Observables, ne profitent pas des Signals</div>
+    <div class="problem-item">❌ Avec l'arrivée des Signals, SignalStore devient naturellement le choix optimal</div>
+    <div class="problem-item">❌ Zoneless Angular (par défaut) : async pipe dépréciée, Observables en templates obsolètes</div>
+    <div class="problem-item">❌ Future-proofing : Angular mise massivement sur les Signals pour l'avenir</div>
+  </div>
+</div>

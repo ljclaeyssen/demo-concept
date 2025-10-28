@@ -17,6 +17,7 @@ import { DemoContextSlide } from './slides/14-demo-context/demo-context.slide';
 import { CodeDemoSlide } from './slides/15-code-demo/code-demo.slide';
 import { NgrxDemoInteractiveSlide } from './slides/16-ngrx-demo-interactive/ngrx-demo-interactive.slide';
 import { DemoInteractiveSlide } from './slides/17-demo-interactive/demo-interactive.slide';
+import { HonorableMentionsSlide } from './slides/18-honorable-mentions/honorable-mentions.slide';
 
 register();
 
@@ -24,7 +25,7 @@ register();
   selector: 'app-signal-store-presentation',
   templateUrl: './signal-store.presentation.html',
   styleUrl: './signal-store.presentation.scss',
-  imports: [IntroSlide, InstallationSlide, BoilerplateNightmareSlide, StateUpdatesSlide, ComputedValuesSlide, SideEffectsSlide, TestingSlide, ProviderSetupSlide, CompositionSlide, PerformanceSlide, TypeScriptInferenceSlide, VerdictSlide, EslintSlide, DemoContextSlide, CodeDemoSlide, NgrxDemoInteractiveSlide, DemoInteractiveSlide],
+  imports: [IntroSlide, InstallationSlide, BoilerplateNightmareSlide, StateUpdatesSlide, ComputedValuesSlide, SideEffectsSlide, TestingSlide, ProviderSetupSlide, CompositionSlide, PerformanceSlide, TypeScriptInferenceSlide, VerdictSlide, EslintSlide, DemoContextSlide, CodeDemoSlide, NgrxDemoInteractiveSlide, DemoInteractiveSlide, HonorableMentionsSlide],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
