@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
+import { tapResponse } from '@ngrx/operators';
 import { Store } from '@ngrx/store';
 import { CartApiService } from '../../../../common-code/services/cart-api.service';
 import * as CartsActions from '../actions/carts.actions';
@@ -34,6 +35,10 @@ export class CartsEffects {
       switchMap(({ clientId }) =>
         this.cartApiService.getCartsByClient(clientId).pipe(
           tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /carts')),
+          tapResponse({
+            next: () => console.log('%c✅ [NgRx/operators]', 'color: #10b981', 'tapResponse: success'),
+            error: (error) => console.error('%c❌ [NgRx/operators]', 'color: #ef4444', 'tapResponse:', error)
+          }),
           map(carts => CartsActions.loadCartsSuccess({ carts })),
           catchError(error => of(CartsActions.loadCartsFailure({ error: error.message })))
         )

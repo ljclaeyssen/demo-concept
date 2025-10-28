@@ -1131,6 +1131,7 @@ export const ngrxStoresEffectsTs = `import { inject, Injectable } from '@angular
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
+import { tapResponse } from '@ngrx/operators';
 import { StoreApiService } from '../../../../common-code/services/store-api.service';
 import * as StoresActions from '../actions/stores.actions';
 
@@ -1146,6 +1147,10 @@ export class StoresEffects {
       switchMap(() =>
         this.storeApiService.getStores().pipe(
           tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /stores')),
+          tapResponse({
+            next: () => console.log('%c✅ [NgRx/operators]', 'color: #10b981', 'tapResponse: success'),
+            error: (error) => console.error('%c❌ [NgRx/operators]', 'color: #ef4444', 'tapResponse:', error)
+          }),
           map(stores => StoresActions.loadStoresSuccess({ stores })),
           catchError(error => of(StoresActions.loadStoresFailure({ error: error.message })))
         )
@@ -1163,6 +1168,7 @@ export const ngrxClientsEffectsTs = `import { inject, Injectable } from '@angula
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
+import { tapResponse } from '@ngrx/operators';
 import { Store } from '@ngrx/store';
 import { ClientApiService } from '../../../../common-code/services/client-api.service';
 import * as ClientsActions from '../actions/clients.actions';
@@ -1195,6 +1201,10 @@ export class ClientsEffects {
       switchMap(({ storeId }) =>
         this.clientApiService.getClientsByStore(storeId).pipe(
           tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /clients')),
+          tapResponse({
+            next: () => console.log('%c✅ [NgRx/operators]', 'color: #10b981', 'tapResponse: success'),
+            error: (error) => console.error('%c❌ [NgRx/operators]', 'color: #ef4444', 'tapResponse:', error)
+          }),
           map(clients => ClientsActions.loadClientsSuccess({ clients })),
           catchError(error => of(ClientsActions.loadClientsFailure({ error: error.message })))
         )
@@ -1220,6 +1230,7 @@ export const ngrxCartsEffectsTs = `import { inject, Injectable } from '@angular/
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
+import { tapResponse } from '@ngrx/operators';
 import { Store } from '@ngrx/store';
 import { CartApiService } from '../../../../common-code/services/cart-api.service';
 import * as CartsActions from '../actions/carts.actions';
@@ -1252,6 +1263,10 @@ export class CartsEffects {
       switchMap(({ clientId }) =>
         this.cartApiService.getCartsByClient(clientId).pipe(
           tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /carts')),
+          tapResponse({
+            next: () => console.log('%c✅ [NgRx/operators]', 'color: #10b981', 'tapResponse: success'),
+            error: (error) => console.error('%c❌ [NgRx/operators]', 'color: #ef4444', 'tapResponse:', error)
+          }),
           map(carts => CartsActions.loadCartsSuccess({ carts })),
           catchError(error => of(CartsActions.loadCartsFailure({ error: error.message })))
         )
@@ -1277,6 +1292,7 @@ export const ngrxProductsEffectsTs = `import { inject, Injectable } from '@angul
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
+import { tapResponse } from '@ngrx/operators';
 import { ProductApiService } from '../../../../common-code/services/product-api.service';
 import * as ProductsActions from '../actions/products.actions';
 import * as CartsActions from '../actions/carts.actions';
@@ -1306,6 +1322,10 @@ export class ProductsEffects {
       switchMap(({ cartId }) =>
         this.productApiService.getProductsByCart(cartId).pipe(
           tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /products')),
+          tapResponse({
+            next: () => console.log('%c✅ [NgRx/operators]', 'color: #10b981', 'tapResponse: success'),
+            error: (error) => console.error('%c❌ [NgRx/operators]', 'color: #ef4444', 'tapResponse:', error)
+          }),
           map(products => ProductsActions.loadProductsSuccess({ products })),
           catchError(error => of(ProductsActions.loadProductsFailure({ error: error.message })))
         )
@@ -1659,8 +1679,7 @@ export const ngrxDemoComponentHtml = `<div class="demo-grid">
 export const storesStoreTs = `import { computed, inject } from '@angular/core';
 import { signalStore, withState, withComputed, withMethods, withHooks, patchState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { pipe, switchMap, tap } from 'rxjs';
-import { tapResponse } from '@ngrx/operators';
+import { pipe, switchMap, tap, catchError, EMPTY } from 'rxjs';
 import { Store } from '../../../common-code/models/store.model';
 import { StoreApiService } from '../../../common-code/services/store-api.service';
 
@@ -1693,9 +1712,10 @@ export const StoresStore = signalStore(
         switchMap(() =>
           storeApiService.getStores().pipe(
             tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /stores')),
-            tapResponse({
-              next: (stores) => patchState(store, { stores, loading: false }),
-              error: (error: Error) => patchState(store, { error: error.message, loading: false })
+            tap((stores) => patchState(store, { stores, loading: false })),
+            catchError((error: Error) => {
+              patchState(store, { error: error.message, loading: false });
+              return EMPTY;
             })
           )
         )
@@ -1722,8 +1742,7 @@ export const StoresStore = signalStore(
 export const clientsStoreTs = `import { computed, inject } from '@angular/core';
 import { signalStore, withState, withComputed, withMethods, patchState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { pipe, switchMap, tap, EMPTY } from 'rxjs';
-import { tapResponse } from '@ngrx/operators';
+import { pipe, switchMap, tap, catchError, EMPTY } from 'rxjs';
 import { Client } from '../../../common-code/models/client.model';
 import { ClientApiService } from '../../../common-code/services/client-api.service';
 
@@ -1758,9 +1777,10 @@ export const ClientsStore = signalStore(
           patchState(store, { loading: true, error: null });
           return clientApiService.getClientsByStore(storeId).pipe(
             tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /clients')),
-            tapResponse({
-              next: (clients) => patchState(store, { clients, loading: false }),
-              error: (error: Error) => patchState(store, { error: error.message, loading: false })
+            tap((clients) => patchState(store, { clients, loading: false })),
+            catchError((error: Error) => {
+              patchState(store, { error: error.message, loading: false });
+              return EMPTY;
             })
           );
         })
@@ -1787,8 +1807,7 @@ export const ClientsStore = signalStore(
 export const cartsStoreTs = `import { computed, inject } from '@angular/core';
 import { signalStore, withState, withComputed, withMethods, patchState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { pipe, switchMap, tap, EMPTY } from 'rxjs';
-import { tapResponse } from '@ngrx/operators';
+import { pipe, switchMap, tap, catchError, EMPTY } from 'rxjs';
 import { Cart } from '../../../common-code/models/cart.model';
 import { CartApiService } from '../../../common-code/services/cart-api.service';
 
@@ -1823,9 +1842,10 @@ export const CartsStore = signalStore(
           patchState(store, { loading: true, error: null });
           return cartApiService.getCartsByClient(clientId).pipe(
             tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /carts')),
-            tapResponse({
-              next: (carts) => patchState(store, { carts, loading: false }),
-              error: (error: Error) => patchState(store, { error: error.message, loading: false })
+            tap((carts) => patchState(store, { carts, loading: false })),
+            catchError((error: Error) => {
+              patchState(store, { error: error.message, loading: false });
+              return EMPTY;
             })
           );
         })
@@ -1852,8 +1872,7 @@ export const CartsStore = signalStore(
 export const productsStoreTs = `import { computed, inject } from '@angular/core';
 import { signalStore, withState, withComputed, withMethods, patchState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { pipe, switchMap, tap, EMPTY } from 'rxjs';
-import { tapResponse } from '@ngrx/operators';
+import { pipe, switchMap, tap, catchError, EMPTY } from 'rxjs';
 import { Product } from '../../../common-code/models/product.model';
 import { ProductApiService } from '../../../common-code/services/product-api.service';
 
@@ -1886,9 +1905,10 @@ export const ProductsStore = signalStore(
           patchState(store, { loading: true, error: null });
           return productApiService.getProductsByCart(cartId).pipe(
             tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /products')),
-            tapResponse({
-              next: (products) => patchState(store, { products, loading: false }),
-              error: (error: Error) => patchState(store, { error: error.message, loading: false })
+            tap((products) => patchState(store, { products, loading: false })),
+            catchError((error: Error) => {
+              patchState(store, { error: error.message, loading: false });
+              return EMPTY;
             })
           );
         })
@@ -1905,7 +1925,7 @@ export const ProductsStore = signalStore(
 
 /**
  * Signal Store Demo Component - Composition des 4 Signal Stores
- * Source: src/app/presentations/signal-store/slides/demo-interactive/demo-interactive-content.component.ts
+ * Source: src/app/presentations/signal-store/slides/17-demo-interactive/demo-interactive-content.component.ts
  */
 export const signalStoreDemoComponentTs = `import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -1983,7 +2003,7 @@ export class DemoInteractiveContentComponent {
 
 /**
  * Signal Store Demo Template - Pas d'AsyncPipe !
- * Source: src/app/presentations/signal-store/slides/demo-interactive/demo-interactive-content.component.html
+ * Source: src/app/presentations/signal-store/slides/17-demo-interactive/demo-interactive-content.component.html
  */
 export const signalStoreDemoComponentHtml = `<div class="demo-grid">
   <!-- Store Selection -->

@@ -19,7 +19,11 @@
       "Bash(findstr:*)",
       "Bash(ng serve:*)",
       "Bash(cat:*)",
-      "Bash(del \"C:\\Users\\ljcla\\WebstormProjects\\demo-concept\\src\\app\\presentations\\signal-store\\demo\\components\\ngrx-demo\\ngrx-demo.module.ts\")"
+      "Bash(del \"C:\\Users\\ljcla\\WebstormProjects\\demo-concept\\src\\app\\presentations\\signal-store\\demo\\components\\ngrx-demo\\ngrx-demo.module.ts\")",
+      "Bash(timeout /t 15 /nobreak)",
+      "Bash(taskkill /F /PID 15272)",
+      "Bash(taskkill //F //PID 15272)",
+      "Bash(taskkill //F //PID 7256)"
     ],
     "deny": [],
     "ask": []

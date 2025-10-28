@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
+import { tapResponse } from '@ngrx/operators';
 import { Store } from '@ngrx/store';
 import { ClientApiService } from '../../../../common-code/services/client-api.service';
 import * as ClientsActions from '../actions/clients.actions';
@@ -34,6 +35,10 @@ export class ClientsEffects {
       switchMap(({ storeId }) =>
         this.clientApiService.getClientsByStore(storeId).pipe(
           tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /clients')),
+          tapResponse({
+            next: () => console.log('%c✅ [NgRx/operators]', 'color: #10b981', 'tapResponse: success'),
+            error: (error) => console.error('%c❌ [NgRx/operators]', 'color: #ef4444', 'tapResponse:', error)
+          }),
           map(clients => ClientsActions.loadClientsSuccess({ clients })),
           catchError(error => of(ClientsActions.loadClientsFailure({ error: error.message })))
         )

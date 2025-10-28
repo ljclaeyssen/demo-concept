@@ -1,14 +1,14 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { register } from 'swiper/element/bundle';
-import { WelcomeSlide } from './slides/welcome/welcome.slide';
-import { RoutingSlide } from './slides/routing/routing.slide';
-import { ComponentCreationSlide } from './slides/component-creation/component-creation.slide';
-import { SlideComponentsSlide } from './slides/slide-components/slide-components.slide';
-import { AddSlidesSlide } from './slides/add-slides/add-slides.slide';
-import { DisplayCodeSlide } from './slides/display-code/display-code.slide';
-import { ShowComponentCodeSlide } from './slides/show-component-code/show-component-code.slide';
-import { LiveDemoSlide } from './slides/live-demo/live-demo.slide';
-import { ConclusionSlide } from './slides/conclusion/conclusion.slide';
+import { WelcomeSlide } from './slides/1-welcome/welcome.slide';
+import { RoutingSlide } from './slides/2-routing/routing.slide';
+import { ComponentCreationSlide } from './slides/3-component-creation/component-creation.slide';
+import { SlideComponentsSlide } from './slides/4-slide-components/slide-components.slide';
+import { AddSlidesSlide } from './slides/5-add-slides/add-slides.slide';
+import { DisplayCodeSlide } from './slides/6-display-code/display-code.slide';
+import { ShowComponentCodeSlide } from './slides/7-show-component-code/show-component-code.slide';
+import { LiveDemoSlide } from './slides/8-live-demo/live-demo.slide';
+import { ConclusionSlide } from './slides/9-conclusion/conclusion.slide';
 
 // Register Swiper web components
 register();

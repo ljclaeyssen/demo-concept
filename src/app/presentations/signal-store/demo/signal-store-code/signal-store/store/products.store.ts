@@ -1,8 +1,7 @@
 import { computed, inject } from '@angular/core';
 import { signalStore, withState, withComputed, withMethods, patchState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { pipe, switchMap, tap, EMPTY } from 'rxjs';
-import { tapResponse } from '@ngrx/operators';
+import { pipe, switchMap, tap, catchError, EMPTY } from 'rxjs';
 import { Product } from '../../../common-code/models/product.model';
 import { ProductApiService } from '../../../common-code/services/product-api.service';
 
@@ -35,9 +34,10 @@ export const ProductsStore = signalStore(
           patchState(store, { loading: true, error: null });
           return productApiService.getProductsByCart(cartId).pipe(
             tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /products')),
-            tapResponse({
-              next: (products) => patchState(store, { products, loading: false }),
-              error: (error: Error) => patchState(store, { error: error.message, loading: false })
+            tap((products) => patchState(store, { products, loading: false })),
+            catchError((error: Error) => {
+              patchState(store, { error: error.message, loading: false });
+              return EMPTY;
             })
           );
         })

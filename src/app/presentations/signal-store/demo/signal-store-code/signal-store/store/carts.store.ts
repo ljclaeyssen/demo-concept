@@ -1,8 +1,7 @@
 import { computed, inject } from '@angular/core';
 import { signalStore, withState, withComputed, withMethods, patchState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { pipe, switchMap, tap, EMPTY } from 'rxjs';
-import { tapResponse } from '@ngrx/operators';
+import { pipe, switchMap, tap, catchError, EMPTY } from 'rxjs';
 import { Cart } from '../../../common-code/models/cart.model';
 import { CartApiService } from '../../../common-code/services/cart-api.service';
 
@@ -37,9 +36,10 @@ export const CartsStore = signalStore(
           patchState(store, { loading: true, error: null });
           return cartApiService.getCartsByClient(clientId).pipe(
             tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /carts')),
-            tapResponse({
-              next: (carts) => patchState(store, { carts, loading: false }),
-              error: (error: Error) => patchState(store, { error: error.message, loading: false })
+            tap((carts) => patchState(store, { carts, loading: false })),
+            catchError((error: Error) => {
+              patchState(store, { error: error.message, loading: false });
+              return EMPTY;
             })
           );
         })
