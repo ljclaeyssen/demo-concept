@@ -1,0 +1,24 @@
+<h1>🔄 Lazy Loading : Routes vs @defer</h1>
+
+<div class="slide-container">
+  <p class="subtitle">De la granularité route à la granularité composant</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ Approche classique (routes)</h2>
+      <pre><code [highlight]="lazyRoutesCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>✅ Approche moderne (@defer)</h2>
+      <pre><code [highlight]="deferCode()" language="html"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Lazy loading au niveau template (pas besoin de routes)</div>
+    <div class="benefit-item">✅ Granularité fine : chaque composant peut être defer</div>
+    <div class="benefit-item">✅ Configuration zéro : tout dans le template</div>
+    <div class="benefit-item">✅ Triggers intelligents : viewport, interaction, idle, timer...</div>
+  </div>
+</div>

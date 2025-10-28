@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, computed, isDevMode } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 interface Presentation {
@@ -16,7 +16,7 @@ interface Presentation {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandingPage {
-  presentations = signal<Presentation[]>([
+  private allPresentations = signal<Presentation[]>([
     {
       title: 'Hello World',
       description: 'Apprenez à créer des présentations dans cette application. Ce tutoriel couvre le routage, les slides, la coloration syntaxique et les démos de composants interactifs.',
@@ -34,6 +34,21 @@ export class LandingPage {
       description: 'Comprenez pourquoi NgRx SignalStore remplace complètement le vieux NgRx Store : zéro boilerplate, signals natifs, et performance maximale.',
       route: '/signal-store',
       icon: '🚀'
+    },
+    {
+      title: 'Deferrable Views (WIP)',
+      description: 'Découvrez @defer pour lazy-loader vos composants au niveau template : réduisez drastiquement le bundle initial et optimisez les performances.',
+      route: '/deferrable-views',
+      icon: '⚡'
     }
   ]);
+
+  presentations = computed(() => {
+    const all = this.allPresentations();
+    // Filter out Hello World in production
+    if (!isDevMode()) {
+      return all.filter(p => p.route !== '/hello-world');
+    }
+    return all;
+  });
 }

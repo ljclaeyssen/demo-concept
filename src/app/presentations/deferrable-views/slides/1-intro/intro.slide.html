@@ -1,0 +1,24 @@
+<h1>⚡ Deferrable Views : Le problème du bundle size</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Votre app charge TOUT, même ce qui n'est jamais utilisé...</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>📦 Le problème</h2>
+      <pre><code [highlight]="problemCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>📊 Impact utilisateur</h2>
+      <pre><code [highlight]="statsCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ Bundle initial énorme (plusieurs MB)</div>
+    <div class="problem-item">❌ Temps de chargement catastrophique sur mobile/3G</div>
+    <div class="problem-item">❌ Code inutilisé chargé pour rien (80% des composants non vus)</div>
+    <div class="problem-item">❌ Pénalités SEO et taux de rebond élevé</div>
+  </div>
+</div>
