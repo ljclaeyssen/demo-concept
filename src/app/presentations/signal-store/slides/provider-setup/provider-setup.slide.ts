@@ -52,10 +52,10 @@ export const appConfig: ApplicationConfig = {
 // ❌ Setup centralisé = fichier config qui grossit`);
 
   signalStoreCode = signal(`// ========================================
-// Setup SignalStore
+// Setup SignalStore - Global (root)
 // ========================================
 export const UsersStore = signalStore(
-  { providedIn: 'root' },  // ← C'est tout !
+  { providedIn: 'root' },  // ← Pour singleton global
   withState({
     users: [] as User[],
     loading: false,
@@ -66,22 +66,31 @@ export const UsersStore = signalStore(
 );
 
 // ========================================
-// C'est fini !
+// Setup SignalStore - Lazy Loading
 // ========================================
-// Pas besoin de toucher app.config.ts
-// Pas besoin de configuration centrale
-// Chaque store se configure lui-même
-
-// Pour ajouter un nouveau store :
 export const ProductsStore = signalStore(
-  { providedIn: 'root' },  // ← Juste ça
-  withState({ products: [] as Product[] })
+  // Pas de providedIn ici !
+  withState({ products: [] as Product[] }),
+  withMethods(...),
+  withComputed(...)
 );
 
-export const CartStore = signalStore(
-  { providedIn: 'root' },  // ← Toujours ça
-  withState({ items: [] as CartItem[] })
-);
+// Dans votre route lazy-loaded :
+{
+  path: 'products',
+  loadComponent: () => import('./products/products.component')
+    .then(m => m.ProductsComponent),
+  providers: [ProductsStore]  // ← Provider au niveau route
+}
 
-// ✅ Zéro configuration centrale, zéro boilerplate`);
+// Ou dans un composant :
+@Component({
+  selector: 'app-products',
+  providers: [ProductsStore]  // ← Provider au niveau composant
+})
+export class ProductsComponent {
+  store = inject(ProductsStore);
+}
+
+// ✅ Zéro configuration centrale, flexible (root ou lazy)`);
 }

@@ -1,7 +1,7 @@
 <h1>⚙️ Provider Setup : Configuration vs Convention</h1>
 
 <div class="slide-container">
-  <p class="subtitle">Déclarer les stores : configuration centralisée vs auto-suffisant</p>
+  <p class="subtitle">Déclarer les stores : configuration centralisée vs flexible (global/lazy)</p>
 
   <div class="two-columns">
     <div class="code-section">
@@ -10,7 +10,7 @@
     </div>
 
     <div class="code-section">
-      <h2>✅ SignalStore : providedIn: 'root'</h2>
+      <h2>✅ SignalStore : root ou lazy loading</h2>
       <pre><code [highlight]="signalStoreCode()" language="typescript"></code></pre>
     </div>
   </div>
