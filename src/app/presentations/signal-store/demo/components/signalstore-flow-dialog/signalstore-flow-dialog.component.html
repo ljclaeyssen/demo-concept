@@ -1,0 +1,39 @@
+<div class="flow-dialog-wrapper">
+  <div class="dialog-header">
+    <h3>⚡ SignalStore : Le Flow Simple</h3>
+    <p-button
+      icon="pi pi-times"
+      [text]="true"
+      [rounded]="true"
+      severity="secondary"
+      (onClick)="close()" />
+  </div>
+
+  <div class="flow-diagram">
+    <div class="flow-step">
+      <div class="flow-box component">Component</div>
+      <div class="flow-label">usersStore.loadUsers()</div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="flow-step">
+      <div class="flow-box store">Store (rxMethod)</div>
+      <div class="flow-label">patchState(&#123; loading: true &#125;)</div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="flow-step">
+      <div class="flow-box service">Service API</div>
+      <div class="flow-label">usersService.getUsers()</div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="flow-step">
+      <div class="flow-box store">tapResponse + patchState</div>
+      <div class="flow-label">Mise à jour directe du state</div>
+    </div>
+  </div>
+</div>

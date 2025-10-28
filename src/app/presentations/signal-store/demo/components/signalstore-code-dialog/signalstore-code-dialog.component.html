@@ -1,0 +1,48 @@
+<div class="code-dialog-wrapper">
+  <div class="dialog-header">
+    <h3>⚡ SignalStore - Tous les fichiers (6 fichiers)</h3>
+    <p-button
+      icon="pi pi-times"
+      [text]="true"
+      [rounded]="true"
+      severity="secondary"
+      (onClick)="close()" />
+  </div>
+
+  <p-tabs value="0">
+    <p-tablist>
+      <p-tab value="0">Stores (4)</p-tab>
+      <p-tab value="1">Component (2)</p-tab>
+    </p-tablist>
+    <p-tabpanels>
+      <p-tabpanel value="0">
+        <h3>📁 Signal Stores (4 fichiers)</h3>
+        <h4>stores.store.ts</h4>
+        <pre><code [highlight]="config.data.storesStore" language="typescript"></code></pre>
+        <h4>clients.store.ts</h4>
+        <pre><code [highlight]="config.data.clientsStore" language="typescript"></code></pre>
+        <h4>carts.store.ts</h4>
+        <pre><code [highlight]="config.data.cartsStore" language="typescript"></code></pre>
+        <h4>products.store.ts</h4>
+        <pre><code [highlight]="config.data.productsStore" language="typescript"></code></pre>
+        <div class="success-box">
+          ✅ <strong>Séparation des responsabilités :</strong> Chaque store gère 1 seule entité !
+        </div>
+      </p-tabpanel>
+      <p-tabpanel value="1">
+        <h3>📁 Component (2 fichiers)</h3>
+        <h4>demo-interactive.slide.ts</h4>
+        <pre><code [highlight]="config.data.signalStoreComponent" language="typescript"></code></pre>
+        <h4>demo-interactive.slide.html</h4>
+        <pre><code [highlight]="config.data.signalStoreComponentHtml" language="html"></code></pre>
+        <div class="success-box">
+          ✅ <strong>Orchestration au niveau du composant :</strong> Injection des 4 stores, pas de boilerplate !
+        </div>
+      </p-tabpanel>
+    </p-tabpanels>
+  </p-tabs>
+
+  <div class="success-box">
+    ✅ <strong>Total :</strong> 6 fichiers seulement (vs 19 pour NgRx) pour la même fonctionnalité !
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="code-dialog-wrapper">
+  <div class="dialog-header">
+    <h3>📦 Code Commun (12 fichiers partagés)</h3>
+    <p-button
+      icon="pi pi-times"
+      [text]="true"
+      [rounded]="true"
+      severity="secondary"
+      (onClick)="close()" />
+  </div>
+
+  <p-tabs value="0">
+    <p-tablist>
+      <p-tab value="0">Models (4)</p-tab>
+      <p-tab value="1">Mocks (4)</p-tab>
+      <p-tab value="2">Services (4)</p-tab>
+    </p-tablist>
+    <p-tabpanels>
+      <p-tabpanel value="0">
+        <h3>📁 Models (4 fichiers)</h3>
+        <h4>store.model.ts</h4>
+        <pre><code [highlight]="config.data.storeModel" language="typescript"></code></pre>
+        <h4>client.model.ts</h4>
+        <pre><code [highlight]="config.data.clientModel" language="typescript"></code></pre>
+        <h4>cart.model.ts</h4>
+        <pre><code [highlight]="config.data.cartModel" language="typescript"></code></pre>
+        <h4>product.model.ts</h4>
+        <pre><code [highlight]="config.data.productModel" language="typescript"></code></pre>
+      </p-tabpanel>
+      <p-tabpanel value="1">
+        <h3>📁 Mocks (4 fichiers)</h3>
+        <h4>stores.mock.ts</h4>
+        <pre><code [highlight]="config.data.storesMock" language="typescript"></code></pre>
+        <h4>clients.mock.ts</h4>
+        <pre><code [highlight]="config.data.clientsMock" language="typescript"></code></pre>
+        <h4>carts.mock.ts</h4>
+        <pre><code [highlight]="config.data.cartsMock" language="typescript"></code></pre>
+        <h4>products.mock.ts</h4>
+        <pre><code [highlight]="config.data.productsMock" language="typescript"></code></pre>
+      </p-tabpanel>
+      <p-tabpanel value="2">
+        <h3>📁 Services (4 fichiers)</h3>
+        <h4>store-api.service.ts</h4>
+        <pre><code [highlight]="config.data.storeApiService" language="typescript"></code></pre>
+        <h4>client-api.service.ts</h4>
+        <pre><code [highlight]="config.data.clientApiService" language="typescript"></code></pre>
+        <h4>cart-api.service.ts</h4>
+        <pre><code [highlight]="config.data.cartApiService" language="typescript"></code></pre>
+        <h4>product-api.service.ts</h4>
+        <pre><code [highlight]="config.data.productApiService" language="typescript"></code></pre>
+      </p-tabpanel>
+    </p-tabpanels>
+  </p-tabs>
+
+  <div class="success-box">
+    ✅ <strong>Code partagé :</strong> Ces 12 fichiers sont utilisés par les deux approches (NgRx et Signal Stores)
+  </div>
+</div>

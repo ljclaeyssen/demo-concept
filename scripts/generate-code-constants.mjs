@@ -3,6 +3,7 @@ import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { helloWorldCodeGeneration } from '../src/app/presentations/hello-world/code-generation.config.mjs';
 import { typedFormsCodeGeneration } from '../src/app/presentations/typed-forms/code-generation.config.mjs';
+import { signalStoreCodeGeneration } from '../src/app/presentations/signal-store/code-generation.config.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -71,3 +72,6 @@ generateCodeConstants(helloWorldCodeGeneration.presentationName, helloWorldCodeG
 
 // Typed Forms presentation
 generateCodeConstants(typedFormsCodeGeneration.presentationName, typedFormsCodeGeneration.files);
+
+// Signal Store presentation
+generateCodeConstants(signalStoreCodeGeneration.presentationName, signalStoreCodeGeneration.files);

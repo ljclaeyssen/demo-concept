@@ -1,0 +1,60 @@
+<div class="flow-dialog-wrapper">
+  <div class="dialog-header">
+    <h3>🍝 NgRx Store : Le Flow de la Mort</h3>
+    <p-button
+      icon="pi pi-times"
+      [text]="true"
+      [rounded]="true"
+      severity="secondary"
+      (onClick)="close()" />
+  </div>
+
+  <div class="flow-diagram">
+    <div class="flow-step">
+      <div class="flow-box component">Component</div>
+      <div class="flow-label">dispatch(loadUsers())</div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="flow-step">
+      <div class="flow-box effect">Effect écoute</div>
+      <div class="flow-label">ofType(loadUsers)</div>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="flow-step">
+      <div class="flow-box service">Service API</div>
+      <div class="flow-label">usersService.getUsers()</div>
+    </div>
+
+    <div class="flow-split">
+      <div class="flow-branch">
+        <div class="flow-arrow success">↓ Success</div>
+        <div class="flow-step">
+          <div class="flow-box action-success">Action Success</div>
+          <div class="flow-label">loadUsersSuccess(&#123; users &#125;)</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-box reducer">Reducer</div>
+          <div class="flow-label">on(loadUsersSuccess, ...)</div>
+        </div>
+      </div>
+
+      <div class="flow-branch">
+        <div class="flow-arrow error">↓ Error</div>
+        <div class="flow-step">
+          <div class="flow-box action-error">Action Failure</div>
+          <div class="flow-label">loadUsersFailure(&#123; error &#125;)</div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="flow-box reducer">Reducer</div>
+          <div class="flow-label">on(loadUsersFailure, ...)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

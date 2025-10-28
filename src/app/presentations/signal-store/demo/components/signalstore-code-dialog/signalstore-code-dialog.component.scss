@@ -1,0 +1,24 @@
+.code-dialog-wrapper {
+  .dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1e293b;
+    }
+  }
+
+  .success-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #d1fae5;
+    border-left: 4px solid #10b981;
+    border-radius: 4px;
+    color: #065f46;
+  }
+}

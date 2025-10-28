@@ -1,0 +1,94 @@
+<h1>💻 Démo Code : Comparaison Complète</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Explorez les différences d'implémentation</p>
+
+  <div class="demo-buttons">
+    <button pButton (click)="openSharedCode()" label="📦 Voir le code commun" class="p-button-lg"></button>
+    <button pButton (click)="openNgrxCode()" label="🍝 Voir le code NgRx/Store" class="p-button-lg p-button-danger"></button>
+    <button pButton (click)="openSignalStoreCode()" label="⚡ Voir le code SignalStore" class="p-button-lg p-button-success"></button>
+  </div>
+
+  <div class="comparison-table">
+    <h2>📊 Comparaison Complète</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Métrique</th>
+          <th class="ngrx-col">NgRx Store 🍝</th>
+          <th class="signal-col">Signal Stores ⚡</th>
+          <th class="ratio-col">Ratio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Fichiers Total</strong></td>
+          <td class="ngrx-col">19 fichiers</td>
+          <td class="signal-col">6 fichiers</td>
+          <td class="ratio-col">3.17x</td>
+        </tr>
+        <tr>
+          <td><strong>Lignes de code</strong></td>
+          <td class="ngrx-col">718 lignes</td>
+          <td class="signal-col">387 lignes</td>
+          <td class="ratio-col">1.85x</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="section-header">Détails NgRx Store</td>
+        </tr>
+        <tr>
+          <td>Actions</td>
+          <td class="ngrx-col">4 fichiers (~100 lignes)</td>
+          <td class="signal-col">-</td>
+          <td class="ratio-col">-</td>
+        </tr>
+        <tr>
+          <td>Reducers</td>
+          <td class="ngrx-col">5 fichiers (~150 lignes)</td>
+          <td class="signal-col">-</td>
+          <td class="ratio-col">-</td>
+        </tr>
+        <tr>
+          <td>Effects</td>
+          <td class="ngrx-col">4 fichiers (~100 lignes)</td>
+          <td class="signal-col">-</td>
+          <td class="ratio-col">-</td>
+        </tr>
+        <tr>
+          <td>Selectors</td>
+          <td class="ngrx-col">4 fichiers (~180 lignes)</td>
+          <td class="signal-col">-</td>
+          <td class="ratio-col">-</td>
+        </tr>
+        <tr>
+          <td>Component</td>
+          <td class="ngrx-col">2 fichiers (187 lignes)</td>
+          <td class="signal-col">-</td>
+          <td class="ratio-col">-</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="section-header">Détails Signal Stores</td>
+        </tr>
+        <tr>
+          <td>Signal Stores</td>
+          <td class="ngrx-col">-</td>
+          <td class="signal-col">4 fichiers (209 lignes)</td>
+          <td class="ratio-col">-</td>
+        </tr>
+        <tr>
+          <td>Component</td>
+          <td class="ngrx-col">-</td>
+          <td class="signal-col">2 fichiers (178 lignes)</td>
+          <td class="ratio-col">-</td>
+        </tr>
+        <tr class="verdict-row">
+          <td colspan="4">
+            <strong>🎯 Verdict :</strong> Signal Stores nécessite <strong>3.17x moins de fichiers</strong>
+            et <strong>1.85x moins de code</strong> pour la même fonctionnalité !
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

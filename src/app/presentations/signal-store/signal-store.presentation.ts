@@ -12,8 +12,10 @@ import { PerformanceSlide } from './slides/performance/performance.slide';
 import { TypeScriptInferenceSlide } from './slides/typescript-inference/typescript-inference.slide';
 import { VerdictSlide } from './slides/verdict/verdict.slide';
 import { EslintSlide } from './slides/eslint/eslint.slide';
+import { DemoContextSlide } from './slides/demo-context/demo-context.slide';
 import { CodeDemoSlide } from './slides/code-demo/code-demo.slide';
 import { DemoInteractiveSlide } from './slides/demo-interactive/demo-interactive.slide';
+import { NgrxDemoInteractiveSlide } from './slides/ngrx-demo-interactive/ngrx-demo-interactive.slide';
 
 register();
 
@@ -21,7 +23,7 @@ register();
   selector: 'app-signal-store-presentation',
   templateUrl: './signal-store.presentation.html',
   styleUrl: './signal-store.presentation.scss',
-  imports: [IntroSlide, BoilerplateNightmareSlide, StateUpdatesSlide, ComputedValuesSlide, SideEffectsSlide, TestingSlide, ProviderSetupSlide, CompositionSlide, PerformanceSlide, TypeScriptInferenceSlide, VerdictSlide, EslintSlide, CodeDemoSlide, DemoInteractiveSlide],
+  imports: [IntroSlide, BoilerplateNightmareSlide, StateUpdatesSlide, ComputedValuesSlide, SideEffectsSlide, TestingSlide, ProviderSetupSlide, CompositionSlide, PerformanceSlide, TypeScriptInferenceSlide, VerdictSlide, EslintSlide, DemoContextSlide, CodeDemoSlide, NgrxDemoInteractiveSlide, DemoInteractiveSlide],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

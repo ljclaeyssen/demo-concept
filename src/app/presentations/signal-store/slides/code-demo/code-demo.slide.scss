@@ -1,0 +1,176 @@
+.demo-buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+
+  button {
+    font-size: 1.2rem;
+    padding: 1.5rem 2rem;
+  }
+}
+
+.comparison-table {
+  margin-top: 3rem;
+
+  h2 {
+    text-align: center;
+    color: #1e293b;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+
+    thead {
+      background: #1e293b;
+      color: white;
+
+      th {
+        padding: 1.5rem 1rem;
+        text-align: left;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #e2e8f0;
+        transition: background 0.2s ease;
+
+        &:hover:not(.section-header):not(.verdict-row) {
+          background: #f8fafc;
+        }
+
+        &.section-header td {
+          background: #475569;
+          color: white;
+          font-weight: 700;
+          font-size: 1.1rem;
+          padding: 1rem;
+          text-align: center;
+        }
+
+        &.verdict-row td {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          font-size: 1.2rem;
+          padding: 1.5rem;
+          text-align: center;
+
+          strong {
+            color: #fbbf24;
+          }
+        }
+      }
+
+      td {
+        padding: 1rem;
+        font-size: 1rem;
+
+        &.ngrx-col {
+          background: rgba(239, 68, 68, 0.1);
+          color: #dc2626;
+          font-weight: 600;
+        }
+
+        &.signal-col {
+          background: rgba(34, 197, 94, 0.1);
+          color: #16a34a;
+          font-weight: 600;
+        }
+
+        &.ratio-col {
+          background: rgba(99, 102, 241, 0.1);
+          color: #4f46e5;
+          font-weight: 700;
+          text-align: center;
+          font-size: 1.2rem;
+        }
+
+        strong {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+:host ::ng-deep {
+  .code-dialog {
+    .p-dialog-header {
+      background: #1e293b;
+      color: white;
+      padding: 1.5rem;
+
+      h2 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+    }
+
+    .p-dialog-content {
+      padding: 0;
+      background: #0f172a;
+
+      p-tabs {
+        height: 100%;
+
+        p-tabpanels {
+          background: #0f172a;
+          padding: 1.5rem;
+          max-height: calc(90vh - 200px);
+          overflow-y: auto;
+          display: block;
+
+          h3 {
+            color: #94a3b8;
+            margin: 0 0 1rem 0;
+            font-size: 1.1rem;
+          }
+
+          pre {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .warning-box {
+    background: rgba(231, 76, 60, 0.2);
+    border: 2px solid #e74c3c;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .success-box {
+    background: rgba(39, 174, 96, 0.2);
+    border: 2px solid #27ae60;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .test-note {
+    color: #94a3b8;
+    font-style: italic;
+    margin-top: 1rem;
+    text-align: center;
+  }
+}

@@ -1,0 +1,101 @@
+<div class="demo-grid">
+  <!-- Store Selection -->
+  <div class="selection-card">
+    <h3>1. 🏪 Choisissez un Magasin</h3>
+    <p-select
+      [options]="(stores$ | async) || []"
+      [(ngModel)]="selectedStoreIdValue"
+      (onChange)="onStoreChange($event.value)"
+      optionLabel="name"
+      optionValue="id"
+      [loading]="(storesLoading$ | async) || false"
+      placeholder="Sélectionner un magasin"
+      [style]="{'width': '100%'}"
+    />
+    @if (selectedStore$ | async; as selectedStore) {
+      <div class="selection-info">
+        <strong>{{ selectedStore.name }}</strong>
+        <p>{{ selectedStore.city }}, {{ selectedStore.country }}</p>
+      </div>
+    }
+  </div>
+
+  <!-- Client Selection -->
+  <div class="selection-card" [class.disabled]="!(selectedStoreId$ | async)">
+    <h3>2. 👤 Choisissez un Client</h3>
+    <p-select
+      [options]="(clients$ | async) || []"
+      [(ngModel)]="selectedClientIdValue"
+      (onChange)="onClientChange($event.value)"
+      optionLabel="name"
+      optionValue="id"
+      [loading]="(clientsLoading$ | async) || false"
+      [disabled]="!(selectedStoreId$ | async)"
+      placeholder="Sélectionner un client"
+      [style]="{'width': '100%'}"
+    />
+    @if (selectedClient$ | async; as selectedClient) {
+      <div class="selection-info">
+        <strong>{{ selectedClient.name }}</strong>
+        <p>{{ selectedClient.email }}</p>
+      </div>
+    }
+  </div>
+
+  <!-- Cart Selection -->
+  <div class="selection-card" [class.disabled]="!(selectedClientId$ | async)">
+    <h3>3. 🛒 Choisissez un Panier</h3>
+    <p-select
+      [options]="(carts$ | async) || []"
+      [(ngModel)]="selectedCartIdValue"
+      (onChange)="onCartChange($event.value)"
+      optionLabel="date"
+      optionValue="id"
+      [loading]="(cartsLoading$ | async) || false"
+      [disabled]="!(selectedClientId$ | async)"
+      placeholder="Sélectionner un panier"
+      [style]="{'width': '100%'}"
+    />
+    @if (selectedCart$ | async; as selectedCart) {
+      <div class="selection-info">
+        <strong>Panier du {{ selectedCart.date }}</strong>
+        <p>Total: {{ selectedCart.total | currency:'EUR' }}</p>
+      </div>
+    }
+  </div>
+
+  <!-- Products List -->
+  <div class="products-card" [class.disabled]="!(selectedCartId$ | async)">
+    <h3>4. 📦 Produits dans le Panier</h3>
+    @if (productsLoading$ | async) {
+      <div class="loading-state">Chargement des produits...</div>
+    } @else if ((products$ | async)?.length) {
+      <div class="products-list">
+        @for (product of (products$ | async); track product.id) {
+          <div class="product-item">
+            <div class="product-details">
+              <strong>{{ product.name }}</strong>
+              <span class="product-category">{{ product.category }}</span>
+            </div>
+            <div class="product-price">
+              <span class="quantity">x{{ product.quantity }}</span>
+              <strong>{{ product.price * product.quantity | currency:'EUR' }}</strong>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="products-total">
+        <strong>Total:</strong>
+        <strong class="total-amount">{{ (productsTotal$ | async) | currency:'EUR' }}</strong>
+      </div>
+    } @else if (selectedCartId$ | async) {
+      <div class="empty-state">Aucun produit dans ce panier</div>
+    } @else {
+      <div class="empty-state">Sélectionnez un panier pour voir les produits</div>
+    }
+  </div>
+</div>
+
+<div class="code-hint">
+  ⚠️ Ceci nécessite <strong>19 fichiers</strong> : actions, reducers, effects, selectors + component (718 lignes de code !)
+</div>

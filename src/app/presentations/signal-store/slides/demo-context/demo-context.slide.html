@@ -1,0 +1,137 @@
+<h1>🎯 Contexte de la Démo</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Une application de shopping complète pour comparer les deux approches</p>
+
+  <div class="context-grid">
+    <div class="use-case-section">
+      <h2>📱 Use Case</h2>
+      <p>Application de gestion de shopping avec 4 entités connectées :</p>
+      <div class="entity-flow">
+        <div class="entity-card">
+          <span class="entity-icon">🏪</span>
+          <div class="entity-info">
+            <strong>Stores</strong>
+            <small>10 magasins</small>
+          </div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="entity-card">
+          <span class="entity-icon">👥</span>
+          <div class="entity-info">
+            <strong>Clients</strong>
+            <small>50 clients</small>
+          </div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="entity-card">
+          <span class="entity-icon">🛒</span>
+          <div class="entity-info">
+            <strong>Carts</strong>
+            <small>122 paniers</small>
+          </div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="entity-card">
+          <span class="entity-icon">📦</span>
+          <div class="entity-info">
+            <strong>Products</strong>
+            <small>288 produits</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="features-section">
+      <h2>⚙️ Fonctionnalités</h2>
+      <div class="features-list">
+        <div class="feature-item">
+          <span class="check">✅</span>
+          <div>
+            <strong>Sélection en cascade</strong>
+            <small>Store → Clients → Carts → Products</small>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="check">✅</span>
+          <div>
+            <strong>Chargement asynchrone</strong>
+            <small>Simulation d'API avec délai</small>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="check">✅</span>
+          <div>
+            <strong>Valeurs calculées</strong>
+            <small>Total du panier en temps réel</small>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="check">✅</span>
+          <div>
+            <strong>Gestion d'état</strong>
+            <small>Loading, erreurs, données</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comparison-section">
+      <h2>⚔️ Comparaison</h2>
+      <div class="comparison-grid">
+        <div class="approach-card ngrx">
+          <h3>🍝 NgRx Store</h3>
+          <ul>
+            <li>Actions, Reducers, Effects, Selectors</li>
+            <li>Observable streams</li>
+            <li>AsyncPipe partout</li>
+            <li>Boilerplate massif</li>
+          </ul>
+        </div>
+        <div class="vs-divider">
+          <span>VS</span>
+        </div>
+        <div class="approach-card signal">
+          <h3>⚡ Signal Stores</h3>
+          <ul>
+            <li>4 Signal Stores séparés</li>
+            <li>Signals réactifs</li>
+            <li>Pas d'AsyncPipe</li>
+            <li>Code minimal</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="metrics-preview">
+      <h2>📊 Aperçu des Métriques</h2>
+      <div class="metrics-boxes">
+        <div class="metric-box">
+          <div class="metric-value">19 vs 6</div>
+          <div class="metric-label">Fichiers</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-value">718 vs 387</div>
+          <div class="metric-label">Lignes de code</div>
+        </div>
+        <div class="metric-box highlight">
+          <div class="metric-value">3.17x</div>
+          <div class="metric-label">Moins de fichiers</div>
+        </div>
+        <div class="metric-box highlight">
+          <div class="metric-value">1.85x</div>
+          <div class="metric-label">Moins de code</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="next-slides-info">
+    <p>👉 Les prochaines slides vous permettront de :</p>
+    <ul>
+      <li><strong>Voir le code complet</strong> des deux approches</li>
+      <li><strong>Tester interactivement</strong> les deux démos</li>
+      <li><strong>Comparer</strong> l'expérience développeur</li>
+    </ul>
+  </div>
+</div>
