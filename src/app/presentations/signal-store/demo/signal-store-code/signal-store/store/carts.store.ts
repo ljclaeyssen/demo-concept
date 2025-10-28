@@ -21,7 +21,6 @@ const initialState: CartsState = {
 };
 
 export const CartsStore = signalStore(
-  { providedIn: 'root' },
   withState(initialState),
   withComputed(({ carts, selectedCartId }) => ({
     selectedCart: computed(() => carts().find(c => c.id === selectedCartId()) || null)
@@ -29,11 +28,15 @@ export const CartsStore = signalStore(
   withMethods((store, cartApiService = inject(CartApiService)) => ({
     loadCartsByClient: rxMethod<number | null>(
       pipe(
-        tap(() => patchState(store, { carts: [], selectedCartId: null })),
+        tap(() => {
+          console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'CartsStore.loadCartsByClient()');
+          patchState(store, { carts: [], selectedCartId: null });
+        }),
         switchMap((clientId) => {
           if (clientId === null) return EMPTY;
           patchState(store, { loading: true, error: null });
           return cartApiService.getCartsByClient(clientId).pipe(
+            tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /carts')),
             tapResponse({
               next: (carts) => patchState(store, { carts, loading: false }),
               error: (error: Error) => patchState(store, { error: error.message, loading: false })
@@ -44,10 +47,12 @@ export const CartsStore = signalStore(
     ),
 
     selectCart(cartId: number | null) {
+      console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'CartsStore.selectCart()');
       patchState(store, { selectedCartId: cartId });
     },
 
     reset() {
+      console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'CartsStore.reset()');
       patchState(store, { carts: [], selectedCartId: null });
     }
   }))

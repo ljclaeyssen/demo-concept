@@ -3,6 +3,20 @@
 <div class="slide-container">
   <p class="subtitle">Une seule ligne de code par action, tout le reste est automatique !</p>
 
+  @if (!showDemo()) {
+    <div class="console-prompt">
+      <h2>📊 Observez les logs Signal Store !</h2>
+      <p>Avant de lancer la démo, ouvrez la <strong>Console de votre navigateur</strong> (F12) pour observer les logs.</p>
+      <p>Vous verrez uniquement les appels ⚡ Signal Store s'afficher de manière propre et lisible...</p>
+      <p-button
+        label="Ma console est ouverte, lancer la démo !"
+        icon="pi pi-play"
+        severity="success"
+        (onClick)="openDemo()" />
+    </div>
+  }
+
+  @if (showDemo()) {
   <div class="demo-grid">
     <!-- Store Selection -->
     <div class="selection-card">
@@ -104,4 +118,5 @@
   <div class="code-hint">
     💡 Tout ceci fonctionne avec <strong>6 fichiers</strong> (4 stores + component) : seulement 387 lignes de code !
   </div>
+  }
 </div>

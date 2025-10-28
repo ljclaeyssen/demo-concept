@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { map, catchError, switchMap } from 'rxjs/operators';
+import { map, catchError, switchMap, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { CartApiService } from '../../../../common-code/services/cart-api.service';
 import * as CartsActions from '../actions/carts.actions';
@@ -17,6 +17,7 @@ export class CartsEffects {
   loadCartsOnClientSelect$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ClientsActions.selectClient),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'CartsEffects.loadCartsOnClientSelect$')),
       switchMap(({ clientId }) => {
         if (clientId === null) {
           return of(CartsActions.clearCarts());
@@ -29,8 +30,10 @@ export class CartsEffects {
   loadCarts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CartsActions.loadCarts),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'CartsEffects.loadCarts$')),
       switchMap(({ clientId }) =>
         this.cartApiService.getCartsByClient(clientId).pipe(
+          tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /carts')),
           map(carts => CartsActions.loadCartsSuccess({ carts })),
           catchError(error => of(CartsActions.loadCartsFailure({ error: error.message })))
         )
@@ -41,6 +44,7 @@ export class CartsEffects {
   clearProductsOnClearCarts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CartsActions.clearCarts),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'CartsEffects.clearProductsOnClearCarts$')),
       map(() => ProductsActions.clearProducts())
     )
   );

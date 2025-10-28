@@ -3,6 +3,21 @@
 <div class="slide-container">
   <p class="subtitle">Actions → Reducers → Effects → Selectors... La complexité NgRx en action !</p>
 
-  <app-ngrx-demo />
+  @if (!showDemo()) {
+    <div class="console-prompt">
+      <h2>📊 Observez les logs NgRx !</h2>
+      <p>Avant de lancer la démo, ouvrez la <strong>Console de votre navigateur</strong> (F12) pour observer les logs.</p>
+      <p>Vous verrez les actions 🍝, reducers 🔄, et effects ⚡ NgRx s'afficher en cascade...</p>
+      <p-button
+        label="Ma console est ouverte, lancer la démo !"
+        icon="pi pi-play"
+        severity="success"
+        (onClick)="openDemo()" />
+    </div>
+  }
+
+  @if (showDemo()) {
+    <app-ngrx-demo />
+  }
 
 </div>

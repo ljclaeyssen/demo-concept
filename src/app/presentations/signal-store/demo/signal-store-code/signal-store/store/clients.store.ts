@@ -21,7 +21,6 @@ const initialState: ClientsState = {
 };
 
 export const ClientsStore = signalStore(
-  { providedIn: 'root' },
   withState(initialState),
   withComputed(({ clients, selectedClientId }) => ({
     selectedClient: computed(() => clients().find(c => c.id === selectedClientId()) || null)
@@ -29,11 +28,15 @@ export const ClientsStore = signalStore(
   withMethods((store, clientApiService = inject(ClientApiService)) => ({
     loadClientsByStore: rxMethod<number | null>(
       pipe(
-        tap(() => patchState(store, { clients: [], selectedClientId: null })),
+        tap(() => {
+          console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'ClientsStore.loadClientsByStore()');
+          patchState(store, { clients: [], selectedClientId: null });
+        }),
         switchMap((storeId) => {
           if (storeId === null) return EMPTY;
           patchState(store, { loading: true, error: null });
           return clientApiService.getClientsByStore(storeId).pipe(
+            tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /clients')),
             tapResponse({
               next: (clients) => patchState(store, { clients, loading: false }),
               error: (error: Error) => patchState(store, { error: error.message, loading: false })
@@ -44,10 +47,12 @@ export const ClientsStore = signalStore(
     ),
 
     selectClient(clientId: number | null) {
+      console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'ClientsStore.selectClient()');
       patchState(store, { selectedClientId: clientId });
     },
 
     reset() {
+      console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'ClientsStore.reset()');
       patchState(store, { clients: [], selectedClientId: null });
     }
   }))

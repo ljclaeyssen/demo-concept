@@ -19,7 +19,6 @@ const initialState: ProductsState = {
 };
 
 export const ProductsStore = signalStore(
-  { providedIn: 'root' },
   withState(initialState),
   withComputed(({ products }) => ({
     total: computed(() => products().reduce((sum, p) => sum + (p.price * p.quantity), 0))
@@ -27,11 +26,15 @@ export const ProductsStore = signalStore(
   withMethods((store, productApiService = inject(ProductApiService)) => ({
     loadProductsByCart: rxMethod<number | null>(
       pipe(
-        tap(() => patchState(store, { products: [] })),
+        tap(() => {
+          console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'ProductsStore.loadProductsByCart()');
+          patchState(store, { products: [] });
+        }),
         switchMap((cartId) => {
           if (cartId === null) return EMPTY;
           patchState(store, { loading: true, error: null });
           return productApiService.getProductsByCart(cartId).pipe(
+            tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /products')),
             tapResponse({
               next: (products) => patchState(store, { products, loading: false }),
               error: (error: Error) => patchState(store, { error: error.message, loading: false })
@@ -42,6 +45,7 @@ export const ProductsStore = signalStore(
     ),
 
     reset() {
+      console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'ProductsStore.reset()');
       patchState(store, { products: [] });
     }
   }))

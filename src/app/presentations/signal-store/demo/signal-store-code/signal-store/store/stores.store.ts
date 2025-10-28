@@ -21,7 +21,6 @@ const initialState: StoresState = {
 };
 
 export const StoresStore = signalStore(
-  { providedIn: 'root' },
   withState(initialState),
   withComputed(({ stores, selectedStoreId }) => ({
     selectedStore: computed(() => stores().find(s => s.id === selectedStoreId()) || null)
@@ -29,9 +28,13 @@ export const StoresStore = signalStore(
   withMethods((store, storeApiService = inject(StoreApiService)) => ({
     loadStores: rxMethod<void>(
       pipe(
-        tap(() => patchState(store, { loading: true, error: null })),
+        tap(() => {
+          console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'StoresStore.loadStores()');
+          patchState(store, { loading: true, error: null });
+        }),
         switchMap(() =>
           storeApiService.getStores().pipe(
+            tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /stores')),
             tapResponse({
               next: (stores) => patchState(store, { stores, loading: false }),
               error: (error: Error) => patchState(store, { error: error.message, loading: false })
@@ -42,6 +45,7 @@ export const StoresStore = signalStore(
     ),
 
     selectStore(storeId: number | null) {
+      console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'StoresStore.selectStore()');
       patchState(store, { selectedStoreId: storeId });
     }
   })),

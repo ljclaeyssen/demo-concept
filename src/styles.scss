@@ -184,4 +184,37 @@ swiper-slide {
     font-weight: 500;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
   }
+
+  // Console prompt section
+  .console-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 3rem 2rem;
+    text-align: center;
+
+    h2 {
+      font-size: 2rem;
+      color: #1e293b;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.15rem;
+      color: #475569;
+      margin: 0;
+      max-width: 600px;
+
+      strong {
+        color: #0ea5e9;
+        font-weight: 600;
+      }
+    }
+
+    p-button {
+      margin-top: 1rem;
+    }
+  }
 }

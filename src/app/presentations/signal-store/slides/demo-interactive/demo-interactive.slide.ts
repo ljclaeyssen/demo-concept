@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 import { StoresStore } from '../../demo/signal-store-code/signal-store/store/stores.store';
@@ -6,15 +6,19 @@ import { ClientsStore } from '../../demo/signal-store-code/signal-store/store/cl
 import { CartsStore } from '../../demo/signal-store-code/signal-store/store/carts.store';
 import { ProductsStore } from '../../demo/signal-store-code/signal-store/store/products.store';
 import { Select } from 'primeng/select';
+import { Button } from 'primeng/button';
 
 @Component({
   selector: 'app-demo-interactive-slide',
   templateUrl: './demo-interactive.slide.html',
   styleUrl: './demo-interactive.slide.scss',
-  imports: [Select, FormsModule, CurrencyPipe],
+  imports: [Select, FormsModule, CurrencyPipe, Button],
+  providers: [StoresStore, ClientsStore, CartsStore, ProductsStore],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DemoInteractiveSlide {
+  showDemo = signal(false);
+
   // Inject 4 separate stores - composition in action!
   private readonly storesStore = inject(StoresStore);
   private readonly clientsStore = inject(ClientsStore);
@@ -67,5 +71,10 @@ export class DemoInteractiveSlide {
     if (cartId !== null) {
       this.productsStore.loadProductsByCart(cartId);
     }
+  }
+
+  openDemo() {
+    console.clear();
+    this.showDemo.set(true);
   }
 }

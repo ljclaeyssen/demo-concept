@@ -17,6 +17,7 @@ export class ClientsEffects {
   loadClientsOnStoreSelect$ = createEffect(() =>
     this.actions$.pipe(
       ofType(StoresActions.selectStore),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'ClientsEffects.loadClientsOnStoreSelect$')),
       switchMap(({ storeId }) => {
         if (storeId === null) {
           return of(ClientsActions.clearClients());
@@ -29,8 +30,10 @@ export class ClientsEffects {
   loadClients$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ClientsActions.loadClients),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'ClientsEffects.loadClients$')),
       switchMap(({ storeId }) =>
         this.clientApiService.getClientsByStore(storeId).pipe(
+          tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /clients')),
           map(clients => ClientsActions.loadClientsSuccess({ clients })),
           catchError(error => of(ClientsActions.loadClientsFailure({ error: error.message })))
         )
@@ -41,6 +44,7 @@ export class ClientsEffects {
   clearCartsOnClearClients$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ClientsActions.clearClients),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'ClientsEffects.clearCartsOnClearClients$')),
       map(() => CartsActions.clearCarts())
     )
   );

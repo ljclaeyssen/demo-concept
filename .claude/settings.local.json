@@ -17,7 +17,9 @@
       "Bash(ng build:*)",
       "Bash(netstat:*)",
       "Bash(findstr:*)",
-      "Bash(ng serve:*)"
+      "Bash(ng serve:*)",
+      "Bash(cat:*)",
+      "Bash(del \"C:\\Users\\ljcla\\WebstormProjects\\demo-concept\\src\\app\\presentations\\signal-store\\demo\\components\\ngrx-demo\\ngrx-demo.module.ts\")"
     ],
     "deny": [],
     "ask": []
