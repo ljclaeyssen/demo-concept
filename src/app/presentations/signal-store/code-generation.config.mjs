@@ -204,12 +204,12 @@ export const signalStoreCodeGeneration = {
     {
       name: 'signalStoreDemoComponentTs',
       description: 'Signal Store Demo Component - Composition des 4 Signal Stores',
-      path: 'src/app/presentations/signal-store/slides/demo-interactive/demo-interactive.slide.ts'
+      path: 'src/app/presentations/signal-store/slides/demo-interactive/demo-interactive-content.component.ts'
     },
     {
       name: 'signalStoreDemoComponentHtml',
       description: 'Signal Store Demo Template - Pas d\'AsyncPipe !',
-      path: 'src/app/presentations/signal-store/slides/demo-interactive/demo-interactive.slide.html'
+      path: 'src/app/presentations/signal-store/slides/demo-interactive/demo-interactive-content.component.html'
     }
   ]
 };

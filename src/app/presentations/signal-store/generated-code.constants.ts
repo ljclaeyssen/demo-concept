@@ -1130,7 +1130,7 @@ export const reducers: ActionReducerMap<AppState> = {
 export const ngrxStoresEffectsTs = `import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { map, catchError, switchMap } from 'rxjs/operators';
+import { map, catchError, switchMap, tap } from 'rxjs/operators';
 import { StoreApiService } from '../../../../common-code/services/store-api.service';
 import * as StoresActions from '../actions/stores.actions';
 
@@ -1142,8 +1142,10 @@ export class StoresEffects {
   loadStores\$ = createEffect(() =>
     this.actions\$.pipe(
       ofType(StoresActions.loadStores),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'StoresEffects.loadStores\$')),
       switchMap(() =>
         this.storeApiService.getStores().pipe(
+          tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /stores')),
           map(stores => StoresActions.loadStoresSuccess({ stores })),
           catchError(error => of(StoresActions.loadStoresFailure({ error: error.message })))
         )
@@ -1176,6 +1178,7 @@ export class ClientsEffects {
   loadClientsOnStoreSelect\$ = createEffect(() =>
     this.actions\$.pipe(
       ofType(StoresActions.selectStore),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'ClientsEffects.loadClientsOnStoreSelect\$')),
       switchMap(({ storeId }) => {
         if (storeId === null) {
           return of(ClientsActions.clearClients());
@@ -1188,8 +1191,10 @@ export class ClientsEffects {
   loadClients\$ = createEffect(() =>
     this.actions\$.pipe(
       ofType(ClientsActions.loadClients),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'ClientsEffects.loadClients\$')),
       switchMap(({ storeId }) =>
         this.clientApiService.getClientsByStore(storeId).pipe(
+          tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /clients')),
           map(clients => ClientsActions.loadClientsSuccess({ clients })),
           catchError(error => of(ClientsActions.loadClientsFailure({ error: error.message })))
         )
@@ -1200,6 +1205,7 @@ export class ClientsEffects {
   clearCartsOnClearClients\$ = createEffect(() =>
     this.actions\$.pipe(
       ofType(ClientsActions.clearClients),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'ClientsEffects.clearCartsOnClearClients\$')),
       map(() => CartsActions.clearCarts())
     )
   );
@@ -1213,7 +1219,7 @@ export class ClientsEffects {
 export const ngrxCartsEffectsTs = `import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { map, catchError, switchMap } from 'rxjs/operators';
+import { map, catchError, switchMap, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { CartApiService } from '../../../../common-code/services/cart-api.service';
 import * as CartsActions from '../actions/carts.actions';
@@ -1229,6 +1235,7 @@ export class CartsEffects {
   loadCartsOnClientSelect\$ = createEffect(() =>
     this.actions\$.pipe(
       ofType(ClientsActions.selectClient),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'CartsEffects.loadCartsOnClientSelect\$')),
       switchMap(({ clientId }) => {
         if (clientId === null) {
           return of(CartsActions.clearCarts());
@@ -1241,8 +1248,10 @@ export class CartsEffects {
   loadCarts\$ = createEffect(() =>
     this.actions\$.pipe(
       ofType(CartsActions.loadCarts),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'CartsEffects.loadCarts\$')),
       switchMap(({ clientId }) =>
         this.cartApiService.getCartsByClient(clientId).pipe(
+          tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /carts')),
           map(carts => CartsActions.loadCartsSuccess({ carts })),
           catchError(error => of(CartsActions.loadCartsFailure({ error: error.message })))
         )
@@ -1253,6 +1262,7 @@ export class CartsEffects {
   clearProductsOnClearCarts\$ = createEffect(() =>
     this.actions\$.pipe(
       ofType(CartsActions.clearCarts),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'CartsEffects.clearProductsOnClearCarts\$')),
       map(() => ProductsActions.clearProducts())
     )
   );
@@ -1266,7 +1276,7 @@ export class CartsEffects {
 export const ngrxProductsEffectsTs = `import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { map, catchError, switchMap } from 'rxjs/operators';
+import { map, catchError, switchMap, tap } from 'rxjs/operators';
 import { ProductApiService } from '../../../../common-code/services/product-api.service';
 import * as ProductsActions from '../actions/products.actions';
 import * as CartsActions from '../actions/carts.actions';
@@ -1279,6 +1289,7 @@ export class ProductsEffects {
   loadProductsOnCartSelect\$ = createEffect(() =>
     this.actions\$.pipe(
       ofType(CartsActions.selectCart),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'ProductsEffects.loadProductsOnCartSelect\$')),
       switchMap(({ cartId }) => {
         if (cartId === null) {
           return of(ProductsActions.clearProducts());
@@ -1291,8 +1302,10 @@ export class ProductsEffects {
   loadProducts\$ = createEffect(() =>
     this.actions\$.pipe(
       ofType(ProductsActions.loadProducts),
+      tap(() => console.log('%c⚡ [NgRx EFFECT]', 'color: #f59e0b; font-weight: bold', 'ProductsEffects.loadProducts\$')),
       switchMap(({ cartId }) =>
         this.productApiService.getProductsByCart(cartId).pipe(
+          tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /products')),
           map(products => ProductsActions.loadProductsSuccess({ products })),
           catchError(error => of(ProductsActions.loadProductsFailure({ error: error.message })))
         )
@@ -1635,7 +1648,7 @@ export const ngrxDemoComponentHtml = `<div class="demo-grid">
 </div>
 
 <div class="code-hint">
-  ⚠️ Ceci nécessite <strong>15+ fichiers</strong> : actions, reducers, effects, selectors, tests... (~800 lignes de code !)
+  ⚠️ Ceci nécessite <strong>19 fichiers</strong> : actions, reducers, effects, selectors + component (718 lignes de code !)
 </div>
 `;
 
@@ -1666,7 +1679,6 @@ const initialState: StoresState = {
 };
 
 export const StoresStore = signalStore(
-  { providedIn: 'root' },
   withState(initialState),
   withComputed(({ stores, selectedStoreId }) => ({
     selectedStore: computed(() => stores().find(s => s.id === selectedStoreId()) || null)
@@ -1674,9 +1686,13 @@ export const StoresStore = signalStore(
   withMethods((store, storeApiService = inject(StoreApiService)) => ({
     loadStores: rxMethod<void>(
       pipe(
-        tap(() => patchState(store, { loading: true, error: null })),
+        tap(() => {
+          console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'StoresStore.loadStores()');
+          patchState(store, { loading: true, error: null });
+        }),
         switchMap(() =>
           storeApiService.getStores().pipe(
+            tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /stores')),
             tapResponse({
               next: (stores) => patchState(store, { stores, loading: false }),
               error: (error: Error) => patchState(store, { error: error.message, loading: false })
@@ -1687,6 +1703,7 @@ export const StoresStore = signalStore(
     ),
 
     selectStore(storeId: number | null) {
+      console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'StoresStore.selectStore()');
       patchState(store, { selectedStoreId: storeId });
     }
   })),
@@ -1725,7 +1742,6 @@ const initialState: ClientsState = {
 };
 
 export const ClientsStore = signalStore(
-  { providedIn: 'root' },
   withState(initialState),
   withComputed(({ clients, selectedClientId }) => ({
     selectedClient: computed(() => clients().find(c => c.id === selectedClientId()) || null)
@@ -1733,11 +1749,15 @@ export const ClientsStore = signalStore(
   withMethods((store, clientApiService = inject(ClientApiService)) => ({
     loadClientsByStore: rxMethod<number | null>(
       pipe(
-        tap(() => patchState(store, { clients: [], selectedClientId: null })),
+        tap(() => {
+          console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'ClientsStore.loadClientsByStore()');
+          patchState(store, { clients: [], selectedClientId: null });
+        }),
         switchMap((storeId) => {
           if (storeId === null) return EMPTY;
           patchState(store, { loading: true, error: null });
           return clientApiService.getClientsByStore(storeId).pipe(
+            tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /clients')),
             tapResponse({
               next: (clients) => patchState(store, { clients, loading: false }),
               error: (error: Error) => patchState(store, { error: error.message, loading: false })
@@ -1748,10 +1768,12 @@ export const ClientsStore = signalStore(
     ),
 
     selectClient(clientId: number | null) {
+      console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'ClientsStore.selectClient()');
       patchState(store, { selectedClientId: clientId });
     },
 
     reset() {
+      console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'ClientsStore.reset()');
       patchState(store, { clients: [], selectedClientId: null });
     }
   }))
@@ -1785,7 +1807,6 @@ const initialState: CartsState = {
 };
 
 export const CartsStore = signalStore(
-  { providedIn: 'root' },
   withState(initialState),
   withComputed(({ carts, selectedCartId }) => ({
     selectedCart: computed(() => carts().find(c => c.id === selectedCartId()) || null)
@@ -1793,11 +1814,15 @@ export const CartsStore = signalStore(
   withMethods((store, cartApiService = inject(CartApiService)) => ({
     loadCartsByClient: rxMethod<number | null>(
       pipe(
-        tap(() => patchState(store, { carts: [], selectedCartId: null })),
+        tap(() => {
+          console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'CartsStore.loadCartsByClient()');
+          patchState(store, { carts: [], selectedCartId: null });
+        }),
         switchMap((clientId) => {
           if (clientId === null) return EMPTY;
           patchState(store, { loading: true, error: null });
           return cartApiService.getCartsByClient(clientId).pipe(
+            tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /carts')),
             tapResponse({
               next: (carts) => patchState(store, { carts, loading: false }),
               error: (error: Error) => patchState(store, { error: error.message, loading: false })
@@ -1808,10 +1833,12 @@ export const CartsStore = signalStore(
     ),
 
     selectCart(cartId: number | null) {
+      console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'CartsStore.selectCart()');
       patchState(store, { selectedCartId: cartId });
     },
 
     reset() {
+      console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'CartsStore.reset()');
       patchState(store, { carts: [], selectedCartId: null });
     }
   }))
@@ -1843,7 +1870,6 @@ const initialState: ProductsState = {
 };
 
 export const ProductsStore = signalStore(
-  { providedIn: 'root' },
   withState(initialState),
   withComputed(({ products }) => ({
     total: computed(() => products().reduce((sum, p) => sum + (p.price * p.quantity), 0))
@@ -1851,11 +1877,15 @@ export const ProductsStore = signalStore(
   withMethods((store, productApiService = inject(ProductApiService)) => ({
     loadProductsByCart: rxMethod<number | null>(
       pipe(
-        tap(() => patchState(store, { products: [] })),
+        tap(() => {
+          console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'ProductsStore.loadProductsByCart()');
+          patchState(store, { products: [] });
+        }),
         switchMap((cartId) => {
           if (cartId === null) return EMPTY;
           patchState(store, { loading: true, error: null });
           return productApiService.getProductsByCart(cartId).pipe(
+            tap(() => console.log('%c🌐 [API CALL]', 'color: #8b5cf6; font-weight: bold', 'GET /products')),
             tapResponse({
               next: (products) => patchState(store, { products, loading: false }),
               error: (error: Error) => patchState(store, { error: error.message, loading: false })
@@ -1866,6 +1896,7 @@ export const ProductsStore = signalStore(
     ),
 
     reset() {
+      console.log('%c⚡ [Signal Store]', 'color: #10b981; font-weight: bold', 'ProductsStore.reset()');
       patchState(store, { products: [] });
     }
   }))
@@ -1874,7 +1905,7 @@ export const ProductsStore = signalStore(
 
 /**
  * Signal Store Demo Component - Composition des 4 Signal Stores
- * Source: src/app/presentations/signal-store/slides/demo-interactive/demo-interactive.slide.ts
+ * Source: src/app/presentations/signal-store/slides/demo-interactive/demo-interactive-content.component.ts
  */
 export const signalStoreDemoComponentTs = `import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -1886,13 +1917,14 @@ import { ProductsStore } from '../../demo/signal-store-code/signal-store/store/p
 import { Select } from 'primeng/select';
 
 @Component({
-  selector: 'app-demo-interactive-slide',
-  templateUrl: './demo-interactive.slide.html',
-  styleUrl: './demo-interactive.slide.scss',
+  selector: 'app-demo-interactive-content',
+  templateUrl: './demo-interactive-content.component.html',
+  styleUrl: './demo-interactive-content.component.scss',
   imports: [Select, FormsModule, CurrencyPipe],
+  providers: [StoresStore, ClientsStore, CartsStore, ProductsStore],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DemoInteractiveSlide {
+export class DemoInteractiveContentComponent {
   // Inject 4 separate stores - composition in action!
   private readonly storesStore = inject(StoresStore);
   private readonly clientsStore = inject(ClientsStore);
@@ -1951,114 +1983,108 @@ export class DemoInteractiveSlide {
 
 /**
  * Signal Store Demo Template - Pas d'AsyncPipe !
- * Source: src/app/presentations/signal-store/slides/demo-interactive/demo-interactive.slide.html
+ * Source: src/app/presentations/signal-store/slides/demo-interactive/demo-interactive-content.component.html
  */
-export const signalStoreDemoComponentHtml = `<h1>🎮 Démo Interactive : SignalStore en Action</h1>
+export const signalStoreDemoComponentHtml = `<div class="demo-grid">
+  <!-- Store Selection -->
+  <div class="selection-card">
+    <h3>1. 🏪 Choisissez un Magasin</h3>
+    <p-select
+      [options]="stores()"
+      [(ngModel)]="selectedStoreId"
+      (onChange)="onStoreChange(\$event.value)"
+      optionLabel="name"
+      optionValue="id"
+      [loading]="storesLoading()"
+      placeholder="Sélectionner un magasin"
+      [style]="{'width': '100%'}"
+    />
+    @if (selectedStore()) {
+      <div class="selection-info">
+        <strong>{{ selectedStore()!.name }}</strong>
+        <p>{{ selectedStore()!.city }}, {{ selectedStore()!.country }}</p>
+      </div>
+    }
+  </div>
 
-<div class="slide-container">
-  <p class="subtitle">Une seule ligne de code par action, tout le reste est automatique !</p>
+  <!-- Client Selection -->
+  <div class="selection-card" [class.disabled]="!selectedStoreId()">
+    <h3>2. 👤 Choisissez un Client</h3>
+    <p-select
+      [options]="clients()"
+      [(ngModel)]="selectedClientId"
+      (onChange)="onClientChange(\$event.value)"
+      optionLabel="name"
+      optionValue="id"
+      [loading]="clientsLoading()"
+      [disabled]="!selectedStoreId()"
+      placeholder="Sélectionner un client"
+      [style]="{'width': '100%'}"
+    />
+    @if (selectedClient()) {
+      <div class="selection-info">
+        <strong>{{ selectedClient()!.name }}</strong>
+        <p>{{ selectedClient()!.email }}</p>
+      </div>
+    }
+  </div>
 
-  <div class="demo-grid">
-    <!-- Store Selection -->
-    <div class="selection-card">
-      <h3>1. 🏪 Choisissez un Magasin</h3>
-      <p-select
-        [options]="stores()"
-        [(ngModel)]="selectedStoreId"
-        (onChange)="onStoreChange(\$event.value)"
-        optionLabel="name"
-        optionValue="id"
-        [loading]="storesLoading()"
-        placeholder="Sélectionner un magasin"
-        [style]="{'width': '100%'}"
-      />
-      @if (selectedStore()) {
-        <div class="selection-info">
-          <strong>{{ selectedStore()!.name }}</strong>
-          <p>{{ selectedStore()!.city }}, {{ selectedStore()!.country }}</p>
-        </div>
-      }
-    </div>
+  <!-- Cart Selection -->
+  <div class="selection-card" [class.disabled]="!selectedClientId()">
+    <h3>3. 🛒 Choisissez un Panier</h3>
+    <p-select
+      [options]="carts()"
+      [(ngModel)]="selectedCartId"
+      (onChange)="onCartChange(\$event.value)"
+      optionLabel="date"
+      optionValue="id"
+      [loading]="cartsLoading()"
+      [disabled]="!selectedClientId()"
+      placeholder="Sélectionner un panier"
+      [style]="{'width': '100%'}"
+    />
+    @if (selectedCart()) {
+      <div class="selection-info">
+        <strong>Panier du {{ selectedCart()!.date }}</strong>
+        <p>Total: {{ selectedCart()!.total | currency:'EUR' }}</p>
+      </div>
+    }
+  </div>
 
-    <!-- Client Selection -->
-    <div class="selection-card" [class.disabled]="!selectedStoreId()">
-      <h3>2. 👤 Choisissez un Client</h3>
-      <p-select
-        [options]="clients()"
-        [(ngModel)]="selectedClientId"
-        (onChange)="onClientChange(\$event.value)"
-        optionLabel="name"
-        optionValue="id"
-        [loading]="clientsLoading()"
-        [disabled]="!selectedStoreId()"
-        placeholder="Sélectionner un client"
-        [style]="{'width': '100%'}"
-      />
-      @if (selectedClient()) {
-        <div class="selection-info">
-          <strong>{{ selectedClient()!.name }}</strong>
-          <p>{{ selectedClient()!.email }}</p>
-        </div>
-      }
-    </div>
-
-    <!-- Cart Selection -->
-    <div class="selection-card" [class.disabled]="!selectedClientId()">
-      <h3>3. 🛒 Choisissez un Panier</h3>
-      <p-select
-        [options]="carts()"
-        [(ngModel)]="selectedCartId"
-        (onChange)="onCartChange(\$event.value)"
-        optionLabel="date"
-        optionValue="id"
-        [loading]="cartsLoading()"
-        [disabled]="!selectedClientId()"
-        placeholder="Sélectionner un panier"
-        [style]="{'width': '100%'}"
-      />
-      @if (selectedCart()) {
-        <div class="selection-info">
-          <strong>Panier du {{ selectedCart()!.date }}</strong>
-          <p>Total: {{ selectedCart()!.total | currency:'EUR' }}</p>
-        </div>
-      }
-    </div>
-
-    <!-- Products List -->
-    <div class="products-card" [class.disabled]="!selectedCartId()">
-      <h3>4. 📦 Produits dans le Panier</h3>
-      @if (productsLoading()) {
-        <div class="loading-state">Chargement des produits...</div>
-      } @else if (products().length > 0) {
-        <div class="products-list">
-          @for (product of products(); track product.id) {
-            <div class="product-item">
-              <div class="product-details">
-                <strong>{{ product.name }}</strong>
-                <span class="product-category">{{ product.category }}</span>
-              </div>
-              <div class="product-price">
-                <span class="quantity">x{{ product.quantity }}</span>
-                <strong>{{ product.price * product.quantity | currency:'EUR' }}</strong>
-              </div>
+  <!-- Products List -->
+  <div class="products-card" [class.disabled]="!selectedCartId()">
+    <h3>4. 📦 Produits dans le Panier</h3>
+    @if (productsLoading()) {
+      <div class="loading-state">Chargement des produits...</div>
+    } @else if (products().length > 0) {
+      <div class="products-list">
+        @for (product of products(); track product.id) {
+          <div class="product-item">
+            <div class="product-details">
+              <strong>{{ product.name }}</strong>
+              <span class="product-category">{{ product.category }}</span>
             </div>
-          }
-        </div>
-        <div class="products-total">
-          <strong>Total:</strong>
-          <strong class="total-amount">{{ productsTotal() | currency:'EUR' }}</strong>
-        </div>
-      } @else if (selectedCartId()) {
-        <div class="empty-state">Aucun produit dans ce panier</div>
-      } @else {
-        <div class="empty-state">Sélectionnez un panier pour voir les produits</div>
-      }
-    </div>
+            <div class="product-price">
+              <span class="quantity">x{{ product.quantity }}</span>
+              <strong>{{ product.price * product.quantity | currency:'EUR' }}</strong>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="products-total">
+        <strong>Total:</strong>
+        <strong class="total-amount">{{ productsTotal() | currency:'EUR' }}</strong>
+      </div>
+    } @else if (selectedCartId()) {
+      <div class="empty-state">Aucun produit dans ce panier</div>
+    } @else {
+      <div class="empty-state">Sélectionnez un panier pour voir les produits</div>
+    }
   </div>
+</div>
 
-  <div class="code-hint">
-    💡 Tout ceci fonctionne avec <strong>1 seul fichier</strong> de ~160 lignes !
-  </div>
+<div class="code-hint">
+  💡 Tout ceci fonctionne avec <strong>6 fichiers</strong> (4 stores + component) : seulement 387 lignes de code !
 </div>
 `;
 
