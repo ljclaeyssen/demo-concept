@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { register } from 'swiper/element/bundle';
+import {VersusSlide} from './slides/0-versus/versus.slide';
 import {IntroSlide} from './slides/1-intro/intro.slide';
 import {FormBuilderProblemSlide} from './slides/2-formbuilder-problem/formbuilder-problem.slide';
 import {AdaptiveCodeProblemSlide} from './slides/3-adaptive-code-problem/adaptive-code-problem.slide';
@@ -22,7 +23,7 @@ register();
   selector: 'app-typed-forms-presentation',
   templateUrl: './typed-forms.presentation.html',
   styleUrl: './typed-forms.presentation.scss',
-  imports: [IntroSlide, FormBuilderProblemSlide, AdaptiveCodeProblemSlide, TestingProblemSlide, TypedSolutionSlide, AdaptiveSolutionSlide, TestingSolutionSlide, CompositionSlide, RefactoringSlide, ReusabilitySlide, ErrorDiscoverySlide, MaintenanceSlide, VerdictSlide, EslintSlide, LiveDemoSlide],
+  imports: [VersusSlide, IntroSlide, FormBuilderProblemSlide, AdaptiveCodeProblemSlide, TestingProblemSlide, TypedSolutionSlide, AdaptiveSolutionSlide, TestingSolutionSlide, CompositionSlide, RefactoringSlide, ReusabilitySlide, ErrorDiscoverySlide, MaintenanceSlide, VerdictSlide, EslintSlide, LiveDemoSlide],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
