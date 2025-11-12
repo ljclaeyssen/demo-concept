@@ -12,6 +12,8 @@ import { filter } from 'rxjs';
   styleUrl: './app.scss'
 })
 export class App implements OnInit {
+  isHome = true;
+
   constructor(
     private router: Router,
     private messageService: MessageService
@@ -22,7 +24,8 @@ export class App implements OnInit {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event) => {
         const url = (event as NavigationEnd).urlAfterRedirects;
-        if (url !== '/') {
+        this.isHome = url === '/';
+        if (!this.isHome) {
           this.messageService.add({
             severity: 'info',
             summary: 'Navigation',
@@ -31,5 +34,9 @@ export class App implements OnInit {
           });
         }
       });
+  }
+
+  goHome() {
+    this.router.navigateByUrl('/');
   }
 }
