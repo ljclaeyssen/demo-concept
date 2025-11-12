@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, signal, WritableSignal} from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { Toast } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
@@ -12,6 +12,8 @@ import { filter } from 'rxjs';
   styleUrl: './app.scss'
 })
 export class App implements OnInit {
+  isHome: WritableSignal<boolean> = signal(true);
+
   constructor(
     private router: Router,
     private messageService: MessageService
@@ -22,7 +24,8 @@ export class App implements OnInit {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event) => {
         const url = (event as NavigationEnd).urlAfterRedirects;
-        if (url !== '/') {
+        this.isHome.set(url === '/');
+        if (!this.isHome()) {
           this.messageService.add({
             severity: 'info',
             summary: 'Navigation',
@@ -31,5 +34,9 @@ export class App implements OnInit {
           });
         }
       });
+  }
+
+  goHome() {
+    this.router.navigateByUrl('/');
   }
 }
