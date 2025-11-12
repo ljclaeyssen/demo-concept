@@ -1,0 +1,36 @@
+<h1>🤔 Arbitrage RxJS vs Signals</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Quand utiliser l'un ou l'autre ?</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Préférer Signals</h2>
+      <pre><code [highlight]="signalsCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Préférer RxJS</h2>
+      <pre><code [highlight]="rxjsCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="two-columns">
+      <div class="benefits-list">
+        <div class="benefit-item">✅ État local synchrone</div>
+        <div class="benefit-item">✅ Valeurs dérivées simples</div>
+        <div class="benefit-item">✅ Formulaires</div>
+        <div class="benefit-item">✅ UI state</div>
+    </div>
+      <div class="benefits-list">
+        <div class="benefit-item">✅ Opérations temporelles</div>
+        <div class="benefit-item">✅ Streams multiples</div>
+        <div class="benefit-item">✅ Gestion d'erreur complexe</div>
+        <div class="benefit-item">✅ WebSocket / Events</div>
+      </div>
+  </div>
+
+  <div class="warning-box">
+    💡 Règle d'or : OK d'utiliser RxJS MAIS jamais d'observable dans le template (toujours toSignal) !
+  </div>
+</div>

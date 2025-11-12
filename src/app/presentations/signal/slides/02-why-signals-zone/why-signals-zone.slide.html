@@ -1,0 +1,24 @@
+<h1>🚀 Pourquoi les Signaux ?</h1>
+
+<div class="slide-container">
+  <p class="subtitle">La fin de Zone.js et re-render partiel du composant</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Avant (Zone.js)</h2>
+      <pre><code [highlight]="beforeTemplate()" language="html"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Après (Signals)</h2>
+      <pre><code [highlight]="afterTemplate()" language="html"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Change detection ciblée (fine-grained reactivity)</div>
+    <div class="benefit-item">✅ Re-render uniquement les parties du template impactées</div>
+    <div class="benefit-item">✅ Pas de monkey-patching des APIs navigateur</div>
+    <div class="benefit-item">✅ Bundle plus léger sans Zone.js (~14KB)</div>
+  </div>
+</div>

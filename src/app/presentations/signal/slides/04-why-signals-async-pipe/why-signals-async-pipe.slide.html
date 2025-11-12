@@ -1,0 +1,24 @@
+<h1>🔄 Plus de Pipe Async</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Les signals sont synchrones, pas besoin de pipe async dans les templates</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Avec async pipe</h2>
+      <pre><code [highlight]="asyncPipeCode()" language="html"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Avec Signals</h2>
+      <pre><code [highlight]="signalsCode()" language="html"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Templates plus simples</div>
+    <div class="benefit-item">✅ Pas de problème de multiple souscription</div>
+    <div class="benefit-item">✅ Gestion d'erreur plus simple</div>
+    <div class="benefit-item">✅ Valeurs toujours synchrones</div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<h1>⚙️ Computed Options</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Option `equal` pour optimiser les recalculs</p>
+
+  <div class="three-columns">
+    <div class="code-section">
+      <h2>Par défaut</h2>
+      <pre><code [highlight]="defaultBehaviorCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Avec equal</h2>
+      <pre><code [highlight]="equalOptionCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Deep Equal</h2>
+      <pre><code [highlight]="deepEqualCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Évite les recalculs inutiles quand le résultat est identique</div>
+    <div class="benefit-item">✅ Comparaison par valeur au lieu de par référence</div>
+    <div class="benefit-item">✅ Utile pour objets, arrays, strings complexes</div>
+    <div class="benefit-item">✅ Améliore les performances en réduisant le re-render</div>
+  </div>
+
+  <div class="warning-box">
+    💡 Attention : les fonctions equal trop complexes peuvent coûter plus cher que le recalcul !
+  </div>
+</div>

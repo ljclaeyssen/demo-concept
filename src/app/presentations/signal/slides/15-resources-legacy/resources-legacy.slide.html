@@ -1,0 +1,33 @@
+<h1>🔄 Intégration Legacy</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Utiliser rxResource avec des services HttpClient existants</p>
+
+  <div class="three-columns">
+    <div class="code-section">
+      <h2>Service Legacy</h2>
+      <pre><code [highlight]="serviceCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Utilisation</h2>
+      <pre><code [highlight]="componentCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Migration</h2>
+      <pre><code [highlight]="migrationCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Pas besoin de réécrire les services existants</div>
+    <div class="benefit-item">✅ Migration progressive composant par composant</div>
+    <div class="benefit-item">✅ Utiliser toSignal() pour convertir les observables</div>
+    <div class="benefit-item">✅ Refactoring incrémental sans breaking change</div>
+  </div>
+
+  <div class="warning-box">
+    ⚠️ Ne JAMAIS laisser d'observable dans le template (pas de pipe async) !
+  </div>
+</div>

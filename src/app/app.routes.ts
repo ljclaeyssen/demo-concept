@@ -20,5 +20,9 @@ export const routes: Routes = [
   {
     path: 'deferrable-views',
     loadComponent: () => import('./presentations/deferrable-views/deferrable-views.presentation').then(m => m.DeferrableViewsPresentation)
+  },
+  {
+    path: 'signal',
+    loadComponent: () => import('./presentations/signal/signal.presentation').then(m => m.SignalPresentation)
   }
 ];

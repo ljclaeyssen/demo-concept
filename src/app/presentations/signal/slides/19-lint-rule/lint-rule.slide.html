@@ -1,0 +1,21 @@
+<h1>🔒 Règles de Lint</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Forcer l'utilisation de Signals dans votre codebase</p>
+
+  <div class="code-section">
+    <h2>Configuration ESLint</h2>
+    <pre><code [highlight]="eslintConfig()" language="json"></code></pre>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Garantir l'utilisation de signals dans nouveaux composants</div>
+    <div class="benefit-item">✅ Interdire le pipe async dans les templates</div>
+    <div class="benefit-item">✅ Éviter les régressions (@Input/@Output, variables non-signal)</div>
+    <div class="benefit-item">✅ Cohérence du code dans toute l'équipe</div>
+  </div>
+
+  <div class="warning-box">
+    💡 Commencez avec des warnings, puis passez à errors une fois l'équipe formée !
+  </div>
+</div>

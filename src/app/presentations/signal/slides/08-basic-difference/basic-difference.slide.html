@@ -1,0 +1,45 @@
+<h1>🔀 Computed vs Effect</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Quand utiliser l'un ou l'autre ?</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Computed</h2>
+      <pre><code [highlight]="computedExample()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Effect</h2>
+      <pre><code [highlight]="effectExample()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="two-columns">
+    <div>
+      <h2>Computed 🧮</h2>
+      <div class="benefits-list">
+        <div class="benefit-item">✅ Valeurs dérivées</div>
+        <div class="benefit-item">✅ Read-only</div>
+        <div class="benefit-item">✅ Synchrone</div>
+        <div class="benefit-item">✅ Memoïsé</div>
+        <div class="benefit-item">✅ Utilisable dans template</div>
+      </div>
+    </div>
+
+    <div>
+      <h2>Effect ⚡</h2>
+      <div class="benefits-list">
+        <div class="benefit-item">✅ Side effects</div>
+        <div class="benefit-item">✅ API calls</div>
+        <div class="benefit-item">✅ localStorage</div>
+        <div class="benefit-item">✅ Analytics/Logs</div>
+        <div class="benefit-item">✅ DOM manipulation</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    ⚠️ Les cas d'usage des effects sont <strong>marginaux</strong> (logs, storage, DOM custom...). Dans la plupart des cas, préférez <strong>computed()</strong> !
+  </div>
+</div>

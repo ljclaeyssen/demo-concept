@@ -1,0 +1,28 @@
+<h1>⚠️ Limitations vs RxJS</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Certaines fonctionnalités RxJS n'ont pas d'équivalent direct</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>take() / skip()</h2>
+      <pre><code [highlight]="takeSkipCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>withLatestFrom()</h2>
+      <pre><code [highlight]="withLatestFromCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ Opérateurs temporels (debounce, throttle) → utiliser RxJS</div>
+    <div class="problem-item">❌ Combiner plusieurs streams async → utiliser RxJS</div>
+    <div class="problem-item">❌ Gestion d'erreur avancée → utiliser RxJS</div>
+    <div class="problem-item">❌ Contrôle fin des souscriptions → utiliser RxJS</div>
+  </div>
+
+  <div class="warning-box">
+    💡 C'est OK d'utiliser RxJS quand nécessaire ! toSignal() et toObservable() sont là pour ça.
+  </div>
+</div>

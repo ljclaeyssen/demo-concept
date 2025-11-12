@@ -1,0 +1,24 @@
+<h1>🧮 Computed Signals</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Valeurs dérivées qui se mettent à jour automatiquement</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Exemple Simple</h2>
+      <pre><code [highlight]="simpleCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Exemple Complexe</h2>
+      <pre><code [highlight]="complexCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Read-only (pas de set/update)</div>
+    <div class="benefit-item">✅ Mise à jour automatique</div>
+    <div class="benefit-item">✅ Memoïsé - recalculé uniquement si dépendances changent</div>
+    <div class="benefit-item">✅ Peut dépendre d'autres computed</div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<h1>⚡ Effects</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Exécuter du code quand un signal change (side effects)</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Exemple Basique</h2>
+      <pre><code [highlight]="basicCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Cas Pratique</h2>
+      <pre><code [highlight]="practicalCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Pour les side effects (API calls, localStorage, logs...)</div>
+    <div class="benefit-item">✅ S'exécute automatiquement quand les dépendances changent</div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ Ne pas modifier d'autres signals dans un effect !</div>
+    <div class="problem-item">❌ Éviter la logique complexe - préférer computed()</div>
+  </div>
+</div>

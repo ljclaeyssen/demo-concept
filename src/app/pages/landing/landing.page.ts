@@ -40,6 +40,12 @@ export class LandingPage {
       description: 'Découvrez @defer pour lazy-loader vos composants au niveau template : réduisez drastiquement le bundle initial et optimisez les performances.',
       route: '/deferrable-views',
       icon: '⚡'
+    },
+    {
+      title: 'Les Signaux Angular',
+      description: 'Bonnes pratiques et patterns pour utiliser les Signals Angular : basics, interop RxJS, Resources API, et migration progressive de votre codebase.',
+      route: '/signal',
+      icon: '⚡'
     }
   ]);
 
