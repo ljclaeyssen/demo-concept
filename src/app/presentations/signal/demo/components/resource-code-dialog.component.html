@@ -1,0 +1,42 @@
+<div class="code-dialog-wrapper">
+  <div class="dialog-header">
+    <h3>💻 Code de la Démonstration httpResource</h3>
+    <p-button
+      icon="pi pi-times"
+      [text]="true"
+      [rounded]="true"
+      severity="secondary"
+      (onClick)="close()" />
+  </div>
+
+  <p-tabs value="0">
+    <p-tablist>
+      <p-tab value="0">TypeScript</p-tab>
+      <p-tab value="1">HTML Template</p-tab>
+      <p-tab value="2">SCSS Styles</p-tab>
+      <p-tab value="3">contacts.json</p-tab>
+    </p-tablist>
+    <p-tabpanels>
+      <p-tabpanel value="0">
+        <h4>contacts-resource-demo.component.ts</h4>
+        <pre><code [highlight]="config.data.componentTs" language="typescript"></code></pre>
+      </p-tabpanel>
+      <p-tabpanel value="1">
+        <h4>contacts-resource-demo.component.html</h4>
+        <pre><code [highlight]="config.data.componentHtml" language="html"></code></pre>
+      </p-tabpanel>
+      <p-tabpanel value="2">
+        <h4>contacts-resource-demo.component.scss</h4>
+        <pre><code [highlight]="config.data.componentScss" language="scss"></code></pre>
+      </p-tabpanel>
+      <p-tabpanel value="3">
+        <h4>public/contacts.json</h4>
+        <pre><code [highlight]="config.data.contactsJson" language="json"></code></pre>
+      </p-tabpanel>
+    </p-tabpanels>
+  </p-tabs>
+
+  <div class="success-box">
+    ✅ <strong>Points clés :</strong> httpResource avec defaultValue, hasValue(), isLoading(), error(), et reload()
+  </div>
+</div>

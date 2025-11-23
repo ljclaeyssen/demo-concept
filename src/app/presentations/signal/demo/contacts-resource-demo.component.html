@@ -1,0 +1,101 @@
+<div class="demo-container">
+  <div class="demo-header">
+    <div class="header-content">
+      <h2>🎯 Démonstration httpResource</h2>
+      <p class="subtitle">Chargement de contacts avec l'API httpResource</p>
+    </div>
+    <p-button
+      icon="pi pi-code"
+      label="Voir le code"
+      [outlined]="true"
+      severity="secondary"
+      (onClick)="showCode()"
+    />
+  </div>
+
+  <div class="demo-controls">
+    <div class="search-box">
+      <input
+        pInputText
+        type="text"
+        placeholder="Rechercher un contact..."
+        [(ngModel)]="searchQuery"
+      />
+      @if (searchQuery()) {
+        <p-button
+          icon="pi pi-times"
+          [text]="true"
+          [rounded]="true"
+          severity="secondary"
+          (onClick)="clearSearch()"
+        />
+      }
+    </div>
+
+    <p-button
+      icon="pi pi-refresh"
+      label="Recharger"
+      [outlined]="true"
+      (onClick)="refresh()"
+      [loading]="contactsResource.isLoading()"
+    />
+  </div>
+
+  <div class="status-info">
+    @if (contactsResource.isLoading()) {
+      <div class="status-badge loading">
+        <i class="pi pi-spin pi-spinner"></i>
+        Chargement en cours...
+      </div>
+    } @else if (contactsResource.error()) {
+      <div class="status-badge error">
+        <i class="pi pi-exclamation-triangle"></i>
+        Erreur: {{ contactsResource.error() }}
+      </div>
+    } @else if (contactsResource.hasValue()) {
+      <div class="status-badge success">
+        <i class="pi pi-check-circle"></i>
+        {{ filteredContacts.length }} contact(s) trouvé(s)
+      </div>
+    }
+  </div>
+
+  <div class="contacts-grid">
+    @if (contactsResource.hasValue()) {
+      @for (contact of filteredContacts; track contact.id) {
+        <p-card>
+          <div class="contact-card">
+            <div class="contact-header">
+              <div class="contact-avatar">
+                {{ contact.firstName.charAt(0) }}{{ contact.lastName.charAt(0) }}
+              </div>
+              <div class="contact-name">
+                <h3>{{ contact.firstName }} {{ contact.lastName }}</h3>
+                <span class="contact-position">{{ contact.position }}</span>
+              </div>
+            </div>
+            <div class="contact-details">
+              <div class="detail-item">
+                <i class="pi pi-building"></i>
+                <span>{{ contact.company }}</span>
+              </div>
+              <div class="detail-item">
+                <i class="pi pi-envelope"></i>
+                <span>{{ contact.email }}</span>
+              </div>
+              <div class="detail-item">
+                <i class="pi pi-phone"></i>
+                <span>{{ contact.phone }}</span>
+              </div>
+            </div>
+          </div>
+        </p-card>
+      } @empty {
+        <div class="empty-state">
+          <i class="pi pi-search"></i>
+          <p>Aucun contact trouvé</p>
+        </div>
+      }
+    }
+  </div>
+</div>

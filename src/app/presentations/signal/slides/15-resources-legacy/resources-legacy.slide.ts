@@ -23,27 +23,24 @@ export class UserService {
   }
 }`);
 
-  componentCode = signal(`// Composant utilisant httpResource avec service legacy
+  componentCode = signal(`// Composant utilisant httpResource ou rxResource
 @Component({...})
 export class UserListComponent {
   private userService = inject(UserService);
   searchQuery = signal('');
 
-  // Wrapper le service legacy dans httpResource
-  usersResource = httpResource({
-    url: computed(() => {
-      const query = this.searchQuery();
-      return query ? \`/api/users/search?q=\${query}\` : null;
-    }),
-    request: () => ({ query: this.searchQuery() })
+  // Option 1: httpResource pour requêtes simples
+  usersResourceHttp = httpResource(() => {
+    const query = this.searchQuery();
+    return query ? \`/api/users/search?q=\${query}\` : undefined;
   });
 
-  // Ou utiliser rxResource si l'URL ne suffit pas
-  // usersResource = rxResource({
-  //   request: () => ({ query: this.searchQuery() }),
-  //   loader: ({ request }) =>
-  //     this.userService.searchUsers(request.query)
-  // });
+  // Option 2: rxResource avec service legacy
+  usersResource = rxResource({
+    request: () => ({ query: this.searchQuery() }),
+    loader: ({ request }) =>
+      this.userService.searchUsers(request.query)
+  });
 }`);
 
   migrationCode = signal(`// Pattern de migration progressive
@@ -55,9 +52,12 @@ export class MixedComponent {
   oldData = toSignal(this.service.getOldData());
 
   // Nouveau code - avec httpResource
-  newDataResource = httpResource({
-    url: '/api/new-data',
-    request: () => ({})
+  newDataResource = httpResource(() => '/api/new-data');
+
+  // Ou avec rxResource pour réutiliser le service
+  legacyResource = rxResource({
+    request: () => ({}),
+    loader: () => this.service.getLegacyData()
   });
 
   // ⚠️ Ne JAMAIS laisser d'observable dans le template !

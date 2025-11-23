@@ -19,41 +19,41 @@ export class ResourcesHttpSlide {
         Erreur: {{ userResource.error() }}
         <button (click)="userResource.reload()">Réessayer</button>
       </div>
-    } @else if (userResource.value(); as user) {
+    } @else if (userResource.hasValue()) {
       <div class="user-card">
-        <h2>{{ user.name }}</h2>
-        <p>{{ user.email }}</p>
+        <h2>{{ userResource.value().name }}</h2>
+        <p>{{ userResource.value().email }}</p>
       </div>
     }
   \`
 })
 export class UserProfileComponent {
-  private http = inject(HttpClient);
   userId = input.required<string>();
 
-  userResource = httpResource({
-    url: computed(() => \`/api/users/\${this.userId()}\`),
-    request: () => ({ id: this.userId() })
-  });
+  userResource = httpResource(() =>
+    \`/api/users/\${this.userId()}\`
+  );
 }`);
 
-  advancedCode = signal(`// Avec gestion d'erreur et cache
+  advancedCode = signal(`// Avec gestion d'erreur et rechargement
 @Component({...})
 export class AdvancedResourceComponent {
-  private http = inject(HttpClient);
   searchQuery = signal('');
 
-  resultsResource = httpResource({
-    url: computed(() => {
-      const query = this.searchQuery();
-      return query ? \`/api/search?q=\${query}\` : null;
-    }),
-    request: () => ({ query: this.searchQuery() })
+  resultsResource = httpResource(() => {
+    const query = this.searchQuery();
+    return query ? \`/api/search?q=\${query}\` : undefined;
   });
 
   // Recharger manuellement
   refresh() {
     this.resultsResource.reload();
   }
+
+  // Avec options et defaultValue
+  productsResource = httpResource(
+    () => '/api/products',
+    { defaultValue: [] }
+  );
 }`);
 }

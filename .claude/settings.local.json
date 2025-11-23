@@ -28,7 +28,8 @@
       "Bash(do sed -i \"s/@defer/\\&#64;defer/g; s/@loading/\\&#64;loading/g; s/@placeholder/\\&#64;placeholder/g; s/@error/\\&#64;error/g; s/@if/\\&#64;if/g; s/@for/\\&#64;for/g\" \"$file\")",
       "Bash(done)",
       "Bash(dir:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "WebFetch(domain:angular.dev)"
     ],
     "deny": [],
     "ask": []

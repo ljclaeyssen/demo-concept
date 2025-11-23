@@ -15,6 +15,7 @@ import { RxjsOperatorsSlide } from './slides/12-rxjs-operators/rxjs-operators.sl
 import { ResourcesIntroSlide } from './slides/13-resources-intro/resources-intro.slide';
 import { ResourcesHttpSlide } from './slides/14-resources-http/resources-http.slide';
 import { ResourcesLegacySlide } from './slides/15-resources-legacy/resources-legacy.slide';
+import { DemoResourceSlide } from './slides/16-demo-resource/demo-resource.slide';
 import { LimitationsSlide } from './slides/16-limitations/limitations.slide';
 import { DecisionSlide } from './slides/17-decision/decision.slide';
 import { NgrxSignalsSlide } from './slides/18-ngrx-signals/ngrx-signals.slide';
@@ -44,6 +45,7 @@ register();
     ResourcesIntroSlide,
     ResourcesHttpSlide,
     ResourcesLegacySlide,
+    DemoResourceSlide,
     LimitationsSlide,
     DecisionSlide,
     NgrxSignalsSlide,
