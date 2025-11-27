@@ -33,7 +33,7 @@ export class ContactsResourceDemoComponent {
   searchQuery = signal('');
 
   // httpResource fetching contacts from the JSON file
-  contactsResource = httpResource<Contact[]>(() => '/contacts.json', {
+  contactsResource = httpResource<Contact[]>(() => 'contacts.json', {
     defaultValue: []
   });
 
