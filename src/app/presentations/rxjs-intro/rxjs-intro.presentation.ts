@@ -3,6 +3,8 @@ import { register } from 'swiper/element/bundle';
 
 import { TitleSlide } from './slides/01-title/title.slide';
 import { WhatIsReactiveSlide } from './slides/02-what-is-reactive/what-is-reactive.slide';
+import { WhyNotPropsSlide } from './slides/02b-why-not-props/why-not-props.slide';
+import { WhyNotServiceVarSlide } from './slides/02c-why-not-service-var/why-not-service-var.slide';
 import { CallbacksHellSlide } from './slides/03-callbacks-hell/callbacks-hell.slide';
 import { WhyRxjsExampleSlide } from './slides/04-why-rxjs-example/why-rxjs-example.slide';
 import { ObservableBasicsSlide } from './slides/04-observable-basics/observable-basics.slide';
@@ -23,6 +25,8 @@ register();
   imports: [
     TitleSlide,
     WhatIsReactiveSlide,
+    WhyNotPropsSlide,
+    WhyNotServiceVarSlide,
     CallbacksHellSlide,
     WhyRxjsExampleSlide,
     ObservableBasicsSlide,

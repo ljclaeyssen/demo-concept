@@ -1,0 +1,70 @@
+<h1>🔗 Et dans une vraie app Angular ?</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Pourquoi @Input / @Output ne suffisent pas toujours</p>
+
+  <div class="two-columns">
+    <div class="problem-side">
+      <h2>😰 Avec @Input / @Output</h2>
+
+      <div class="tree-visual">
+        <div class="tree-node root">App</div>
+        <div class="tree-level">
+          <div class="tree-node">Header</div>
+          <div class="tree-node">Main</div>
+        </div>
+        <div class="tree-level">
+          <div class="tree-node highlight-need">🛒 CartIcon</div>
+          <div class="tree-node">ProductList</div>
+          <div class="tree-node highlight-need">🛒 CartSidebar</div>
+        </div>
+        <div class="tree-level last">
+          <div class="tree-node highlight-emit">➕ AddToCart</div>
+        </div>
+        <div class="arrows">
+          <span class="arrow up">⬆️ Event</span>
+          <span class="arrow down">⬇️ Prop</span>
+          <span class="arrow down">⬇️ Prop</span>
+        </div>
+      </div>
+
+      <div class="problems-list">
+        <div class="problem-item">❌ Prop drilling (données à travers 3+ niveaux)</div>
+        <div class="problem-item">❌ Event bubbling (remonter les events)</div>
+        <div class="problem-item">❌ Synchronisation manuelle entre composants</div>
+      </div>
+    </div>
+
+    <div class="solution-side">
+      <h2>✅ Avec un Observable partagé</h2>
+
+      <div class="service-visual">
+        <div class="service-box">
+          <span class="service-icon">📡</span>
+          <span class="service-name">CartService</span>
+          <span class="service-desc">cart$ : Observable</span>
+        </div>
+        <div class="subscribers">
+          <div class="subscriber">🛒 CartIcon</div>
+          <div class="subscriber">🛒 CartSidebar</div>
+          <div class="subscriber">➕ AddToCart</div>
+        </div>
+        <div class="connection-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+
+      <div class="benefits-list">
+        <div class="benefit-item">✅ Accès direct depuis n'importe où</div>
+        <div class="benefit-item">✅ Synchronisation automatique</div>
+        <div class="benefit-item">✅ Un seul endroit pour la logique</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="key-point">
+    <p>💡 <strong>En résumé :</strong> Les Observables permettent à n'importe quel composant de s'abonner aux changements, sans passer par toute la hiérarchie !</p>
+  </div>
+</div>

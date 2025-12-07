@@ -1,0 +1,24 @@
+<h1>🤔 Pourquoi pas une simple variable dans un service ?</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Le problème : comment savoir quand la valeur change ?</p>
+
+  <div class="two-columns">
+    <div class="code-section bad">
+      <h2>❌ Variable simple</h2>
+      <pre><code [highlight]="serviceVarCode()" language="typescript"></code></pre>
+      <pre><code [highlight]="componentCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section good">
+      <h2>✅ Avec Observable</h2>
+      <pre><code [highlight]="observableServiceCode()" language="typescript"></code></pre>
+      <pre><code [highlight]="observableComponentCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="comparison">
+    <div class="comparison-item bad">Variable : lecture ponctuelle, pas de notification</div>
+    <div class="comparison-item good">Observable : abonnement, notifié à chaque changement</div>
+  </div>
+</div>

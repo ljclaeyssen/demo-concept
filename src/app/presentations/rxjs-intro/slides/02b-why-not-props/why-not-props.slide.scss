@@ -1,0 +1,155 @@
+.problem-side, .solution-side {
+  h2 {
+    font-size: 1.2rem;
+    margin: 0 0 1rem 0;
+    text-align: center;
+  }
+}
+
+.problem-side h2 {
+  color: #dc2626;
+}
+
+.solution-side h2 {
+  color: #16a34a;
+}
+
+// Tree visual
+.tree-visual {
+  background: #fef2f2;
+  border: 2px solid #fecaca;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.tree-node {
+  display: inline-block;
+  background: white;
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin: 0.25rem;
+
+  &.root {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+  }
+
+  &.highlight-need {
+    background: #dbeafe;
+    border-color: #3b82f6;
+    color: #1d4ed8;
+  }
+
+  &.highlight-emit {
+    background: #dcfce7;
+    border-color: #22c55e;
+    color: #16a34a;
+  }
+}
+
+.tree-level {
+  margin-top: 0.5rem;
+
+  &.last {
+    margin-left: 2rem;
+  }
+}
+
+.arrows {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  color: #64748b;
+
+  .arrow {
+    margin: 0 0.5rem;
+  }
+}
+
+// Service visual
+.service-visual {
+  background: #f0fdf4;
+  border: 2px solid #86efac;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.service-box {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: white;
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+  margin-bottom: 1rem;
+
+  .service-icon {
+    font-size: 1.25rem;
+  }
+
+  .service-name {
+    display: block;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .service-desc {
+    font-size: 0.75rem;
+    opacity: 0.9;
+  }
+}
+
+.subscribers {
+  display: flex;
+  justify-content: space-around;
+}
+
+.subscriber {
+  background: white;
+  border: 2px solid #22c55e;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #16a34a;
+}
+
+.connection-lines {
+  position: absolute;
+  top: 4.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2rem;
+
+  .line {
+    display: block;
+    width: 2px;
+    height: 100%;
+    background: #22c55e;
+    position: absolute;
+
+    &:nth-child(1) { left: 15%; }
+    &:nth-child(2) { left: 50%; }
+    &:nth-child(3) { left: 85%; }
+  }
+}
+
+.key-point {
+  background: #dbeafe;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+
+  p {
+    margin: 0;
+    color: #1e40af;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
