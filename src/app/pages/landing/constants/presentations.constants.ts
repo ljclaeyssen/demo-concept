@@ -59,9 +59,16 @@ export const PRESENTATIONS: Presentation[] = [
   },
   {
     title: 'Signals Avancé',
-    description: 'Allez plus loin avec les Signals : interop RxJS, Resources API, options avancées et NgRx Signal Store.',
+    description: 'Allez plus loin avec les Signals : interop RxJS, Resources API, options avancées et store maison.',
     route: '/signal-advanced',
     icon: '🚀',
+    types: [PresentationType.SCHOOL]
+  },
+  {
+    title: 'Évolution d\'Angular',
+    description: 'De la v15 à la v19 : standalone, signals, @if/@for/@defer, zoneless... Tout ce qui a changé et pourquoi c\'est important.',
+    route: '/angular-evolution',
+    icon: '📈',
     types: [PresentationType.SCHOOL]
   }
 ];

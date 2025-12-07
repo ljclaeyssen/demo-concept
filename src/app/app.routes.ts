@@ -40,5 +40,9 @@ export const routes: Routes = [
   {
     path: 'signal-advanced',
     loadComponent: () => import('./presentations/signal-advanced/signal-advanced.presentation').then(m => m.SignalAdvancedPresentation)
+  },
+  {
+    path: 'angular-evolution',
+    loadComponent: () => import('./presentations/angular-evolution/angular-evolution.presentation').then(m => m.AngularEvolutionPresentation)
   }
 ];

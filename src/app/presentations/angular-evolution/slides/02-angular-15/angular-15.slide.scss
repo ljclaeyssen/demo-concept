@@ -1,0 +1,23 @@
+.why-important {
+  margin: 0.75rem 0 0 0;
+  font-size: 0.9rem;
+  color: #0369a1;
+  font-weight: 500;
+}
+
+.key-changes {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.change-item {
+  background: #f0fdf4;
+  color: #166534;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,33 @@
+<h1>⚡ Angular 16 - Mai 2023</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Les Signals arrivent ! Un nouveau modèle de réactivité</p>
+
+  <div class="three-columns">
+    <div class="code-section highlighted">
+      <h2>Signals (Preview)</h2>
+      <pre><code [highlight]="signalsCode()" language="typescript"></code></pre>
+      <p class="why-important">🎯 Réactivité fine-grained sans Zone.js</p>
+    </div>
+
+    <div class="code-section">
+      <h2>Required Inputs</h2>
+      <pre><code [highlight]="requiredInputsCode()" language="typescript"></code></pre>
+      <p class="why-important">🎯 Type-safety à la compilation</p>
+    </div>
+
+    <div class="code-section highlighted">
+      <h2>takeUntilDestroyed()</h2>
+      <pre><code [highlight]="takeUntilDestroyedCode()" language="typescript"></code></pre>
+      <p class="why-important">🎯 Fini le ngOnDestroy manuel !</p>
+    </div>
+  </div>
+
+  <div class="key-changes">
+    <div class="change-item highlight">⚡ Signals (preview)</div>
+    <div class="change-item highlight">🔥 takeUntilDestroyed()</div>
+    <div class="change-item">✅ Required inputs</div>
+    <div class="change-item">✅ DestroyRef</div>
+    <div class="change-item">✅ SSR hydration (preview)</div>
+  </div>
+</div>
