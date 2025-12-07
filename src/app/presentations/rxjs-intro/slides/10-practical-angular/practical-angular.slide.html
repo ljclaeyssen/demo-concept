@@ -1,0 +1,28 @@
+<h1>⚡ RxJS dans Angular : exemple pratique</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Un service de gestion d'utilisateur</p>
+
+  <div class="two-columns">
+    <app-syntax-switch
+      title="Le Service (partage d'état)"
+      [oldCode]="oldServiceCode()"
+      [newCode]="newServiceCode()"
+      language="typescript" />
+
+    <app-syntax-switch
+      title="Le Composant (consommation)"
+      [oldCode]="oldComponentCode()"
+      [newCode]="newComponentCode()"
+      language="typescript" />
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">⚠️ On doit gérer manuellement unsubscribe()</div>
+    <div class="problem-item">⚠️ Beaucoup de boilerplate (OnInit, OnDestroy...)</div>
+  </div>
+
+  <div class="benefits-list" style="margin-top: 1rem;">
+    <div class="benefit-item">💡 Solution : utiliser le <strong>async pipe</strong> !</div>
+  </div>
+</div>

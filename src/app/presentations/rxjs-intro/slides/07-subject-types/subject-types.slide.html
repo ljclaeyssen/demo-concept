@@ -1,0 +1,29 @@
+<h1>📢 Les Subjects : Observable + Observer</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Quand on veut émettre ET recevoir des données</p>
+
+  <div class="three-columns">
+    <div class="code-section">
+      <h2>Subject (basique)</h2>
+      <pre><code [highlight]="subjectCode()" language="typescript"></code></pre>
+      <p class="use-case">📌 Événements simples, bus de communication</p>
+    </div>
+
+    <div class="code-section highlighted">
+      <h2>BehaviorSubject ⭐</h2>
+      <pre><code [highlight]="behaviorSubjectCode()" language="typescript"></code></pre>
+      <p class="use-case">📌 État actuel (user connecté, thème...)</p>
+    </div>
+
+    <div class="code-section">
+      <h2>ReplaySubject</h2>
+      <pre><code [highlight]="replaySubjectCode()" language="typescript"></code></pre>
+      <p class="use-case">📌 Historique de messages, cache</p>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    💡 <strong>Le plus utilisé :</strong> BehaviorSubject pour gérer un état partagé entre composants (ex: utilisateur connecté, panier, préférences).
+  </div>
+</div>

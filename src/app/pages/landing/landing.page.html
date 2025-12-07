@@ -2,11 +2,26 @@
   <h1>📊 Hub de Présentations</h1>
 
   <div class="landing-content">
-    <p class="subtitle">Présentations de code interactives et tutoriels</p>
+    <div class="filter-section">
+      <label for="type-filter">Filtrer par type :</label>
+      <select
+        id="type-filter"
+        [ngModel]="selectedFilter()"
+        (ngModelChange)="onFilterChange($event)">
+        @for (option of filterOptions; track option.value) {
+          <option [value]="option.value">{{ option.label }}</option>
+        }
+      </select>
+    </div>
 
     <div class="presentations-grid">
       @for (presentation of presentations(); track presentation.route) {
         <a [routerLink]="presentation.route" class="presentation-card">
+          @for (type of presentation.types; track type) {
+            <span class="type-badge" [class]="'type-' + type">
+              {{ type | presentationTypeLabel }}
+            </span>
+          }
           <div class="card-icon">{{ presentation.icon }}</div>
           <h2>{{ presentation.title }}</h2>
           <p class="description">{{ presentation.description }}</p>

@@ -1,0 +1,29 @@
+<h1>😵 Le problème : Callback Hell</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Pourquoi on a besoin de RxJS ?</p>
+
+  <div class="three-columns">
+    <div class="code-section problem">
+      <h2>❌ Callbacks</h2>
+      <pre><code [highlight]="callbackCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section meh">
+      <h2>😐 Promises</h2>
+      <pre><code [highlight]="promiseCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section solution">
+      <h2>✅ RxJS</h2>
+      <pre><code [highlight]="rxjsCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Code lisible et maintenable</div>
+    <div class="benefit-item">✅ Gestion d'erreurs centralisée</div>
+    <div class="benefit-item">✅ Annulation possible (contrairement aux Promises)</div>
+    <div class="benefit-item">✅ Opérateurs puissants pour transformer les données</div>
+  </div>
+</div>

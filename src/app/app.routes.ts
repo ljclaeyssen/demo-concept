@@ -24,5 +24,9 @@ export const routes: Routes = [
   {
     path: 'signal',
     loadComponent: () => import('./presentations/signal/signal.presentation').then(m => m.SignalPresentation)
+  },
+  {
+    path: 'rxjs-intro',
+    loadComponent: () => import('./presentations/rxjs-intro/rxjs-intro.presentation').then(m => m.RxjsIntroPresentation)
   }
 ];

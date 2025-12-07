@@ -1,0 +1,13 @@
+.code-section {
+  &.problem h2 {
+    color: #dc2626;
+  }
+
+  &.meh h2 {
+    color: #d97706;
+  }
+
+  &.solution h2 {
+    color: #16a34a;
+  }
+}

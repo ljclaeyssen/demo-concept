@@ -1,0 +1,28 @@
+.pipe-visualization {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.pipe-step {
+  background: #f1f5f9;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #475569;
+  font-size: 0.9rem;
+
+  &.operator {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    color: white;
+  }
+}
+
+.pipe-arrow {
+  color: #94a3b8;
+  font-size: 1.2rem;
+  font-weight: bold;
+}

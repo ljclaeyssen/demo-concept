@@ -1,0 +1,29 @@
+<h1>🔧 Les Opérateurs : transformer les données</h1>
+
+<div class="slide-container">
+  <p class="subtitle">pipe() = chaîner des transformations</p>
+
+  <div class="pipe-visualization">
+    <div class="pipe-step">📡 Observable</div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step operator">filter()</div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step operator">map()</div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step operator">tap()</div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">👀 subscribe()</div>
+  </div>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Exemple concret</h2>
+      <pre><code [highlight]="pipeCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Opérateurs courants</h2>
+      <pre><code [highlight]="commonOperatorsCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+</div>

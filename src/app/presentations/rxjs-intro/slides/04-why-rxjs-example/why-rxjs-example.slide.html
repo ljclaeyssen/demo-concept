@@ -1,0 +1,36 @@
+<h1>🔍 Exemple concret : Autocomplete</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Le cas d'usage parfait pour comprendre RxJS</p>
+
+  <div class="requirements">
+    <span class="req-title">Besoins :</span>
+    <span class="req-item">⏱️ Debounce 300ms</span>
+    <span class="req-item">🔄 Ignorer doublons</span>
+    <span class="req-item">✂️ Min 2 caractères</span>
+    <span class="req-item">🔀 Annuler requête précédente</span>
+  </div>
+
+  <div class="two-columns">
+    <div class="code-section bad">
+      <app-syntax-switch
+        title="❌ Sans RxJS"
+        [oldCode]="withoutRxjsOldCode()"
+        [newCode]="withoutRxjsNewCode()"
+        language="typescript" />
+    </div>
+
+    <div class="code-section good">
+      <app-syntax-switch
+        title="✅ Avec RxJS"
+        [oldCode]="withRxjsOldCode()"
+        [newCode]="withRxjsNewCode()"
+        language="typescript" />
+    </div>
+  </div>
+
+  <div class="comparison">
+    <div class="comparison-item bad">~40 lignes, 3 variables d'état, ngOnDestroy obligatoire</div>
+    <div class="comparison-item good">~15 lignes, déclaratif, auto-cleanup</div>
+  </div>
+</div>

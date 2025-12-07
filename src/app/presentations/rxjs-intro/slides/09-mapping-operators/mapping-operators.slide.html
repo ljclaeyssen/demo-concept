@@ -1,0 +1,36 @@
+<h1>🗺️ Les 4 opérateurs de mapping</h1>
+
+<div class="slide-container mapping-slide">
+  <p class="subtitle">Quand un Observable retourne un autre Observable</p>
+
+  <div class="operators-grid four-cols">
+    <div class="operator-card switchmap">
+      <h3>switchMap</h3>
+      <pre><code [highlight]="switchMapCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="operator-card mergemap">
+      <h3>mergeMap</h3>
+      <pre><code [highlight]="mergeMapCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="operator-card concatmap">
+      <h3>concatMap</h3>
+      <pre><code [highlight]="concatMapCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="operator-card exhaustmap">
+      <h3>exhaustMap</h3>
+      <pre><code [highlight]="exhaustMapCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="demo-button-section">
+    <p-button
+      label="🎮 Ouvrir la démo interactive"
+      icon="pi pi-external-link"
+      (onClick)="openDemo()"
+      size="large" />
+    <p class="demo-hint">Visualisez le comportement de chaque opérateur en temps réel</p>
+  </div>
+</div>

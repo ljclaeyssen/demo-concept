@@ -1,0 +1,30 @@
+<h1>🔗 La Subscription : gérer le cycle de vie</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Ne jamais oublier de se désabonner !</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Concept de base</h2>
+      <pre><code [highlight]="subscriptionCode()" language="typescript"></code></pre>
+
+      <div class="problems-list" style="margin-top: 1rem;">
+        <div class="problem-item">❌ Oublier unsubscribe = fuite mémoire</div>
+        <div class="problem-item">❌ Le code continue de tourner</div>
+        <div class="problem-item">❌ Requêtes HTTP en double</div>
+      </div>
+    </div>
+
+    <div class="code-section">
+      <app-syntax-switch
+        title="Dans un composant Angular"
+        [oldCode]="oldComponentCode()"
+        [newCode]="newComponentCode()"
+        language="typescript" />
+    </div>
+  </div>
+
+  <div class="warning-box">
+    💡 <strong>Astuce :</strong> Utilise le <code>async</code> pipe dans les templates pour éviter de gérer les subscriptions manuellement (on verra ça plus tard !)
+  </div>
+</div>

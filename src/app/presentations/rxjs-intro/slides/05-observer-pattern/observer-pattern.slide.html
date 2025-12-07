@@ -1,0 +1,35 @@
+<h1>👀 L'Observer : recevoir les données</h1>
+
+<div class="slide-container">
+  <p class="subtitle">3 callbacks pour gérer tous les cas</p>
+
+  <div class="callbacks-explanation">
+    <div class="callback-box next">
+      <span class="callback-name">next()</span>
+      <span class="callback-desc">Appelé à chaque nouvelle valeur</span>
+      <span class="callback-emoji">📦</span>
+    </div>
+    <div class="callback-box error">
+      <span class="callback-name">error()</span>
+      <span class="callback-desc">Appelé si une erreur survient (termine le flux)</span>
+      <span class="callback-emoji">💥</span>
+    </div>
+    <div class="callback-box complete">
+      <span class="callback-name">complete()</span>
+      <span class="callback-desc">Appelé quand le flux est terminé</span>
+      <span class="callback-emoji">✅</span>
+    </div>
+  </div>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Définir un Observer</h2>
+      <pre><code [highlight]="observerCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>S'abonner (subscribe)</h2>
+      <pre><code [highlight]="subscribeCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+</div>

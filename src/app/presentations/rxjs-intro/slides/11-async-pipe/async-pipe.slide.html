@@ -1,0 +1,30 @@
+<h1>✨ Le async pipe : la magie d'Angular</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Subscribe et unsubscribe automatiquement !</p>
+
+  <div class="two-columns">
+    <app-syntax-switch
+      title="Dans le template"
+      [oldCode]="oldTemplateCode()"
+      [newCode]="newTemplateCode()"
+      language="html" />
+
+    <app-syntax-switch
+      title="Dans le composant"
+      [oldCode]="oldComponentCode()"
+      [newCode]="newComponentCode()"
+      language="typescript" />
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Pas besoin de subscribe() manuel</div>
+    <div class="benefit-item">✅ Pas besoin de unsubscribe()</div>
+    <div class="benefit-item">✅ Pas besoin de OnDestroy</div>
+    <div class="benefit-item">✅ Change Detection optimisé (OnPush friendly)</div>
+  </div>
+
+  <div class="warning-box">
+    💡 <strong>Règle d'or :</strong> Privilégie TOUJOURS le <code>async</code> pipe quand c'est possible. Reserve le <code>subscribe()</code> manuel pour les cas où tu as besoin d'effets de bord complexes.
+  </div>
+</div>

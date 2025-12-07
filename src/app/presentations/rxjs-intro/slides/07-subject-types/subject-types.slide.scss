@@ -1,0 +1,19 @@
+.code-section {
+  &.highlighted {
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 1rem;
+    background: #f0f9ff;
+
+    h2 {
+      color: #1d4ed8;
+    }
+  }
+}
+
+.use-case {
+  margin: 0.75rem 0 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+}

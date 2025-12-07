@@ -1,0 +1,82 @@
+.mapping-slide {
+  max-width: 95vw !important;
+}
+
+.operators-grid.four-cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.operator-card {
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+
+  h3 {
+    margin: 0 0 0.75rem 0;
+    font-size: 1rem;
+    font-family: monospace;
+  }
+
+  pre {
+    margin: 0;
+    background: #1e293b;
+    border-radius: 6px;
+    padding: 0.75rem;
+
+    code {
+      font-size: 0.65rem !important;
+      line-height: 1.4;
+    }
+  }
+
+  &.switchmap {
+    border-color: #3b82f6;
+    h3 { color: #1d4ed8; }
+  }
+
+  &.mergemap {
+    border-color: #10b981;
+    h3 { color: #047857; }
+  }
+
+  &.concatmap {
+    border-color: #f59e0b;
+    h3 { color: #b45309; }
+  }
+
+  &.exhaustmap {
+    border-color: #8b5cf6;
+    h3 { color: #6d28d9; }
+  }
+}
+
+.demo-button-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+  border-radius: 12px;
+
+  .demo-hint {
+    margin: 0;
+    color: #475569;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .operators-grid.four-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .operators-grid.four-cols {
+    grid-template-columns: 1fr;
+  }
+}

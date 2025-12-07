@@ -1,0 +1,26 @@
+<h1>📡 L'Observable : la base de tout</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Un Observable = un flux de données dans le temps</p>
+
+  <div class="three-columns">
+    <div class="code-section">
+      <h2>Créer un Observable</h2>
+      <pre><code [highlight]="createCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Helpers pratiques</h2>
+      <pre><code [highlight]="helpersCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Dans Angular (HttpClient)</h2>
+      <pre><code [highlight]="httpCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    ⚠️ <strong>Important :</strong> Un Observable ne fait RIEN tant qu'on ne s'y abonne pas (subscribe). C'est comme une chaîne YouTube sans abonnés !
+  </div>
+</div>
