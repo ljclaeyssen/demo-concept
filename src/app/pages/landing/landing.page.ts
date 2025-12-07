@@ -1,8 +1,10 @@
-import { Component, ChangeDetectionStrategy, signal, computed, isDevMode } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, computed, isDevMode, effect } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { PresentationType } from './models/presentation.model';
 import { PresentationTypeLabelPipe } from './pipes/presentation-type-label.pipe';
 import { PRESENTATIONS } from './constants/presentations.constants';
+
+const STORAGE_KEY = 'presentation-filters';
 
 @Component({
   selector: 'app-landing-page',
@@ -12,7 +14,6 @@ import { PRESENTATIONS } from './constants/presentations.constants';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandingPage {
-  readonly PresentationType = PresentationType;
   readonly availableTypes = [
     PresentationType.PRO,
     PresentationType.LOCAL,
@@ -20,7 +21,7 @@ export class LandingPage {
     PresentationType.SCHOOL
   ];
 
-  activeFilters = signal<Set<PresentationType>>(new Set());
+  activeFilters = signal<Set<PresentationType>>(this.loadFilters());
 
   presentations = computed(() => {
     let all = [...PRESENTATIONS];
@@ -39,6 +40,13 @@ export class LandingPage {
     return all;
   });
 
+  constructor() {
+    effect(() => {
+      const filters = this.activeFilters();
+      this.saveFilters(filters);
+    });
+  }
+
   toggleFilter(type: PresentationType): void {
     this.activeFilters.update(filters => {
       const newFilters = new Set(filters);
@@ -53,5 +61,19 @@ export class LandingPage {
 
   isFilterActive(type: PresentationType): boolean {
     return this.activeFilters().has(type);
+  }
+
+  private loadFilters(): Set<PresentationType> {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      const types = JSON.parse(stored) as PresentationType[];
+      return new Set(types);
+    }
+    // Default: PRO selected
+    return new Set([PresentationType.PRO]);
+  }
+
+  private saveFilters(filters: Set<PresentationType>): void {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([...filters]));
   }
 }
