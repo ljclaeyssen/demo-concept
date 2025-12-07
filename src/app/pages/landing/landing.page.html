@@ -3,15 +3,17 @@
 
   <div class="landing-content">
     <div class="filter-section">
-      <label for="type-filter">Filtrer par type :</label>
-      <select
-        id="type-filter"
-        [ngModel]="selectedFilter()"
-        (ngModelChange)="onFilterChange($event)">
-        @for (option of filterOptions; track option.value) {
-          <option [value]="option.value">{{ option.label }}</option>
-        }
-      </select>
+      <span class="filter-label">Filtrer :</span>
+      @for (type of availableTypes; track type) {
+        <button
+          type="button"
+          class="filter-badge"
+          [class]="'type-' + type"
+          [class.active]="isFilterActive(type)"
+          (click)="toggleFilter(type)">
+          {{ type | presentationTypeLabel }}
+        </button>
+      }
     </div>
 
     <div class="presentations-grid">
