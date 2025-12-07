@@ -147,10 +147,6 @@
     transform: translateY(-4px);
     box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.15);
     border-color: #cbd5e1;
-
-    .card-footer {
-      color: #2563eb;
-    }
   }
 
   .type-badge {
@@ -211,25 +207,6 @@
     margin: 0;
     flex: 1;
     text-align: center;
-  }
-
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    font-weight: 600;
-    color: #475569;
-    margin-top: 0.5rem;
-    transition: color 0.3s ease;
-
-    .view-button {
-      font-size: 1rem;
-    }
-
-    i {
-      font-size: 0.875rem;
-    }
   }
 }
 

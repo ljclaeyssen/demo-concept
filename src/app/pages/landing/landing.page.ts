@@ -14,21 +14,18 @@ const STORAGE_KEY = 'presentation-filters';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandingPage {
-  readonly availableTypes = [
-    PresentationType.PRO,
-    PresentationType.LOCAL,
-    PresentationType.WIP,
-    PresentationType.SCHOOL
-  ];
+  readonly availableTypes = isDevMode()
+    ? [PresentationType.PRO, PresentationType.SCHOOL, PresentationType.LOCAL, PresentationType.WIP]
+    : [PresentationType.PRO, PresentationType.SCHOOL, PresentationType.WIP];
 
   activeFilters = signal<Set<PresentationType>>(this.loadFilters());
 
   presentations = computed(() => {
     let all = [...PRESENTATIONS];
 
-    // Filter out Hello World in production
+    // Filter out LOCAL presentations in production
     if (!isDevMode()) {
-      all = all.filter(p => p.route !== '/hello-world');
+      all = all.filter(p => !p.types.includes(PresentationType.LOCAL));
     }
 
     // Apply type filters (if any are active)
@@ -66,7 +63,11 @@ export class LandingPage {
   private loadFilters(): Set<PresentationType> {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
-      const types = JSON.parse(stored) as PresentationType[];
+      let types = JSON.parse(stored) as PresentationType[];
+      // Filter out LOCAL in production
+      if (!isDevMode()) {
+        types = types.filter(t => t !== PresentationType.LOCAL);
+      }
       return new Set(types);
     }
     // Default: PRO selected
