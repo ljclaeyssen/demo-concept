@@ -44,5 +44,9 @@ export const routes: Routes = [
   {
     path: 'angular-evolution',
     loadComponent: () => import('./presentations/angular-evolution/angular-evolution.presentation').then(m => m.AngularEvolutionPresentation)
+  },
+  {
+    path: 'testing-intro',
+    loadComponent: () => import('./presentations/testing-intro/testing-intro.presentation').then(m => m.TestingIntroPresentation)
   }
 ];

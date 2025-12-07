@@ -1,0 +1,38 @@
+<h1>🖱️ Tester un clic sur un bouton</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Interagir avec le DOM et vérifier les changements</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Le composant à tester</h2>
+      <pre><code [highlight]="componentCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <app-test-switch
+        title="Le test"
+        [karmaCode]="karmaTestCode()"
+        [vitestCode]="vitestTestCode()" />
+    </div>
+  </div>
+
+  <div class="key-points">
+    <div class="point">
+      <span class="icon">🔍</span>
+      <span><strong>debugElement.query(By.css())</strong> : sélectionne un élément du DOM</span>
+    </div>
+    <div class="point">
+      <span class="icon">👆</span>
+      <span><strong>triggerEventHandler('click')</strong> : simule un clic</span>
+    </div>
+    <div class="point">
+      <span class="icon">📝</span>
+      <span><strong>nativeElement.textContent</strong> : lit le contenu affiché</span>
+    </div>
+    <div class="point warning">
+      <span class="icon">⚠️</span>
+      <span><strong>Important</strong> : toujours appeler detectChanges() après une action</span>
+    </div>
+  </div>
+</div>

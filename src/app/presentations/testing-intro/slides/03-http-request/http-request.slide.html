@@ -1,0 +1,38 @@
+<h1>🌐 Tester une requête HTTP</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Vérifier l'URL, la méthode et les query params</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Le service à tester</h2>
+      <pre><code [highlight]="serviceCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <app-test-switch
+        title="Le test"
+        [karmaCode]="karmaTestCode()"
+        [vitestCode]="vitestTestCode()" />
+    </div>
+  </div>
+
+  <div class="key-points">
+    <div class="point">
+      <span class="icon">🎭</span>
+      <span><strong>HttpTestingController</strong> : intercepte les requêtes HTTP</span>
+    </div>
+    <div class="point">
+      <span class="icon">🔍</span>
+      <span><strong>expectOne()</strong> : vérifie qu'une requête a été faite</span>
+    </div>
+    <div class="point">
+      <span class="icon">📤</span>
+      <span><strong>flush()</strong> : simule la réponse du serveur</span>
+    </div>
+    <div class="point diff">
+      <span class="icon">⚠️</span>
+      <span><strong>Différence</strong> : Karma utilise HttpClientTestingModule, Vitest utilise provideHttpClientTesting()</span>
+    </div>
+  </div>
+</div>

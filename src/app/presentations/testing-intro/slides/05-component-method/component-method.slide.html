@@ -1,0 +1,38 @@
+<h1>🖱️ Tester une méthode de composant</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Accéder à l'instance du composant et tester sa logique</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Le composant à tester</h2>
+      <pre><code [highlight]="componentCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <app-test-switch
+        title="Le test"
+        [karmaCode]="karmaTestCode()"
+        [vitestCode]="vitestTestCode()" />
+    </div>
+  </div>
+
+  <div class="key-points">
+    <div class="point">
+      <span class="icon">🏗️</span>
+      <span><strong>TestBed.createComponent()</strong> : crée une instance du composant</span>
+    </div>
+    <div class="point">
+      <span class="icon">📦</span>
+      <span><strong>fixture.componentInstance</strong> : accède à l'instance</span>
+    </div>
+    <div class="point">
+      <span class="icon">🔄</span>
+      <span><strong>fixture.detectChanges()</strong> : déclenche la détection de changements</span>
+    </div>
+    <div class="point diff">
+      <span class="icon">⚠️</span>
+      <span><strong>Différence</strong> : Karma utilise declarations, Vitest utilise imports (standalone)</span>
+    </div>
+  </div>
+</div>

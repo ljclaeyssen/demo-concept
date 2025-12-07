@@ -1,0 +1,34 @@
+<h1>📤 Mocker une réponse HTTP</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Simuler des réponses serveur (succès et erreurs)</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Le service à tester</h2>
+      <pre><code [highlight]="serviceCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <app-test-switch
+        title="Le test"
+        [karmaCode]="karmaTestCode()"
+        [vitestCode]="vitestTestCode()" />
+    </div>
+  </div>
+
+  <div class="key-points">
+    <div class="point">
+      <span class="icon">📝</span>
+      <span><strong>req.request.body</strong> : accède au corps de la requête</span>
+    </div>
+    <div class="point">
+      <span class="icon">✅</span>
+      <span><strong>flush(data)</strong> : simule une réponse 200 OK</span>
+    </div>
+    <div class="point error">
+      <span class="icon">❌</span>
+      <span><strong>flush(msg, {{ '{' }}status: 404{{ '}' }})</strong> : simule une erreur</span>
+    </div>
+  </div>
+</div>

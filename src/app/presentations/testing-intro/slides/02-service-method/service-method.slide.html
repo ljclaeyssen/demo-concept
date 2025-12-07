@@ -1,0 +1,34 @@
+<h1>📦 Tester une méthode de service</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Le cas le plus simple : tester de la logique pure</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Le service à tester</h2>
+      <pre><code [highlight]="serviceCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <app-test-switch
+        title="Le test"
+        [karmaCode]="karmaTestCode()"
+        [vitestCode]="vitestTestCode()" />
+    </div>
+  </div>
+
+  <div class="key-points">
+    <div class="point">
+      <span class="icon">🔧</span>
+      <span><strong>TestBed.inject()</strong> : récupère l'instance du service</span>
+    </div>
+    <div class="point">
+      <span class="icon">✅</span>
+      <span><strong>expect().toBe()</strong> : vérifie la valeur retournée</span>
+    </div>
+    <div class="point diff">
+      <span class="icon">⚠️</span>
+      <span><strong>Différence</strong> : Jasmine a toBeTrue()/toBeFalse(), Vitest utilise toBe(true/false)</span>
+    </div>
+  </div>
+</div>

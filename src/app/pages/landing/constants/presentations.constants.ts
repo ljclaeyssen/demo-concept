@@ -70,6 +70,13 @@ export const PRESENTATIONS: Presentation[] = [
     route: '/angular-evolution',
     icon: '📈',
     types: [PresentationType.SCHOOL]
+  },
+  {
+    title: 'Introduction aux Tests',
+    description: 'Apprenez à tester vos services et composants Angular : méthodes, HTTP, formulaires, mocks. Karma vs Vitest.',
+    route: '/testing-intro',
+    icon: '🧪',
+    types: [PresentationType.SCHOOL]
   }
 ];
 

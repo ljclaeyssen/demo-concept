@@ -1,0 +1,38 @@
+<h1>📝 Tester la validation d'un formulaire</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Vérifier que les validators fonctionnent correctement</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Le composant à tester</h2>
+      <pre><code [highlight]="componentCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <app-test-switch
+        title="Le test"
+        [karmaCode]="karmaTestCode()"
+        [vitestCode]="vitestTestCode()" />
+    </div>
+  </div>
+
+  <div class="key-points">
+    <div class="point">
+      <span class="icon">📋</span>
+      <span><strong>form.get('field')</strong> : accède à un contrôle</span>
+    </div>
+    <div class="point">
+      <span class="icon">❌</span>
+      <span><strong>hasError('email')</strong> : vérifie si une erreur de validation existe</span>
+    </div>
+    <div class="point">
+      <span class="icon">✅</span>
+      <span><strong>form.valid</strong> : vérifie si le formulaire est valide</span>
+    </div>
+    <div class="point">
+      <span class="icon">📝</span>
+      <span><strong>patchValue()</strong> : remplit plusieurs champs d'un coup</span>
+    </div>
+  </div>
+</div>

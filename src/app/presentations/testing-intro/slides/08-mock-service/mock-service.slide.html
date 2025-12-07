@@ -1,0 +1,38 @@
+<h1>🎭 Mocker un service</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Isoler le composant en remplaçant ses dépendances</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Le composant à tester</h2>
+      <pre><code [highlight]="componentCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <app-test-switch
+        title="Le test"
+        [karmaCode]="karmaTestCode()"
+        [vitestCode]="vitestTestCode()" />
+    </div>
+  </div>
+
+  <div class="key-points">
+    <div class="point">
+      <span class="icon">🎭</span>
+      <span><strong>{{ '{' }} provide: Service, useValue: mock {{ '}' }}</strong> : injecte le mock</span>
+    </div>
+    <div class="point karma">
+      <span class="icon">🔴</span>
+      <span><strong>Jasmine</strong> : jasmine.createSpyObj() + .and.returnValue()</span>
+    </div>
+    <div class="point vitest">
+      <span class="icon">⚡</span>
+      <span><strong>Vitest</strong> : vi.fn() + .mockReturnValue()</span>
+    </div>
+    <div class="point">
+      <span class="icon">📤</span>
+      <span><strong>of() / throwError()</strong> : crée des Observables de test</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+.key-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.point {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f0fdf4;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #166534;
+
+  .icon {
+    font-size: 1.1rem;
+  }
+
+  &.warning {
+    background: #fef3c7;
+    color: #92400e;
+  }
+}
