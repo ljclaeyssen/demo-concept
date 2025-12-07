@@ -1,0 +1,33 @@
+<h1>📦 signal() - Les bases</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Créer, lire et modifier un signal</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>1. Créer un signal</h2>
+      <pre><code [highlight]="createCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>2. Lire la valeur</h2>
+      <pre><code [highlight]="readCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>3. set() - Remplacer</h2>
+      <pre><code [highlight]="setCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section highlighted">
+      <h2>4. update() - Modifier ⭐</h2>
+      <pre><code [highlight]="updateCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    💡 <strong>Règle d'or :</strong> Utilisez <code>set()</code> pour remplacer, <code>update()</code> pour modifier basé sur la valeur actuelle.
+  </div>
+</div>

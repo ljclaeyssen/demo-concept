@@ -34,13 +34,34 @@ export const PRESENTATIONS: Presentation[] = [
     description: 'Bonnes pratiques et patterns pour utiliser les Signals Angular : basics, interop RxJS, Resources API, et migration progressive de votre codebase.',
     route: '/signal',
     icon: '⚡',
-    types: [PresentationType.PRO, PresentationType.SCHOOL]
+    types: [PresentationType.PRO]
   },
   {
     title: 'Introduction à RxJS',
-    description: 'Découvrez la programmation réactive avec RxJS : Observables, Subjects, opérateurs et intégration Angular. Parfait pour les débutants !',
+    description: 'Découvrez la programmation réactive avec RxJS : Observables, opérateurs et intégration Angular. Parfait pour les débutants !',
     route: '/rxjs-intro',
     icon: '🌊',
+    types: [PresentationType.SCHOOL]
+  },
+  {
+    title: 'RxJS Avancé',
+    description: 'Maîtrisez les Subjects, le state management avec BehaviorSubject, la combinaison de flux et la gestion des erreurs.',
+    route: '/rxjs-advanced',
+    icon: '🚀',
+    types: [PresentationType.SCHOOL]
+  },
+  {
+    title: 'Introduction aux Signals',
+    description: 'Découvrez les Signals Angular : signal(), computed(), effect() et input()/output(). La nouvelle façon de gérer l\'état dans Angular.',
+    route: '/signal-intro',
+    icon: '⚡',
+    types: [PresentationType.SCHOOL]
+  },
+  {
+    title: 'Signals Avancé',
+    description: 'Allez plus loin avec les Signals : interop RxJS, Resources API, options avancées et NgRx Signal Store.',
+    route: '/signal-advanced',
+    icon: '🚀',
     types: [PresentationType.SCHOOL]
   }
 ];

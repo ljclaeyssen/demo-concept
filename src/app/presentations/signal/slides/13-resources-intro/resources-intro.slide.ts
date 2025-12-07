@@ -26,17 +26,17 @@ error = this.userResource.error;          // Signal<Error | undefined>`);
 
   rxResourceCode = signal(`import { rxResource } from '@angular/core/rxjs-interop';
 
-// RxResource avec Observable
+// RxResource avec Observable (utilise 'stream')
 productsResource = rxResource({
-  loader: () => this.http.get<Product[]>('/api/products')
+  stream: () => this.http.get<Product[]>('/api/products')
 });
 
 // Avec paramètres réactifs
 userId = signal('123');
 
 userDetailsResource = rxResource({
-  request: () => ({ id: this.userId() }),
-  loader: ({ request }) =>
-    this.http.get<User>(\`/api/users/\${request.id}\`)
+  params: () => ({ id: this.userId() }),
+  stream: ({ params }) =>
+    this.http.get<User>(\`/api/users/\${params.id}\`)
 });`);
 }

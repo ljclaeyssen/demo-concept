@@ -1,0 +1,60 @@
+<h1>🎓 Récapitulatif</h1>
+
+<div class="slide-container conclusion-slide">
+  <div class="recap-grid">
+    <div class="recap-card">
+      <div class="icon">📦</div>
+      <h2>signal()</h2>
+      <p>État réactif</p>
+      <ul>
+        <li><code>signal(valeur)</code> pour créer</li>
+        <li><code>monSignal()</code> pour lire</li>
+        <li><code>.set()</code> pour remplacer</li>
+        <li><code>.update()</code> pour modifier</li>
+      </ul>
+    </div>
+
+    <div class="recap-card">
+      <div class="icon">🧮</div>
+      <h2>computed()</h2>
+      <p>Valeurs dérivées</p>
+      <ul>
+        <li>Se recalcule automatiquement</li>
+        <li>Mémoïsé (cache le résultat)</li>
+        <li>Lecture seule</li>
+        <li>Peut dépendre d'autres computed</li>
+      </ul>
+    </div>
+
+    <div class="recap-card">
+      <div class="icon">🔄</div>
+      <h2>effect()</h2>
+      <p>Side effects</p>
+      <ul>
+        <li>Réagit aux changements</li>
+        <li>Pour logs, localStorage, analytics</li>
+        <li>Ne jamais modifier de signals dedans</li>
+        <li>Nettoyage automatique</li>
+      </ul>
+    </div>
+
+    <div class="recap-card">
+      <div class="icon">📥</div>
+      <h2>input() / output()</h2>
+      <p>Communication</p>
+      <ul>
+        <li><code>input()</code> = Signal en lecture</li>
+        <li><code>input.required()</code> si obligatoire</li>
+        <li><code>output()</code> sans EventEmitter</li>
+        <li>Cohérent avec l'écosystème</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="next-steps">
+    <h3>🚀 Pour aller plus loin</h3>
+    <div class="resources">
+      <span class="resource-item">📚 Signals Avancé : RxJS interop, Resources API, NgRx Signal Store</span>
+    </div>
+  </div>
+</div>

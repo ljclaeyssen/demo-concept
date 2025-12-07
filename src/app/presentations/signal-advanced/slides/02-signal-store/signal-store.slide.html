@@ -1,0 +1,28 @@
+<h1>🏪 Store maison avec Signals</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Un mini-store réactif sans librairie externe</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>StoreService</h2>
+      <pre><code [highlight]="storeServiceCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Utilisation</h2>
+      <pre><code [highlight]="usageCode()" language="typescript"></code></pre>
+
+      <div class="benefits-list compact">
+        <div class="benefit-item">✅ État centralisé et immutable</div>
+        <div class="benefit-item">✅ Sélecteurs réactifs avec computed</div>
+        <div class="benefit-item">✅ Pas besoin d'async pipe</div>
+        <div class="benefit-item">✅ Synchrone et simple à débugger</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    💡 <strong>Comparé à BehaviorSubject :</strong> Plus simple ! Pas de <code>.getValue()</code>, pas de <code>subscribe</code>, pas de <code>| async</code>. Juste des appels de fonction.
+  </div>
+</div>

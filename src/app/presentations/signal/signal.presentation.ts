@@ -13,7 +13,6 @@ import { InteractionEffectSlide } from './slides/10-interaction-effect/interacti
 import { RxjsInteropSlide } from './slides/11-rxjs-interop/rxjs-interop.slide';
 import { RxjsOperatorsSlide } from './slides/12-rxjs-operators/rxjs-operators.slide';
 import { ResourcesIntroSlide } from './slides/13-resources-intro/resources-intro.slide';
-import { ResourcesHttpSlide } from './slides/14-resources-http/resources-http.slide';
 import { ResourcesLegacySlide } from './slides/15-resources-legacy/resources-legacy.slide';
 import { DemoResourceSlide } from './slides/16-demo-resource/demo-resource.slide';
 import { LimitationsSlide } from './slides/16-limitations/limitations.slide';
@@ -43,7 +42,6 @@ register();
     RxjsInteropSlide,
     RxjsOperatorsSlide,
     ResourcesIntroSlide,
-    ResourcesHttpSlide,
     ResourcesLegacySlide,
     DemoResourceSlide,
     LimitationsSlide,

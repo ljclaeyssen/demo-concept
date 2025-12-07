@@ -1,0 +1,29 @@
+<h1>🤔 Pourquoi les Signals ?</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Le problème avec les variables classiques</p>
+
+  <div class="three-columns">
+    <div class="code-section">
+      <h2>❌ Avant (variables)</h2>
+      <pre><code [highlight]="beforeCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section highlighted">
+      <h2>✅ Après (Signals)</h2>
+      <pre><code [highlight]="afterCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>💡 Analogie</h2>
+      <pre><code [highlight]="analogyCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Réactivité fine : Angular sait exactement quoi mettre à jour</div>
+    <div class="benefit-item">✅ Performance : pas de vérification inutile</div>
+    <div class="benefit-item">✅ Plus simple que RxJS pour l'état local</div>
+    <div class="benefit-item">✅ Synchrone : pas besoin de subscribe/async pipe</div>
+  </div>
+</div>

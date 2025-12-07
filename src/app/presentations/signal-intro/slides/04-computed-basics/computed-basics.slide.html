@@ -1,0 +1,29 @@
+<h1>🧮 computed() - Valeurs dérivées</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Calculer automatiquement à partir d'autres signals</p>
+
+  <div class="three-columns">
+    <div class="code-section">
+      <h2>Principe</h2>
+      <pre><code [highlight]="basicCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Exemples pratiques</h2>
+      <pre><code [highlight]="examplesCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section highlighted">
+      <h2>Dans un composant</h2>
+      <pre><code [highlight]="templateCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ Recalcul automatique quand les dépendances changent</div>
+    <div class="benefit-item">✅ Mémoïsé : ne recalcule que si nécessaire</div>
+    <div class="benefit-item">✅ Lecture seule : impossible de faire .set() dessus</div>
+    <div class="benefit-item">✅ Chaînable : un computed peut dépendre d'un autre</div>
+  </div>
+</div>

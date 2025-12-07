@@ -1,0 +1,28 @@
+<h1>🎯 Exemple complet : Mini Store</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Un store-like pattern sans NgRx</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>StoreService</h2>
+      <pre><code [highlight]="storeServiceCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Utilisation</h2>
+      <pre><code [highlight]="usageCode()" language="typescript"></code></pre>
+
+      <div class="benefits-list compact">
+        <div class="benefit-item">✅ État centralisé et immutable</div>
+        <div class="benefit-item">✅ Sélecteurs réactifs avec map</div>
+        <div class="benefit-item">✅ Composants découplés du state</div>
+        <div class="benefit-item">✅ Facile à tester et debugger</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    💡 <strong>Pour aller plus loin :</strong> Quand l'app grandit, considérer NgRx ou le NgRx Signal Store pour un state management plus structuré.
+  </div>
+</div>

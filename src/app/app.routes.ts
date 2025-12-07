@@ -28,5 +28,17 @@ export const routes: Routes = [
   {
     path: 'rxjs-intro',
     loadComponent: () => import('./presentations/rxjs-intro/rxjs-intro.presentation').then(m => m.RxjsIntroPresentation)
+  },
+  {
+    path: 'rxjs-advanced',
+    loadComponent: () => import('./presentations/rxjs-advanced/rxjs-advanced.presentation').then(m => m.RxjsAdvancedPresentation)
+  },
+  {
+    path: 'signal-intro',
+    loadComponent: () => import('./presentations/signal-intro/signal-intro.presentation').then(m => m.SignalIntroPresentation)
+  },
+  {
+    path: 'signal-advanced',
+    loadComponent: () => import('./presentations/signal-advanced/signal-advanced.presentation').then(m => m.SignalAdvancedPresentation)
   }
 ];

@@ -185,6 +185,28 @@ swiper-slide {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
   }
 
+  // Highlighted code section
+  .code-section {
+    &.highlighted {
+      border: 2px solid #3b82f6;
+      border-radius: 8px;
+      padding: 1rem;
+      background: #f0f9ff;
+
+      h2 {
+        color: #1d4ed8;
+      }
+    }
+  }
+
+  // Use case description
+  .use-case {
+    margin: 0.75rem 0 0 0;
+    font-size: 0.85rem;
+    color: #64748b;
+    font-style: italic;
+  }
+
   // Console prompt section
   .console-prompt {
     display: flex;

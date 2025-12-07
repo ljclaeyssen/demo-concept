@@ -1,0 +1,83 @@
+.conclusion-slide {
+  text-align: center;
+}
+
+.recap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.recap-card {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: left;
+
+  .icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    margin: 0 0 0.25rem 0;
+    color: #1e293b;
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 0 0 0.75rem 0;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    font-size: 0.85rem;
+
+    li {
+      margin-bottom: 0.25rem;
+      color: #475569;
+    }
+
+    code {
+      background: #e2e8f0;
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.next-steps {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: white;
+
+  h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
+  }
+}
+
+.resources {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+
+  a {
+    color: white;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+}

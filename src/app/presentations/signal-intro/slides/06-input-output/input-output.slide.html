@@ -1,0 +1,36 @@
+<h1>📥 input() et output()</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Communication parent-enfant avec signals</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ @Input() (ancien)</h2>
+      <pre><code [highlight]="oldInputCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section highlighted">
+      <h2>✅ input() (nouveau)</h2>
+      <pre><code [highlight]="newInputCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>❌ @Output() (ancien)</h2>
+      <pre><code [highlight]="oldOutputCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section highlighted">
+      <h2>✅ output() (nouveau)</h2>
+      <pre><code [highlight]="newOutputCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ input() retourne un Signal : utilisable dans computed()</div>
+    <div class="benefit-item">✅ Plus simple et cohérent avec l'écosystème Signals</div>
+    <div class="benefit-item">✅ input.required() pour les inputs obligatoires</div>
+    <div class="benefit-item">✅ output() sans EventEmitter</div>
+  </div>
+</div>

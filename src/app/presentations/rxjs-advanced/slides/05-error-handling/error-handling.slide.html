@@ -1,0 +1,36 @@
+<h1>🛡️ Gestion des erreurs</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Parce que les requêtes échouent parfois...</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>catchError</h2>
+      <pre><code [highlight]="catchErrorCode()" language="typescript"></code></pre>
+      <p class="use-case">📌 Valeur par défaut, message d'erreur</p>
+    </div>
+
+    <div class="code-section">
+      <h2>retry</h2>
+      <pre><code [highlight]="retryCode()" language="typescript"></code></pre>
+      <p class="use-case">📌 Réseaux instables, APIs flaky</p>
+    </div>
+  </div>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>finalize</h2>
+      <pre><code [highlight]="finalizeCode()" language="typescript"></code></pre>
+      <p class="use-case">📌 Loading spinner, cleanup</p>
+    </div>
+
+    <div class="code-section highlighted">
+      <h2>Pattern complet ⭐</h2>
+      <pre><code [highlight]="completePatternCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    💡 <strong>Important :</strong> Sans <code>catchError</code>, une erreur termine l'Observable et les futurs événements sont perdus !
+  </div>
+</div>

@@ -8,7 +8,6 @@ import { WhyRxjsExampleSlide } from './slides/04-why-rxjs-example/why-rxjs-examp
 import { ObservableBasicsSlide } from './slides/04-observable-basics/observable-basics.slide';
 import { ObserverPatternSlide } from './slides/05-observer-pattern/observer-pattern.slide';
 import { SubscriptionSlide } from './slides/06-subscription/subscription.slide';
-import { SubjectTypesSlide } from './slides/07-subject-types/subject-types.slide';
 import { OperatorsIntroSlide } from './slides/08-operators-intro/operators-intro.slide';
 import { MappingOperatorsSlide } from './slides/09-mapping-operators/mapping-operators.slide';
 import { PracticalAngularSlide } from './slides/10-practical-angular/practical-angular.slide';
@@ -29,7 +28,6 @@ register();
     ObservableBasicsSlide,
     ObserverPatternSlide,
     SubscriptionSlide,
-    SubjectTypesSlide,
     OperatorsIntroSlide,
     MappingOperatorsSlide,
     PracticalAngularSlide,

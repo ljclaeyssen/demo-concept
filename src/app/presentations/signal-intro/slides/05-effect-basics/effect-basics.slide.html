@@ -1,0 +1,32 @@
+<h1>🔄 effect() - Side Effects</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Réagir aux changements de signals</p>
+
+  <div class="three-columns">
+    <div class="code-section">
+      <h2>Principe</h2>
+      <pre><code [highlight]="basicCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section highlighted">
+      <h2>Cas d'usage</h2>
+      <pre><code [highlight]="useCasesCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Attention !</h2>
+      <pre><code [highlight]="warningCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">✅ S'exécute automatiquement quand les signals lus changent</div>
+    <div class="benefit-item">✅ Nettoyage automatique quand le composant est détruit</div>
+  </div>
+
+  <div class="problems-list">
+    <div class="problem-item">❌ Ne jamais modifier de signals dans un effect</div>
+    <div class="problem-item">❌ Réservé aux side effects (logs, localStorage, APIs externes)</div>
+  </div>
+</div>

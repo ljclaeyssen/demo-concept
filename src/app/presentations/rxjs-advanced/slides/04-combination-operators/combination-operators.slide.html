@@ -1,0 +1,33 @@
+<h1>🔀 Combiner plusieurs flux</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Quand une seule source ne suffit pas</p>
+
+  <div class="two-columns">
+    <div class="code-section highlighted">
+      <h2>combineLatest</h2>
+      <pre><code [highlight]="combineLatestCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>withLatestFrom</h2>
+      <pre><code [highlight]="withLatestFromCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="two-columns">
+    <div class="code-section highlighted">
+      <h2>forkJoin</h2>
+      <pre><code [highlight]="forkJoinCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>merge</h2>
+      <pre><code [highlight]="mergeCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    💡 <strong>Règle d'or :</strong> <code>forkJoin</code> pour les requêtes HTTP parallèles, <code>combineLatest</code> pour les états réactifs, <code>withLatestFrom</code> pour les actions + contexte.
+  </div>
+</div>

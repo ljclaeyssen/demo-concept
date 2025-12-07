@@ -1,0 +1,53 @@
+<h1>🎓 Récapitulatif</h1>
+
+<div class="slide-container conclusion-slide">
+  <div class="recap-grid">
+    <div class="recap-card">
+      <div class="icon">⚙️</div>
+      <h2>Options avancées</h2>
+      <ul>
+        <li><code>computed({{ '{' }} equal {{ '}' }})</code> pour contrôler les recalculs</li>
+        <li><code>effect({{ '{' }} allowSignalWrites {{ '}' }})</code> si vraiment nécessaire</li>
+        <li><code>onCleanup()</code> pour le nettoyage</li>
+      </ul>
+    </div>
+
+    <div class="recap-card">
+      <div class="icon">🔄</div>
+      <h2>RxJS Interop</h2>
+      <ul>
+        <li><code>toSignal()</code> : Observable → Signal</li>
+        <li><code>toObservable()</code> : Signal → Observable</li>
+        <li>Migration progressive possible</li>
+      </ul>
+    </div>
+
+    <div class="recap-card">
+      <div class="icon">📡</div>
+      <h2>Resources API</h2>
+      <ul>
+        <li><code>resource()</code> avec <code>loader</code> (Promise)</li>
+        <li><code>rxResource()</code> avec <code>stream</code> (Observable)</li>
+        <li>Loading/error automatiques</li>
+      </ul>
+    </div>
+
+    <div class="recap-card">
+      <div class="icon">🏪</div>
+      <h2>Store maison</h2>
+      <ul>
+        <li>Signal privé + computed publics</li>
+        <li>Actions via <code>update()</code></li>
+        <li>Plus simple que BehaviorSubject</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="next-steps">
+    <h3>🚀 Pour aller encore plus loin</h3>
+    <div class="resources">
+      <a href="https://angular.dev/guide/signals" target="_blank">📚 Documentation Angular Signals</a>
+      <a href="https://ngrx.io/guide/signals" target="_blank">🏪 NgRx Signal Store</a>
+    </div>
+  </div>
+</div>
