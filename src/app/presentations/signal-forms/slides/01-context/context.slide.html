@@ -1,0 +1,43 @@
+<h1>3 systèmes de formulaires</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Angular propose désormais trois approches pour gérer les formulaires</p>
+
+  <table class="status-table">
+    <thead>
+      <tr>
+        <th>Système</th>
+        <th>Approche</th>
+        <th>Package</th>
+        <th>Statut</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Template-driven</strong></td>
+        <td>Directives + [(ngModel)]</td>
+        <td><code>&#64;angular/forms</code></td>
+        <td><span class="badge stable">Stable</span></td>
+      </tr>
+      <tr>
+        <td><strong>Reactive Forms</strong></td>
+        <td>FormGroup / FormControl / RxJS</td>
+        <td><code>&#64;angular/forms</code></td>
+        <td><span class="badge stable">Stable</span></td>
+      </tr>
+      <tr>
+        <td><strong>Signal Forms</strong></td>
+        <td>form() / FormField / Signals</td>
+        <td><code>&#64;angular/forms/signals</code></td>
+        <td><span class="badge experimental">Experimental</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="benefits-list">
+    <div class="benefit-item">Signal Forms ne sont pas une évolution des Reactive Forms — c'est une réécriture from scratch</div>
+    <div class="benefit-item">Conçu pour l'ère post-Zone.js et signals-first</div>
+    <div class="problem-item">API experimental — peut changer à tout moment, y compris dans un patch</div>
+    <div class="problem-item">La v22 (mai 2026) est un candidat pour la stabilisation, sans garantie</div>
+  </div>
+</div>

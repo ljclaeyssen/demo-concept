@@ -1,0 +1,24 @@
+<h1>Validation Cross-Field</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Si pays = FR, le code postal doit matcher le format français</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Reactive — static validator + subscribe</h2>
+      <pre><code [highlight]="reactiveCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Signal — validate() réactif</h2>
+      <pre><code [highlight]="signalCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">Signal : valueOf() lit les autres champs — revalidation automatique</div>
+    <div class="benefit-item">Signal : pas de subscribe, pas de updateValueAndValidity, pas de cleanup</div>
+    <div class="problem-item">Reactive : validator static + subscribe + DestroyRef pour le cleanup</div>
+    <div class="problem-item">Reactive : updateValueAndValidity() obligatoire pour trigger la revalidation</div>
+  </div>
+</div>

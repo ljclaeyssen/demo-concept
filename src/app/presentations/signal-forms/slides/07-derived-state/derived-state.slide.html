@@ -1,0 +1,24 @@
+<h1>État Dérivé</h1>
+
+<div class="slide-container">
+  <p class="subtitle">valueChanges.pipe(shareReplay) vs computed()</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Reactive — Observable + shareReplay</h2>
+      <pre><code [highlight]="reactiveCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Signal — computed()</h2>
+      <pre><code [highlight]="signalCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">Signal : pas de startWith, pas de shareReplay, pas d'async pipe</div>
+    <div class="benefit-item">Signal : mémoïsé par défaut — recalcul uniquement si dépendance change</div>
+    <div class="problem-item">Reactive : startWith obligatoire sinon pas de valeur initiale</div>
+    <div class="problem-item">Reactive : shareReplay sinon recalcul à chaque subscriber</div>
+  </div>
+</div>

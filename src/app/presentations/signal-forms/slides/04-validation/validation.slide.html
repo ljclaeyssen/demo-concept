@@ -1,0 +1,24 @@
+<h1>Validation</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Distribuée par control vs Schema centralisé</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Reactive — validators par control</h2>
+      <pre><code [highlight]="reactiveCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Signal — schema centralisé</h2>
+      <pre><code [highlight]="signalCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">Signal : messages colocalisés avec les règles</div>
+    <div class="benefit-item">Signal : un seul endroit à maintenir</div>
+    <div class="problem-item">Reactive : validators attachés au constructeur, messages dans le template</div>
+    <div class="problem-item">Reactive : logique de validation distribuée entre classe et vue</div>
+  </div>
+</div>

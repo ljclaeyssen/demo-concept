@@ -1,0 +1,24 @@
+<h1>Exemple Complet — EligibiliteForm</h1>
+
+<div class="slide-container">
+  <p class="subtitle">~95 lignes vs ~55 lignes — même fonctionnalité</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>extends FormGroup (~95 lignes)</h2>
+      <pre><code [highlight]="reactiveCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Signal Forms (~55 lignes)</h2>
+      <pre><code [highlight]="signalCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">Signal : 0 subscribe, 0 updateValueAndValidity, 0 shareReplay</div>
+    <div class="benefit-item">Signal : validators déclaratifs et réactifs — pas de setValidators</div>
+    <div class="problem-item">Reactive : 3 subscribes + 3 setValidators + DestroyRef</div>
+    <div class="problem-item">Reactive : setValidators écrase tout — oublier un validator = bug silencieux</div>
+  </div>
+</div>

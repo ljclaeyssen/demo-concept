@@ -16,6 +16,13 @@ export const PRESENTATIONS: Presentation[] = [
     types: [PresentationType.PRO]
   },
   {
+    title: 'Signal Forms',
+    description: 'extends FormGroup vs Signal Forms (Angular 21) : validation, composition, custom controls, testing et stratégie de migration.',
+    route: '/signal-forms',
+    icon: '📡',
+    types: [PresentationType.PRO]
+  },
+  {
     title: 'NgRx SignalStore',
     description: 'Comprenez pourquoi NgRx SignalStore remplace complètement le vieux NgRx Store : zéro boilerplate, signals natifs, et performance maximale.',
     route: '/signal-store',

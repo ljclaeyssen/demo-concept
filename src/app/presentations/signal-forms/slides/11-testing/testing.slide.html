@@ -1,0 +1,24 @@
+<h1>Tests Unitaires</h1>
+
+<div class="slide-container">
+  <p class="subtitle">new FormGroup() direct vs TestBed.runInInjectionContext</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Reactive — instantiation directe</h2>
+      <pre><code [highlight]="reactiveCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Signal — injection context</h2>
+      <pre><code [highlight]="signalCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">Reactive : pur TypeScript sans TestBed (tant qu'il n'y a pas de subscribe)</div>
+    <div class="benefit-item">Les deux : assertions sur la validité et les erreurs similaires</div>
+    <div class="problem-item">Signal : TestBed obligatoire — injection context requis pour form()</div>
+    <div class="problem-item">Reactive : dès takeUntilDestroyed, on perd l'avantage du simple new</div>
+  </div>
+</div>

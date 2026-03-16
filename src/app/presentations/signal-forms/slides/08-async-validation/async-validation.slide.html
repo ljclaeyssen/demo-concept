@@ -1,0 +1,24 @@
+<h1>Validation Asynchrone</h1>
+
+<div class="slide-container">
+  <p class="subtitle">AsyncValidatorFn vs validateHttp</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Reactive — AsyncValidatorFn</h2>
+      <pre><code [highlight]="reactiveCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Signal — validateHttp</h2>
+      <pre><code [highlight]="signalCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">Signal : validateHttp gère debounce, cancellation et lifecycle</div>
+    <div class="benefit-item">Signal : request retourne undefined pour skip si champ vide</div>
+    <div class="problem-item">Reactive : first() obligatoire pour compléter l'Observable</div>
+    <div class="problem-item">Reactive : updateOn: 'blur' pour éviter les appels à chaque keystroke</div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<h1>Composition de Sous-Formulaires</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Cross-group subscribe vs schema composable</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Reactive — subscribe cross-group</h2>
+      <pre><code [highlight]="reactiveCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Signal — schema composable</h2>
+      <pre><code [highlight]="signalCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">Signal : validators de sous-sections = fonctions réutilisables</div>
+    <div class="benefit-item">Signal : cross-group via valueOf() — pas de setValidators</div>
+    <div class="problem-item">Reactive : cross-group creuse dans les sous-classes (fragile)</div>
+    <div class="problem-item">Reactive : setValidators écrase tout à chaque fois</div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<h1>Définition du Form Model</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Classe ~30 lignes vs fonction ~12 lignes</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>extends FormGroup (~30 lignes)</h2>
+      <pre><code [highlight]="reactiveCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Signal Forms (~12 lignes)</h2>
+      <pre><code [highlight]="signalCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">Signal : typage inféré du signal — une seule interface, pas de duplication</div>
+    <div class="benefit-item">Signal : le data model EST le form — pas de synchronisation</div>
+    <div class="problem-item">Reactive : interface + generic à maintenir en sync</div>
+    <div class="problem-item">Reactive : form séparé du data model</div>
+  </div>
+</div>

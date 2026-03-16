@@ -1,0 +1,24 @@
+<h1>Custom Controls</h1>
+
+<div class="slide-container">
+  <p class="subtitle">CVA ~45 lignes vs field binding ~18 lignes</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Reactive — ControlValueAccessor</h2>
+      <pre><code [highlight]="reactiveCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Signal — FormValueControl</h2>
+      <pre><code [highlight]="signalCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">Signal : FormValueControl = juste un model() signal</div>
+    <div class="benefit-item">Signal : 15-20 composants = des centaines de lignes éliminées</div>
+    <div class="problem-item">Reactive : 4 méthodes obligatoires, NG_VALUE_ACCESSOR, forwardRef</div>
+    <div class="problem-item">Reactive : ~45 lignes de boilerplate par composant</div>
+  </div>
+</div>

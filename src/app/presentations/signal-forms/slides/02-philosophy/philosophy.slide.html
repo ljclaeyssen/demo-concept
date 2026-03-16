@@ -1,0 +1,33 @@
+<h1>Deux modèles mentaux</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Streams / OOP vs État / Déclaratif</p>
+
+  <div class="two-columns">
+    <div class="philosophy-card reactive">
+      <h2>Reactive Forms</h2>
+      <div class="mental-model">Penser en streams</div>
+      <ul>
+        <li>Subscribe aux changements</li>
+        <li>Pipe les transformations</li>
+        <li>Gère le cleanup manuellement</li>
+        <li>Form = objet séparé du data model</li>
+        <li>Synchronisation manuelle form ↔ model</li>
+      </ul>
+      <div class="paradigm">Observable-based • Impératif • OOP</div>
+    </div>
+
+    <div class="philosophy-card signal">
+      <h2>Signal Forms</h2>
+      <div class="mental-model">Penser en état</div>
+      <ul>
+        <li>Déclarer un signal model</li>
+        <li>Déclarer des règles dessus</li>
+        <li>Tout se met à jour automatiquement</li>
+        <li>Form = le data model</li>
+        <li>Pas de synchronisation nécessaire</li>
+      </ul>
+      <div class="paradigm">Signal-native • Déclaratif • Fonctionnel</div>
+    </div>
+  </div>
+</div>

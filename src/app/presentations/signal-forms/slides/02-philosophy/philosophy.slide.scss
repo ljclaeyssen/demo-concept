@@ -1,0 +1,87 @@
+:host {
+  .philosophy-card {
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid;
+
+    &.reactive {
+      border-color: #3b82f6;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+
+      h2 {
+        color: #1d4ed8;
+      }
+
+      .mental-model {
+        background: #3b82f6;
+      }
+
+      .paradigm {
+        color: #3b82f6;
+        border-top-color: #93c5fd;
+      }
+    }
+
+    &.signal {
+      border-color: #8b5cf6;
+      background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+
+      h2 {
+        color: #6d28d9;
+      }
+
+      .mental-model {
+        background: #8b5cf6;
+      }
+
+      .paradigm {
+        color: #8b5cf6;
+        border-top-color: #c4b5fd;
+      }
+    }
+
+    h2 {
+      margin: 0 0 1rem 0;
+      font-size: 1.5rem;
+    }
+
+    .mental-model {
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+
+      li {
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+        font-size: 1rem;
+        color: #334155;
+
+        &::before {
+          content: '→';
+          position: absolute;
+          left: 0;
+          color: #94a3b8;
+        }
+      }
+    }
+
+    .paradigm {
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding-top: 1rem;
+      border-top: 1px solid;
+      text-align: center;
+    }
+  }
+}

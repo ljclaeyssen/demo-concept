@@ -29,7 +29,8 @@
       "Bash(done)",
       "Bash(dir:*)",
       "Bash(mkdir:*)",
-      "WebFetch(domain:angular.dev)"
+      "WebFetch(domain:angular.dev)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,26 @@
+<h1>Patterns valueChanges</h1>
+
+<div class="slide-container">
+  <p class="subtitle">Disable conditionnel, revalidation cross-field</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Reactive — subscribe + setValidators</h2>
+      <pre><code [highlight]="reactiveDisable()" language="typescript"></code></pre>
+      <pre><code [highlight]="reactiveRevalidation()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Signal — déclaratif</h2>
+      <pre><code [highlight]="signalDisable()" language="typescript"></code></pre>
+      <pre><code [highlight]="signalRevalidation()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <div class="benefits-list">
+    <div class="benefit-item">Signal : disabled() et validate() sont déclaratifs — re-run automatique</div>
+    <div class="benefit-item">Signal : pas de risque d'oublier un validator dans setValidators</div>
+    <div class="problem-item">Reactive : setValidators écrase la liste complète à chaque fois</div>
+    <div class="problem-item">Reactive : oublier un validator = bug silencieux</div>
+  </div>
+</div>
