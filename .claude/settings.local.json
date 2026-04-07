@@ -30,7 +30,12 @@
       "Bash(dir:*)",
       "Bash(mkdir:*)",
       "WebFetch(domain:angular.dev)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "WebFetch(domain:next.angular.dev)",
+      "mcp__angular-cli__find_examples",
+      "WebFetch(domain:blog.angular.dev)",
+      "WebFetch(domain:developer.mescius.com)",
+      "WebFetch(domain:briantree.se)"
     ],
     "deny": [],
     "ask": []

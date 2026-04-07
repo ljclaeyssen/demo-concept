@@ -20,17 +20,26 @@ export class NouveautesSlide {
   \`
 })
 export class AdresseComponent {
-  adresseForm = createAdresseForm();
+  model = signal<Adresse>({ rue: '', cp: '', ville: '' });
 
-  async onSubmit() {
-    // submit() retourne Promise<boolean>
-    // preventDefault + novalidate automatiques
-    const ok = await submit(this.adresseForm);
-  }
+  adresseForm = form(this.model, (f) => {
+    required(f.rue);
+    required(f.ville);
+  }, {
+    submission: {
+      action: async () => {
+        await this.api.save(this.model());
+      },
+    },
+  });
+  // preventDefault + novalidate automatiques
+  // touched sur tous les champs avant action
 }`);
 
-  transformedValueCode = signal(`// transformedValue — parse / format
-import { transformedValue }
+  transformedValueCode = signal(`// linkedSignal — transformation d'affichage
+import { linkedSignal, model }
+  from '@angular/core';
+import { FormValueControl }
   from '@angular/forms/signals';
 
 @Component({ /* ... */ })
@@ -39,18 +48,17 @@ export class MoneyInput
 
   value = model(0);
 
-  // Transforme number ↔ string pour l'UI
-  raw = transformedValue(this.value, {
-    parse: (str: string) => {
-      const n = parseFloat(str);
-      return isNaN(n)
-        ? { error: 'Nombre invalide' }
-        : { value: n };
-    },
-    format: (n: number) => n.toFixed(2),
-  });
+  // Transforme number → string pour l'UI
+  displayValue = linkedSignal(
+    () => this.value().toFixed(2)
+  );
 
-  // raw.parseErrors() → erreurs de parsing
+  updateModel() {
+    const n = parseFloat(
+      this.displayValue().replace(/,/g, '')
+    );
+    if (!isNaN(n)) this.value.set(n);
+  }
 }`);
 
   standardSchemaCode = signal(`// validateStandardSchema — Zod / Valibot

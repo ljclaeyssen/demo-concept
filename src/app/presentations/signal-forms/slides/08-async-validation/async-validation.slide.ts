@@ -44,16 +44,18 @@ validateHttp(f.codePromo, {
       : undefined,
   onSuccess: (result) =>
     result.valid
-      ? undefined
-      : customError({
+      ? null
+      : {
           kind: 'promoInvalide',
-          message: 'Code promo invalide'
-        }),
-  onError: () => undefined,
+          message: 'Code promo invalide',
+        },
+  onError: () => ({
+    kind: 'serverError',
+    message: 'Validation impossible',
+  }),
 });
 
 // validateHttp gère :
-// - debounce automatique
-// - cancellation
-// - lifecycle`);
+// - cancellation automatique
+// - lifecycle (pending state)`);
 }

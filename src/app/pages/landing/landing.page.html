@@ -1,34 +1,54 @@
-<div class="landing-container">
-  <h1>📊 Hub de Présentations</h1>
+<!-- Background layer -->
+<div class="bg-layer">
+  <div class="bg-grid"></div>
+  <div class="bg-orb bg-orb--blue"></div>
+  <div class="bg-orb bg-orb--green"></div>
+  <div class="bg-noise"></div>
+</div>
 
-  <div class="landing-content">
-    <div class="filter-section">
-      <span class="filter-label">Filtrer :</span>
-      @for (type of availableTypes; track type) {
-        <button
-          type="button"
-          class="filter-badge"
-          [class]="'type-' + type"
-          [class.active]="isFilterActive(type)"
-          (click)="toggleFilter(type)">
-          {{ type | presentationTypeLabel }}
-        </button>
-      }
-    </div>
+<!-- Content -->
+<div class="landing-wrapper">
+  <!-- Header -->
+  <header class="landing-header">
+    <span class="eyebrow">Angular Presentations</span>
+    <h1>Explore, Learn &amp; Build</h1>
+    <p class="tagline">A curated collection of interactive Angular presentations, demos and deep-dives.</p>
+  </header>
 
-    <div class="presentations-grid">
-      @for (presentation of presentations(); track presentation.route) {
-        <a [routerLink]="presentation.route" class="presentation-card">
-          @for (type of presentation.types; track type) {
-            <span class="type-badge" [class]="'type-' + type">
-              {{ type | presentationTypeLabel }}
-            </span>
-          }
+  <!-- Filters -->
+  <div class="filter-bar">
+    @for (type of availableTypes; track type) {
+      <button
+        type="button"
+        class="filter-chip"
+        [class]="'chip-' + type"
+        [class.active]="isFilterActive(type)"
+        (click)="toggleFilter(type)">
+        <span class="chip-dot"></span>
+        {{ type | presentationTypeLabel }}
+      </button>
+    }
+  </div>
+
+  <!-- Cards grid -->
+  <div class="cards-grid">
+    @for (presentation of presentations(); track presentation.route; let i = $index) {
+      <a [routerLink]="presentation.route" class="card" [style.--i]="i">
+        <div class="card-glow"></div>
+        <div class="card-body">
+          <div class="card-top">
+            @for (type of presentation.types; track type) {
+              <span class="card-tag" [class]="'tag-' + type">
+                {{ type | presentationTypeLabel }}
+              </span>
+            }
+          </div>
           <div class="card-icon">{{ presentation.icon }}</div>
           <h2>{{ presentation.title }}</h2>
-          <p class="description">{{ presentation.description }}</p>
-        </a>
-      }
-    </div>
+          <p class="card-desc">{{ presentation.description }}</p>
+          <span class="card-cta">Explorer <span class="cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+    }
   </div>
 </div>

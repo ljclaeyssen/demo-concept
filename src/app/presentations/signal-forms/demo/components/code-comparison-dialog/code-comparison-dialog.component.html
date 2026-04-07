@@ -1,0 +1,38 @@
+<div class="comparison-dialog-content">
+  <div class="dialog-header">
+    <h3>Typed Forms vs Signal Forms — Code comparé</h3>
+    <p-button
+      icon="pi pi-times"
+      [text]="true"
+      [rounded]="true"
+      severity="secondary"
+      (onClick)="close()" />
+  </div>
+
+  <div class="code-tabs">
+    @for (tab of tabs; track tab.key) {
+      <button
+        class="code-tab"
+        [class.active]="selectedTab() === tab.key"
+        (click)="selectTab(tab.key)">
+        {{ tab.label }}
+      </button>
+    }
+  </div>
+
+  <div class="comparison-viewer">
+    <div class="code-panel">
+      <div class="panel-header typed">extends FormGroup</div>
+      <div class="code-content">
+        <pre><code [highlight]="currentTab().typedForm.content" [language]="currentTab().typedForm.language"></code></pre>
+      </div>
+    </div>
+
+    <div class="code-panel">
+      <div class="panel-header signal">Signal Forms</div>
+      <div class="code-content">
+        <pre><code [highlight]="currentTab().signalForm.content" [language]="currentTab().signalForm.language"></code></pre>
+      </div>
+    </div>
+  </div>
+</div>

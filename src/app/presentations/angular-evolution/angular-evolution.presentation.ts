@@ -9,6 +9,7 @@ import { Angular18Slide } from './slides/05-angular-18/angular-18.slide';
 import { Angular19Slide } from './slides/06-angular-19/angular-19.slide';
 import { Angular20Slide } from './slides/07-angular-20/angular-20.slide';
 import { Angular21Slide } from './slides/08-angular-21/angular-21.slide';
+import { Angular22Slide } from './slides/09-angular-22/angular-22.slide';
 
 register();
 
@@ -24,7 +25,8 @@ register();
     Angular18Slide,
     Angular19Slide,
     Angular20Slide,
-    Angular21Slide
+    Angular21Slide,
+    Angular22Slide
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush

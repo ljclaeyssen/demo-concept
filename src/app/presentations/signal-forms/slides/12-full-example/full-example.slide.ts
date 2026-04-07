@@ -1,147 +1,116 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
+import { ButtonModule } from 'primeng/button';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { CodeComparisonDialogComponent } from '../../demo/components/code-comparison-dialog/code-comparison-dialog.component';
 
 @Component({
   selector: 'app-sf-full-example-slide',
   templateUrl: './full-example.slide.html',
   styleUrl: './full-example.slide.scss',
-  imports: [Highlight],
+  imports: [Highlight, ButtonModule],
+  providers: [DialogService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FullExampleSlide {
-  reactiveCode = signal(`export class EligibiliteFormGroup
-  extends FormGroup<EligibiliteControls> {
+  private dialogService = inject(DialogService);
+  private ref: DynamicDialogRef | null = null;
 
-  private destroyRef = inject(DestroyRef);
-
-  readonly mensualite$ = this.valueChanges.pipe(
-    startWith(this.getRawValue()),
-    map(v => this.calculMensualite(v)),
-    shareReplay(1),
-  );
-
+  reactiveCode = signal(`// 3 classes + 6 enums + DestroyRef + subscriptions
+export class EligibiliteForm extends FormGroup {
   constructor() {
     super({
-      typeContrat: new FormControl<TypeContrat>('CDI', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
-      montant: new FormControl(0, {
-        nonNullable: true,
-        validators: [Validators.required,
-          Validators.min(1000), Validators.max(500000)],
-      }),
-      duree: new FormControl(12, {
-        nonNullable: true,
-        validators: [Validators.required,
-          Validators.min(6), Validators.max(360)],
-      }),
-      apport: new FormControl(0, {
-        nonNullable: true, validators: [Validators.min(0)],
-      }),
-      assurance: new FormControl(false, {
-        nonNullable: true,
-      }),
-      codePromo: new FormControl('', {
-        nonNullable: true,
-      }),
+      [EligibiliteFormFields.INFORMATIONS]: new InformationsForm(),
+      [EligibiliteFormFields.COORDONNEES]: new CoordonneesForm(),
+      [EligibiliteFormFields.CONTRAT]: new ContratForm()
     });
-    this.setupReactions();
   }
 
-  private setupReactions(): void {
-    // CDD -> durée max 60
-    this.controls.typeContrat.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(type => {
-        const duree = this.controls.duree;
-        const max = type === 'CDD' ? 60 : 360;
-        duree.setValidators([Validators.required,
-          Validators.min(6), Validators.max(max)]);
-        duree.updateValueAndValidity();
-      });
-
-    // apport > 50% -> assurance optionnelle
-    this.controls.apport.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(apport => {
-        const ratio = this.controls.montant.value > 0
-          ? apport / this.controls.montant.value : 0;
-        ratio > 0.5
-          ? this.controls.assurance.clearValidators()
-          : this.controls.assurance
-              .setValidators(Validators.requiredTrue);
-        this.controls.assurance
-          .updateValueAndValidity();
-      });
-
-    // codePromo disabled si montant < 10000
-    this.controls.montant.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(m => m < 10000
-        ? this.controls.codePromo.disable()
-        : this.controls.codePromo.enable());
+  get informations(): InformationsForm {
+    return this.get(EligibiliteFormFields.INFORMATIONS) as InformationsForm;
   }
-
-  private calculMensualite(v: typeof this.value) {
-    const capital = (v.montant ?? 0) - (v.apport ?? 0);
-    const n = v.duree ?? 12;
-    const r = 0.035 / 12;
-    return capital * r / (1 - Math.pow(1 + r, -n));
+  get coordonnees(): CoordonneesForm {
+    return this.get(EligibiliteFormFields.COORDONNEES) as CoordonneesForm;
   }
-}`);
+  get contrat(): ContratForm {
+    return this.get(EligibiliteFormFields.CONTRAT) as ContratForm;
+  }
+}
 
-  signalCode = signal(`export function createEligibiliteForm(
-  revenus: Signal<number>
-) {
+// Chaque sous-form = classe + constructor + subscribe
+// + setValidators + updateValueAndValidity
+// + takeUntilDestroyed + DestroyRef
+// + getters typés manuels
+
+// ContratForm seul = ~80 lignes
+// Total : ~200 lignes de code formulaire`);
+
+  signalCode = signal(`// 1 fonction + 1 interface + 0 subscribe
+export function createEligibiliteForm() {
   const model = signal<Eligibilite>({
-    typeContrat: 'CDI', montant: 0,
-    duree: 12, apport: 0,
-    assurance: false, codePromo: '',
+    informations: {
+      genre: '', prenom: '', nom: '',
+      nomJeuneFille: '',
+    },
+    coordonnees: {
+      adresse: '', email: '', telephone: '',
+    },
+    contrat: {
+      typeContrat: '', duree: 12,
+      montant: 0, apport: 0,
+      assurance: false, codePromo: '',
+    },
   });
 
-  const f = form(model, f => {
-    required(f.typeContrat);
-    required(f.montant);
-    min(f.montant, 1000);
-    max(f.montant, 500000);
+  return form(model, f => {
+    // Informations
+    required(f.informations.genre);
+    required(f.informations.prenom);
+    required(f.informations.nom);
+    hidden(f.informations.nomJeuneFille,
+      ({valueOf}) => valueOf(f.informations.genre) === 'male');
 
-    required(f.duree);
-    min(f.duree, 6);
-    validate(f.duree, ({ value, valueOf }) => {
-      const type = valueOf(f.typeContrat);
+    // Coordonnées
+    required(f.coordonnees.adresse);
+    required(f.coordonnees.email);
+    email(f.coordonnees.email);
+    pattern(f.coordonnees.telephone, /^\\\\d{10}$/);
+
+    // Contrat
+    required(f.contrat.typeContrat);
+    min(f.contrat.montant, 1000);
+    max(f.contrat.montant, 500000);
+    min(f.contrat.duree, 6);
+    validate(f.contrat.duree, ({value, valueOf}) => {
+      const type = valueOf(f.contrat.typeContrat);
       const max = type === 'CDD' ? 60 : 360;
       return value() > max
-        ? { kind: 'maxDuree',
-            message: \`Max \${max} mois\` }
+        ? { kind: 'maxDuree', message: \`Max \${max} mois\` }
         : null;
     });
-
-    min(f.apport, 0);
-
-    validate(f.assurance, ({ value, valueOf }) => {
-      const montant = valueOf(f.montant);
-      const apport = valueOf(f.apport);
-      const ratio = montant > 0 ? apport / montant : 0;
-      if (ratio <= 0.5 && !value()) {
-        return { kind: 'assuranceRequise',
-          message: 'Assurance obligatoire' };
-      }
-      return null;
+    validate(f.contrat.assurance, ({value, valueOf}) => {
+      const ratio = valueOf(f.contrat.montant) > 0
+        ? valueOf(f.contrat.apport) / valueOf(f.contrat.montant)
+        : 0;
+      return ratio <= 0.5 && !value()
+        ? { kind: 'assuranceRequise', message: 'Obligatoire' }
+        : null;
     });
-
-    disabled(f.codePromo,
-      () => f.montant().value() < 10000);
+    disabled(f.contrat.codePromo,
+      ({valueOf}) => valueOf(f.contrat.montant) < 10000);
   });
+}
 
-  const mensualite = computed(() => {
-    const v = model();
-    const capital = v.montant - v.apport;
-    const n = v.duree || 12;
-    const r = 0.035 / 12;
-    return capital * r / (1 - Math.pow(1 + r, -n));
-  });
+// Total : ~55 lignes — même fonctionnalité`);
 
-  return { form: f, model, mensualite };
-}`);
+  openCodeComparison() {
+    this.ref = this.dialogService.open(CodeComparisonDialogComponent, {
+      width: '95vw',
+      height: '90vh',
+      modal: true,
+      draggable: false,
+      resizable: false,
+      styleClass: 'code-comparison-dialog',
+    });
+  }
 }

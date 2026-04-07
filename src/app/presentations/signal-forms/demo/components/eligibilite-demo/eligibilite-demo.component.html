@@ -1,0 +1,177 @@
+<form novalidate (submit)="onSubmit(); $event.preventDefault()">
+  <div class="form-sections">
+    <!-- Informations -->
+    <p-card>
+      <ng-template #header>
+        <div class="card-header">
+          <span>Informations</span>
+          <span class="validity-icon"
+            [class.valid]="f.form.informations().valid()"
+            [class.invalid]="f.form.informations().invalid() && f.form.informations().touched()">
+            {{ f.form.informations().valid() ? '✅' : '❌' }}
+          </span>
+        </div>
+      </ng-template>
+      <div class="form-grid">
+        <div>
+          <label for="sf-genre">Genre</label>
+          <select id="sf-genre" [formField]="f.form.informations.genre">
+            <option value="">-- Choisir --</option>
+            <option value="male">Homme</option>
+            <option value="female">Femme</option>
+            <option value="other">Autre</option>
+          </select>
+          @if (f.form.informations.genre().touched() && f.form.informations.genre().invalid()) {
+            <span class="error">{{ f.form.informations.genre().errors()[0]?.message }}</span>
+          }
+        </div>
+
+        <div>
+          <label for="sf-prenom">Prénom</label>
+          <input id="sf-prenom" [formField]="f.form.informations.prenom" />
+          @if (f.form.informations.prenom().touched() && f.form.informations.prenom().invalid()) {
+            <span class="error">{{ f.form.informations.prenom().errors()[0]?.message }}</span>
+          }
+        </div>
+
+        <div>
+          <label for="sf-nom">Nom</label>
+          <input id="sf-nom" [formField]="f.form.informations.nom" />
+          @if (f.form.informations.nom().touched() && f.form.informations.nom().invalid()) {
+            <span class="error">{{ f.form.informations.nom().errors()[0]?.message }}</span>
+          }
+        </div>
+
+        @if (!f.form.informations.nomJeuneFille().hidden()) {
+          <div>
+            <label for="sf-maiden">Nom de jeune fille</label>
+            <input id="sf-maiden" [formField]="f.form.informations.nomJeuneFille" />
+          </div>
+        }
+      </div>
+    </p-card>
+
+    <!-- Coordonnées -->
+    <p-card>
+      <ng-template #header>
+        <div class="card-header">
+          <span>Coordonnées</span>
+          <span class="validity-icon"
+            [class.valid]="f.form.coordonnees().valid()"
+            [class.invalid]="f.form.coordonnees().invalid() && f.form.coordonnees().touched()">
+            {{ f.form.coordonnees().valid() ? '✅' : '❌' }}
+          </span>
+        </div>
+      </ng-template>
+      <div class="form-grid">
+        <div class="full-width">
+          <label for="sf-adresse">Adresse</label>
+          <input id="sf-adresse" [formField]="f.form.coordonnees.adresse" />
+          @if (f.form.coordonnees.adresse().touched() && f.form.coordonnees.adresse().invalid()) {
+            <span class="error">{{ f.form.coordonnees.adresse().errors()[0]?.message }}</span>
+          }
+        </div>
+
+        <div>
+          <label for="sf-email">Email</label>
+          <input type="email" id="sf-email" [formField]="f.form.coordonnees.email" />
+          @if (f.form.coordonnees.email().touched() && f.form.coordonnees.email().invalid()) {
+            <span class="error">{{ f.form.coordonnees.email().errors()[0]?.message }}</span>
+          }
+        </div>
+
+        <div>
+          <label for="sf-tel">Téléphone</label>
+          <input id="sf-tel" [formField]="f.form.coordonnees.telephone" />
+          @if (f.form.coordonnees.telephone().touched() && f.form.coordonnees.telephone().invalid()) {
+            <span class="error">{{ f.form.coordonnees.telephone().errors()[0]?.message }}</span>
+          }
+        </div>
+      </div>
+    </p-card>
+  </div>
+
+  <!-- Contrat -->
+  <p-card>
+    <ng-template #header>
+      <div class="card-header">
+        <span>Contrat</span>
+        <span class="validity-icon"
+          [class.valid]="f.form.contrat().valid()"
+          [class.invalid]="f.form.contrat().invalid() && f.form.contrat().touched()">
+          {{ f.form.contrat().valid() ? '✅' : '❌' }}
+        </span>
+      </div>
+    </ng-template>
+    <div class="form-grid three-cols">
+      <div>
+        <label for="sf-type">Type de contrat</label>
+        <select id="sf-type" [formField]="f.form.contrat.typeContrat">
+          <option value="">-- Choisir --</option>
+          <option value="cdi">CDI</option>
+          <option value="cdd">CDD</option>
+          <option value="student">Étudiant</option>
+          <option value="retired">Retraité</option>
+        </select>
+        @if (f.form.contrat.typeContrat().touched() && f.form.contrat.typeContrat().invalid()) {
+          <span class="error">{{ f.form.contrat.typeContrat().errors()[0]?.message }}</span>
+        }
+      </div>
+
+      <div>
+        <label for="sf-montant">Montant (€)</label>
+        <input type="number" id="sf-montant" [formField]="f.form.contrat.montant" />
+        @if (f.form.contrat.montant().touched() && f.form.contrat.montant().invalid()) {
+          <span class="error">{{ f.form.contrat.montant().errors()[0]?.message }}</span>
+        }
+      </div>
+
+      <div>
+        <label for="sf-duree">Durée (mois)</label>
+        <input type="number" id="sf-duree" [formField]="f.form.contrat.duree" />
+        @if (f.form.contrat.duree().touched() && f.form.contrat.duree().invalid()) {
+          <span class="error">{{ f.form.contrat.duree().errors()[0]?.message }}</span>
+        }
+      </div>
+
+      <div>
+        <label for="sf-apport">Apport (€)</label>
+        <input type="number" id="sf-apport" [formField]="f.form.contrat.apport" />
+        @if (f.form.contrat.apport().touched() && f.form.contrat.apport().invalid()) {
+          <span class="error">{{ f.form.contrat.apport().errors()[0]?.message }}</span>
+        }
+      </div>
+
+      <div class="checkbox-field">
+        <label>
+          <input type="checkbox" [formField]="f.form.contrat.assurance" />
+          Assurance emprunteur
+        </label>
+        @if (f.form.contrat.assurance().touched() && f.form.contrat.assurance().invalid()) {
+          <span class="error">{{ f.form.contrat.assurance().errors()[0]?.message }}</span>
+        }
+      </div>
+
+      <div>
+        <label for="sf-promo">Code promo</label>
+        <input id="sf-promo" [formField]="f.form.contrat.codePromo" />
+        @if (f.form.contrat.codePromo().disabled()) {
+          <span class="hint">Disponible à partir de 10 000 €</span>
+        }
+      </div>
+    </div>
+  </p-card>
+
+  <div class="actions">
+    <p-button label="Préremplir" severity="secondary" type="button" (onClick)="prefill()" />
+    <p-button label="Réinitialiser" severity="secondary" type="button" (onClick)="reset()" />
+    <p-button label="Valider" type="submit" [disabled]="f.form().invalid()" />
+  </div>
+</form>
+
+<div class="debug-panel">
+  <details>
+    <summary>Model (signal)</summary>
+    <pre>{{ f.model() | json }}</pre>
+  </details>
+</div>

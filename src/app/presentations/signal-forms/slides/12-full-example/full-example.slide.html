@@ -1,11 +1,18 @@
 <h1>Exemple Complet — EligibiliteForm</h1>
 
 <div class="slide-container">
-  <p class="subtitle">~95 lignes vs ~55 lignes — même fonctionnalité</p>
+  <div class="header">
+    <p class="subtitle">3 sous-formulaires composés — ~200 lignes vs ~55 lignes</p>
+    <p-button
+      label="Voir le code complet"
+      icon="pi pi-code"
+      (onClick)="openCodeComparison()"
+      styleClass="code-button" />
+  </div>
 
   <div class="two-columns">
     <div class="code-section">
-      <h2>extends FormGroup (~95 lignes)</h2>
+      <h2>extends FormGroup (~200 lignes)</h2>
       <pre><code [highlight]="reactiveCode()" language="typescript"></code></pre>
     </div>
 
@@ -16,9 +23,9 @@
   </div>
 
   <div class="benefits-list">
-    <div class="benefit-item">Signal : 0 subscribe, 0 updateValueAndValidity, 0 shareReplay</div>
-    <div class="benefit-item">Signal : validators déclaratifs et réactifs — pas de setValidators</div>
-    <div class="problem-item">Reactive : 3 subscribes + 3 setValidators + DestroyRef</div>
-    <div class="problem-item">Reactive : setValidators écrase tout — oublier un validator = bug silencieux</div>
+    <div class="benefit-item">Signal : 3 sous-forms = 1 interface + 1 fonction, pas 3 classes</div>
+    <div class="benefit-item">Signal : 0 subscribe, 0 setValidators, 0 DestroyRef</div>
+    <div class="problem-item">Reactive : chaque sous-form = classe + constructor + subscribe + cleanup</div>
+    <div class="problem-item">Reactive : 4 subscribes + 4 setValidators + updateValueAndValidity</div>
   </div>
 </div>

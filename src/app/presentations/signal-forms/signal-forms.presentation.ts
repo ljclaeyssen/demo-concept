@@ -15,6 +15,7 @@ import { TestingSlide } from './slides/11-testing/testing.slide';
 import { FullExampleSlide } from './slides/12-full-example/full-example.slide';
 import { NouveautesSlide } from './slides/13-nouveautes/nouveautes.slide';
 import { VerdictSlide } from './slides/14-verdict/verdict.slide';
+import { SfLiveDemoSlide } from './slides/15-live-demo/live-demo.slide';
 
 register();
 
@@ -22,7 +23,7 @@ register();
   selector: 'app-signal-forms-presentation',
   templateUrl: './signal-forms.presentation.html',
   styleUrl: './signal-forms.presentation.scss',
-  imports: [VersusSlide, ContextSlide, PhilosophySlide, FormModelSlide, ValidationSlide, CrossFieldSlide, ValueChangesSlide, DerivedStateSlide, AsyncValidationSlide, CustomControlsSlide, CompositionSlide, TestingSlide, FullExampleSlide, NouveautesSlide, VerdictSlide],
+  imports: [VersusSlide, ContextSlide, PhilosophySlide, FormModelSlide, ValidationSlide, CrossFieldSlide, ValueChangesSlide, DerivedStateSlide, AsyncValidationSlide, CustomControlsSlide, CompositionSlide, TestingSlide, FullExampleSlide, NouveautesSlide, VerdictSlide, SfLiveDemoSlide],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -1,7 +1,7 @@
 <h1>Nouveautés v21.2</h1>
 
 <div class="slide-container">
-  <p class="subtitle">FormRoot, transformedValue, Standard Schema (Zod / Valibot)</p>
+  <p class="subtitle">FormRoot, linkedSignal, Standard Schema (Zod / Valibot)</p>
 
   <div class="three-columns">
     <div class="code-section">
@@ -10,7 +10,7 @@
     </div>
 
     <div class="code-section">
-      <h2>transformedValue</h2>
+      <h2>linkedSignal (transformation)</h2>
       <pre><code [highlight]="transformedValueCode()" language="typescript"></code></pre>
     </div>
 
@@ -21,7 +21,8 @@
   </div>
 
   <div class="benefits-list">
-    <div class="benefit-item">FormRoot : soumission déclarative, novalidate automatique</div>
+    <div class="benefit-item">FormRoot : soumission déclarative, novalidate + touched automatiques</div>
+    <div class="benefit-item">linkedSignal : transformation d'affichage dans les custom controls</div>
     <div class="benefit-item">validateStandardSchema : brancher Zod ou Valibot directement</div>
   </div>
 </div>

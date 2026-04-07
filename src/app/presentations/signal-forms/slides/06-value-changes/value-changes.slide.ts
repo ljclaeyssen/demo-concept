@@ -20,7 +20,7 @@ this.controls.montant.valueChanges
 
   signalDisable = signal(`// Disable conditionnel
 disabled(f.codePromo,
-  () => f.montant().value() < 10000
+  ({valueOf}) => valueOf(f.montant) < 10000
 );`);
 
   reactiveRevalidation = signal(`// Revalidation cross-field
