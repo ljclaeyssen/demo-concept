@@ -1,6 +1,6 @@
 import { DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { combineLatest, startWith } from 'rxjs';
 import { ContratFormFields, ContractType } from './eligibilite-form.enums';
 
@@ -30,10 +30,28 @@ export class ContratForm extends FormGroup {
       }),
       [ContratFormFields.CODE_PROMO]: new FormControl<string>({ value: '', disabled: true }, {
         nonNullable: true
+      }),
+      [ContratFormFields.DATE_DEBUT]: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required]
+      }),
+      [ContratFormFields.DATE_FIN]: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required]
       })
-    });
+    }, { validators: [ContratForm.dateFinApresDebut] });
 
     this.setupReactions();
+  }
+
+  private static dateFinApresDebut(group: AbstractControl): ValidationErrors | null {
+    const g = group as ContratForm;
+    const debut = g.dateDebut.value;
+    const fin = g.dateFin.value;
+    if (debut && fin && fin <= debut) {
+      return { dateFinAvantDebut: true };
+    }
+    return null;
   }
 
   private setupReactions() {
@@ -72,6 +90,10 @@ export class ContratForm extends FormGroup {
         }
         this.assurance.updateValueAndValidity();
       });
+
+    this.dateDebut.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => this.dateFin.updateValueAndValidity());
   }
 
   get typeContrat() { return this.get(ContratFormFields.TYPE_CONTRAT) as FormControl<string>; }
@@ -80,4 +102,6 @@ export class ContratForm extends FormGroup {
   get apport() { return this.get(ContratFormFields.APPORT) as FormControl<number>; }
   get assurance() { return this.get(ContratFormFields.ASSURANCE) as FormControl<boolean>; }
   get codePromo() { return this.get(ContratFormFields.CODE_PROMO) as FormControl<string>; }
+  get dateDebut() { return this.get(ContratFormFields.DATE_DEBUT) as FormControl<string>; }
+  get dateFin() { return this.get(ContratFormFields.DATE_FIN) as FormControl<string>; }
 }

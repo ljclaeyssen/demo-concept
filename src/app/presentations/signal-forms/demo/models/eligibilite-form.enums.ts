@@ -17,7 +17,9 @@ export enum ContratFormFields {
   MONTANT = 'montant',
   APPORT = 'apport',
   ASSURANCE = 'assurance',
-  CODE_PROMO = 'codePromo'
+  CODE_PROMO = 'codePromo',
+  DATE_DEBUT = 'dateDebut',
+  DATE_FIN = 'dateFin'
 }
 
 export enum EligibiliteFormFields {

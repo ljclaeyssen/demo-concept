@@ -39,6 +39,8 @@ export class EligibiliteDemoComponent {
         apport: 40000,
         assurance: true,
         codePromo: '',
+        dateDebut: '2026-05-01',
+        dateFin: '2046-05-01',
       },
     });
   }

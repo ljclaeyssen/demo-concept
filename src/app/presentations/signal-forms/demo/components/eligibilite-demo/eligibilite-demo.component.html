@@ -159,6 +159,22 @@
           <span class="hint">Disponible à partir de 10 000 €</span>
         }
       </div>
+
+      <div>
+        <label for="sf-date-debut">Date de début</label>
+        <input type="date" id="sf-date-debut" [formField]="f.form.contrat.dateDebut" />
+        @if (f.form.contrat.dateDebut().touched() && f.form.contrat.dateDebut().invalid()) {
+          <span class="error">{{ f.form.contrat.dateDebut().errors()[0]?.message }}</span>
+        }
+      </div>
+
+      <div>
+        <label for="sf-date-fin">Date de fin</label>
+        <input type="date" id="sf-date-fin" [formField]="f.form.contrat.dateFin" />
+        @if (f.form.contrat.dateFin().touched() && f.form.contrat.dateFin().invalid()) {
+          <span class="error">{{ f.form.contrat.dateFin().errors()[0]?.message }}</span>
+        }
+      </div>
     </div>
   </p-card>
 

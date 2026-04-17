@@ -18,6 +18,8 @@ export interface Contrat {
   apport: number;
   assurance: boolean;
   codePromo: string;
+  dateDebut: string;
+  dateFin: string;
 }
 
 export interface Eligibilite {

@@ -25,6 +25,8 @@ export function createEligibiliteForm() {
       apport: 0,
       assurance: false,
       codePromo: '',
+      dateDebut: '',
+      dateFin: '',
     },
   });
 

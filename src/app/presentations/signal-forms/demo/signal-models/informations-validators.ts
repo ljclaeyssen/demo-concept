@@ -7,4 +7,8 @@ export function informationsValidators(f: SchemaPathTree<Informations>) {
   required(f.nom, { message: 'Nom requis' });
 
   hidden(f.nomJeuneFille, ({valueOf}) => valueOf(f.genre) === 'male');
+  required(f.nomJeuneFille, {
+    when: ({valueOf}) => valueOf(f.genre) === 'female',
+    message: 'Nom de jeune fille requis'
+  });
 }

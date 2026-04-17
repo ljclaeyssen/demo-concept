@@ -1,24 +1,38 @@
 <h1>Validation Cross-Field</h1>
 
 <div class="slide-container">
-  <p class="subtitle">Si pays = FR, le code postal doit matcher le format français</p>
+  <p class="subtitle">Exemple 1 — Nom de jeune fille requis si genre = femme</p>
 
   <div class="two-columns">
     <div class="code-section">
-      <h2>Reactive — static validator + subscribe</h2>
-      <pre><code [highlight]="reactiveCode()" language="typescript"></code></pre>
+      <h2>Reactive — subscribe + setValidators</h2>
+      <pre><code [highlight]="reactiveMaidenCode()" language="typescript"></code></pre>
     </div>
 
     <div class="code-section">
-      <h2>Signal — validate() réactif</h2>
-      <pre><code [highlight]="signalCode()" language="typescript"></code></pre>
+      <h2>Signal — required({{ '{' }} when {{ '}' }})</h2>
+      <pre><code [highlight]="signalMaidenCode()" language="typescript"></code></pre>
+    </div>
+  </div>
+
+  <p class="subtitle">Exemple 2 — Date de fin &gt; date de début</p>
+
+  <div class="two-columns">
+    <div class="code-section">
+      <h2>Reactive — group validator + subscribe</h2>
+      <pre><code [highlight]="reactiveDatesCode()" language="typescript"></code></pre>
+    </div>
+
+    <div class="code-section">
+      <h2>Signal — validate() avec valueOf</h2>
+      <pre><code [highlight]="signalDatesCode()" language="typescript"></code></pre>
     </div>
   </div>
 
   <div class="benefits-list">
-    <div class="benefit-item">Signal : valueOf() lit les autres champs — revalidation automatique</div>
-    <div class="benefit-item">Signal : pas de subscribe, pas de updateValueAndValidity, pas de cleanup</div>
-    <div class="problem-item">Reactive : validator static + subscribe + DestroyRef pour le cleanup</div>
-    <div class="problem-item">Reactive : updateValueAndValidity() obligatoire pour trigger la revalidation</div>
+    <div class="benefit-item">Signal : <code>valueOf()</code> lit les autres champs — revalidation auto, pas de subscribe</div>
+    <div class="benefit-item">Signal : <code>required({{ '{' }} when {{ '}' }})</code> rend la contrainte conditionnelle déclarative</div>
+    <div class="problem-item">Reactive : <code>subscribe</code> + <code>setValidators</code> + <code>updateValueAndValidity</code> + cleanup</div>
+    <div class="problem-item">Reactive : validator groupe + cast <code>AbstractControl</code> → <code>ContratForm</code></div>
   </div>
 </div>

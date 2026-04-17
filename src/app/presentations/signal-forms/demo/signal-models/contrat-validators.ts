@@ -31,4 +31,15 @@ export function contratValidators(f: SchemaPathTree<Contrat>) {
   });
 
   disabled(f.codePromo, ({valueOf}) => valueOf(f.montant) < 10000);
+
+  required(f.dateDebut, { message: 'Date de début requise' });
+  required(f.dateFin, { message: 'Date de fin requise' });
+  validate(f.dateFin, ({value, valueOf}) => {
+    const debut = valueOf(f.dateDebut);
+    const fin = value();
+    if (debut && fin && fin <= debut) {
+      return { kind: 'dateFinAvantDebut', message: 'Doit être après la date de début' };
+    }
+    return null;
+  });
 }

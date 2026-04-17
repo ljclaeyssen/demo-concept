@@ -9,59 +9,65 @@ import { Highlight } from 'ngx-highlightjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CrossFieldSlide {
-  reactiveCode = signal(`export class AdresseFormGroup
-  extends FormGroup<AdresseControls> {
-
-  constructor(data?: Partial<Adresse>) {
-    super({ /* controls... */ }, {
-      validators: [AdresseFormGroup.cpMatchPays]
-    });
-
-    // subscribe pour trigger la revalidation
-    this.controls.pays.valueChanges
-      .pipe(takeUntilDestroyed())
-      .subscribe(() =>
-        this.controls.codePostal
-          .updateValueAndValidity()
-      );
-  }
-
-  private static cpMatchPays(
-    group: AbstractControl
-  ): ValidationErrors | null {
-    const g = group as AdresseFormGroup;
-    const pays = g.controls.pays.value;
-    const cp = g.controls.codePostal.value;
-
-    if (pays === 'FR' && !/^\\d{5}$/.test(cp)) {
-      return { cpFormatFR: true };
-    }
-    return null;
-  }
-}`);
-
-  signalCode = signal(`export function createAdresseForm(
-  data?: Partial<Adresse>
-) {
-  const model = signal<Adresse>({ /* ... */ });
-
-  return form(model, f => {
-    required(f.codePostal);
-    required(f.pays);
-
-    // Cross-field : valueOf() lit un autre champ
-    validate(f.codePostal, ({ value, valueOf }) => {
-      const pays = valueOf(f.pays);
-      const cp = value();
-
-      if (pays === 'FR' && !/^\\d{5}$/.test(cp)) {
-        return {
-          kind: 'cpFormatFR',
-          message: 'Format FR : 5 chiffres'
-        };
+  reactiveMaidenCode = signal(`private setupAdaptiveLogic() {
+  this.genre.valueChanges.subscribe(genre => {
+    if (genre === Gender.MALE) {
+      this.nomJeuneFille.disable();
+      this.nomJeuneFille.clearValidators();
+    } else {
+      this.nomJeuneFille.enable();
+      if (genre === Gender.FEMALE) {
+        this.nomJeuneFille.setValidators(
+          [Validators.required]
+        );
+      } else {
+        this.nomJeuneFille.clearValidators();
       }
-      return null;
-    });
+    }
+    this.nomJeuneFille.updateValueAndValidity();
   });
 }`);
+
+  signalMaidenCode = signal(`hidden(f.nomJeuneFille,
+  ({valueOf}) => valueOf(f.genre) === 'male'
+);
+
+required(f.nomJeuneFille, {
+  when: ({valueOf}) => valueOf(f.genre) === 'female',
+  message: 'Nom de jeune fille requis'
+});`);
+
+  reactiveDatesCode = signal(`// group validator + subscribe pour revalider
+super({ /* controls... */ }, {
+  validators: [ContratForm.dateFinApresDebut]
+});
+
+this.dateDebut.valueChanges
+  .pipe(takeUntilDestroyed(this.destroyRef))
+  .subscribe(() =>
+    this.dateFin.updateValueAndValidity()
+  );
+
+private static dateFinApresDebut(
+  g: AbstractControl
+): ValidationErrors | null {
+  const debut = (g as ContratForm).dateDebut.value;
+  const fin = (g as ContratForm).dateFin.value;
+  if (debut && fin && fin <= debut) {
+    return { dateFinAvantDebut: true };
+  }
+  return null;
+}`);
+
+  signalDatesCode = signal(`validate(f.dateFin, ({value, valueOf}) => {
+  const debut = valueOf(f.dateDebut);
+  const fin = value();
+  if (debut && fin && fin <= debut) {
+    return {
+      kind: 'dateFinAvantDebut',
+      message: 'Doit être après la date de début'
+    };
+  }
+  return null;
+});`);
 }

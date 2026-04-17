@@ -31,6 +31,11 @@ export class InformationsForm extends FormGroup {
         this.nomJeuneFille.clearValidators();
       } else {
         this.nomJeuneFille.enable();
+        if (genre === Gender.FEMALE) {
+          this.nomJeuneFille.setValidators([Validators.required]);
+        } else {
+          this.nomJeuneFille.clearValidators();
+        }
       }
       this.nomJeuneFille.updateValueAndValidity();
     });
